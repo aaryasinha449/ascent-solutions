@@ -2,23 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================================
-   ELETECH TRADING CORPORATION — DESIGN SYSTEM
-   Corporate Red + White + Steel Grey
-   All colors in HSL
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Core Brand Colors */
     --primary: 0 75% 42%;
     --primary-light: 0 75% 52%;
     --primary-dark: 0 75% 30%;
     --primary-foreground: 0 0% 100%;
 
-    /* Background & Surface */
     --background: 0 0% 100%;
     --foreground: 220 15% 12%;
 
@@ -28,7 +20,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 12%;
 
-    /* Secondary / Neutral */
     --secondary: 220 10% 96%;
     --secondary-foreground: 220 15% 12%;
 
@@ -38,42 +29,34 @@
     --accent: 0 75% 42%;
     --accent-foreground: 0 0% 100%;
 
-    /* Status */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Steel / Metallic tones */
     --steel: 210 15% 50%;
     --steel-light: 210 15% 88%;
     --steel-dark: 210 15% 25%;
 
-    /* Section backgrounds */
     --section-alt: 220 10% 97%;
     --section-dark: 220 20% 10%;
 
-    /* Borders */
     --border: 220 13% 88%;
     --input: 220 13% 88%;
     --ring: 0 75% 42%;
 
     --radius: 0.5rem;
 
-    /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(0 75% 30% / 0.92), hsl(220 20% 8% / 0.75));
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
     --gradient-red-card: linear-gradient(135deg, hsl(0 75% 42%), hsl(0 70% 35%));
 
-    /* Shadows */
     --shadow-card: 0 4px 20px -4px hsl(220 20% 12% / 0.12);
-    --shadow-card-hover: 0 12px 40px -8px hsl(0 75% 42% / 0.25);
+    --shadow-card-hover: 0 20px 50px -10px hsl(0 75% 42% / 0.3);
     --shadow-nav: 0 2px 20px hsl(220 20% 12% / 0.1);
     --shadow-button: 0 4px 14px hsl(0 75% 42% / 0.4);
 
-    /* Typography */
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
 
-    /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 0 75% 42%;
@@ -108,23 +91,14 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-  }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 }
 
 /* ============================================================
@@ -134,61 +108,47 @@
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes slide-in-left {
   from { opacity: 0; transform: translateX(-40px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes slide-in-right {
   from { opacity: 0; transform: translateX(40px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes count-up {
   from { opacity: 0; transform: scale(0.8); }
   to   { opacity: 1; transform: scale(1); }
 }
-
 @keyframes shimmer {
-  0% { background-position: -200% center; }
+  0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-
 @keyframes pulse-red {
   0%, 100% { box-shadow: 0 0 0 0 hsl(0 75% 42% / 0.4); }
-  50% { box-shadow: 0 0 0 10px hsl(0 75% 42% / 0); }
+  50%       { box-shadow: 0 0 0 10px hsl(0 75% 42% / 0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @layer utilities {
-  .animate-fade-in-up {
-    animation: fade-in-up 0.7s ease-out both;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out both;
-  }
-
-  .animate-slide-in-left {
-    animation: slide-in-left 0.7s ease-out both;
-  }
-
-  .animate-slide-in-right {
-    animation: slide-in-right 0.7s ease-out both;
-  }
-
-  .animate-count-up {
-    animation: count-up 0.6s ease-out both;
-  }
-
-  .animate-pulse-red {
-    animation: pulse-red 2s infinite;
-  }
+  .animate-fade-in-up  { animation: fade-in-up  0.7s ease-out both; }
+  .animate-fade-in     { animation: fade-in     0.6s ease-out both; }
+  .animate-slide-in-left  { animation: slide-in-left  0.7s ease-out both; }
+  .animate-slide-in-right { animation: slide-in-right 0.7s ease-out both; }
+  .animate-count-up    { animation: count-up    0.6s ease-out both; }
+  .animate-pulse-red   { animation: pulse-red   2s infinite; }
+  .animate-float       { animation: float       3s ease-in-out infinite; }
 
   .delay-100 { animation-delay: 0.1s; }
   .delay-200 { animation-delay: 0.2s; }
@@ -197,26 +157,80 @@
   .delay-500 { animation-delay: 0.5s; }
   .delay-600 { animation-delay: 0.6s; }
 
+  /* ── Typography helpers ── */
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-foreground;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground;
     font-family: var(--font-heading);
   }
-
   .section-subheading {
     @apply text-muted-foreground text-base md:text-lg leading-relaxed;
     font-family: var(--font-body);
   }
+  .red-line { @apply block w-16 h-1 bg-primary rounded-full; }
 
-  .red-line {
-    @apply block w-16 h-1 bg-primary rounded-full;
-  }
-
+  /* ── Card hover ── */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-2;
     box-shadow: var(--shadow-card);
   }
+  .card-hover:hover { box-shadow: var(--shadow-card-hover); }
 
-  .card-hover:hover {
-    box-shadow: var(--shadow-card-hover);
+  /* ── Background patterns ── */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
+  .bg-dot-pattern-dark {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── Section diagonal dividers ── */
+  .section-skew-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 60px;
+    background: hsl(var(--background));
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+  .section-skew-top::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0; right: 0;
+    height: 60px;
+    background: hsl(var(--background));
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    z-index: 1;
+  }
+
+  /* ── Gradient text ── */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Pill badge ── */
+  .badge-primary {
+    @apply inline-flex items-center gap-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1 text-xs font-body font-semibold uppercase tracking-wider;
+  }
+
+  /* ── Glow effects ── */
+  .glow-red {
+    box-shadow: 0 0 40px hsl(0 75% 42% / 0.2);
+  }
+
+  /* ── Scrollbar hide ── */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
