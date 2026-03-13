@@ -1,26 +1,28 @@
+import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { Award, CheckSquare, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const certs = [
-  { title: "ISO 9001:2015", subtitle: "Quality Management System", icon: "🏆", color: "border-amber-200 bg-amber-50" },
-  { title: "IS 14665", subtitle: "Bureau of Indian Standards", icon: "🇮🇳", color: "border-orange-200 bg-orange-50" },
-  { title: "CE Certified", subtitle: "European Conformity Mark", icon: "🇪🇺", color: "border-blue-200 bg-blue-50" },
-  { title: "NSIC Registered", subtitle: "National Small Industries Corp.", icon: "📋", color: "border-green-200 bg-green-50" },
-  { title: "MSME Certified", subtitle: "Ministry of MSME, India", icon: "🏅", color: "border-purple-200 bg-purple-50" },
-  { title: "Authorized Dealer", subtitle: "Multiple Premium Brands", icon: "✅", color: "border-red-200 bg-red-50" },
-  { title: "OHSAS 18001", subtitle: "Occupational Health & Safety", icon: "🛡️", color: "border-teal-200 bg-teal-50" },
-  { title: "ISO 14001:2015", subtitle: "Environmental Management", icon: "🌿", color: "border-lime-200 bg-lime-50" },
+  { title: "ISO 9001:2015",   subtitle: "Quality Management System",         icon: "🏆", color: "border-amber-200 bg-amber-50" },
+  { title: "IS 14665",        subtitle: "Bureau of Indian Standards",          icon: "🇮🇳", color: "border-orange-200 bg-orange-50" },
+  { title: "CE Certified",    subtitle: "European Conformity Mark",            icon: "🇪🇺", color: "border-blue-200 bg-blue-50" },
+  { title: "NSIC Registered", subtitle: "National Small Industries Corp.",     icon: "📋", color: "border-green-200 bg-green-50" },
+  { title: "MSME Certified",  subtitle: "Ministry of MSME, India",             icon: "🏅", color: "border-purple-200 bg-purple-50" },
+  { title: "Authorized Dealer",subtitle: "Multiple Premium Brands",            icon: "✅", color: "border-red-200 bg-red-50" },
+  { title: "OHSAS 18001",     subtitle: "Occupational Health & Safety",        icon: "🛡️", color: "border-teal-200 bg-teal-50" },
+  { title: "ISO 14001:2015",  subtitle: "Environmental Management",            icon: "🌿", color: "border-lime-200 bg-lime-50" },
 ];
 
 const awards = [
-  { year: "2023", title: "Best Elevator Distributor — West India", org: "Elevator Industry Association" },
-  { year: "2022", title: "Excellence in Safety Standards", org: "National Safety Council India" },
-  { year: "2021", title: "Top Rated Service Provider", org: "BuildIndia Awards" },
-  { year: "2019", title: "10 Years of Excellence Award", org: "Eletech Internal Achievement" },
+  { year: "2023", title: "Best Elevator Distributor — West India",  org: "Elevator Industry Association" },
+  { year: "2022", title: "Excellence in Safety Standards",          org: "National Safety Council India" },
+  { year: "2021", title: "Top Rated Service Provider",              org: "BuildIndia Awards" },
+  { year: "2019", title: "10 Years of Excellence Award",            org: "Eletech Internal Achievement" },
 ];
 
 export default function CertificatesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView(0.1);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -29,7 +31,10 @@ export default function CertificatesSection() {
 
   return (
     <section id="industries" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-4 md:px-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="red-line" />
@@ -76,7 +81,7 @@ export default function CertificatesSection() {
             <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
             <div
               ref={scrollRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 scroll-smooth"
+              className="flex gap-4 overflow-x-auto pb-2 scroll-smooth"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {certs.map(({ title, subtitle, icon, color }, i) => (

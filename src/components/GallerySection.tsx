@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 import hero1 from "@/assets/hero-elevator-1.jpg";
 import hero2 from "@/assets/hero-elevator-2.jpg";
 import hero3 from "@/assets/hero-elevator-3.jpg";
@@ -29,6 +30,7 @@ const filters = ["All", "Commercial", "Residential", "Healthcare", "Industrial",
 export default function GallerySection() {
   const [selected, setSelected] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
+  const { ref, inView } = useInView(0.1);
 
   const filtered = activeFilter === "All"
     ? galleryItems
@@ -37,7 +39,7 @@ export default function GallerySection() {
         activeFilter.toLowerCase().includes(item.category.toLowerCase())
       );
 
-  const openLightbox = (globalIndex: number) => setSelected(globalIndex);
+  const openLightbox = (index: number) => setSelected(index);
 
   const navLightbox = (dir: "prev" | "next") => {
     if (selected === null) return;
@@ -47,7 +49,10 @@ export default function GallerySection() {
 
   return (
     <section id="gallery" className="py-20 md:py-28 bg-section-alt">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-4 md:px-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -99,7 +104,7 @@ export default function GallerySection() {
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
+
               {/* Zoom icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
                 <ZoomIn className="text-white" size={18} />
@@ -128,31 +133,24 @@ export default function GallerySection() {
           className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setSelected(null)}
         >
-          {/* Close */}
           <button
             onClick={() => setSelected(null)}
             className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
           >
             <X size={20} />
           </button>
-
-          {/* Prev */}
           <button
             onClick={(e) => { e.stopPropagation(); navLightbox("prev"); }}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
           >
             <ChevronLeft size={22} />
           </button>
-
-          {/* Next */}
           <button
             onClick={(e) => { e.stopPropagation(); navLightbox("next"); }}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
           >
             <ChevronRight size={22} />
           </button>
-
-          {/* Image */}
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <img
               src={filtered[selected].src}
