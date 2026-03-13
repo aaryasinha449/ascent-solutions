@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Settings, RefreshCcw, Wrench, Package, MessageSquare, ArrowRight, CheckCircle } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
 
 const services = [
@@ -45,9 +47,14 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const { ref, inView } = useInView(0.1);
+
   return (
     <section id="services" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-4 md:px-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -72,6 +79,7 @@ export default function ServicesSection() {
             <div
               key={i}
               className="group relative bg-background border border-border rounded-2xl overflow-hidden card-hover cursor-default"
+              style={{ transitionDelay: `${i * 60}ms` }}
             >
               {/* Top accent bar */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -111,7 +119,7 @@ export default function ServicesSection() {
           ))}
 
           {/* CTA Card */}
-          <div className="relative bg-foreground rounded-2xl overflow-hidden flex flex-col justify-between">
+          <div className="relative bg-foreground rounded-2xl overflow-hidden flex flex-col justify-between min-h-[280px]">
             <img
               src={serviceMaintenance}
               alt="Our services"

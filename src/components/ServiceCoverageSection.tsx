@@ -198,7 +198,7 @@ export default function ServiceCoverageSection() {
                     onClick={() => setActiveState(state.name)}
                     className={`w-full flex items-center justify-between px-5 py-3.5 text-left transition-all duration-200 group ${
                       isActive
-                        ? "bg-primary/8 border-l-4 border-l-primary"
+                    ? "bg-primary/5 border-l-4 border-l-primary"
                         : "hover:bg-section-alt border-l-4 border-l-transparent"
                     }`}
                   >

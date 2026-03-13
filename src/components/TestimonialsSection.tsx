@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 const testimonials = [
   {
@@ -51,20 +52,24 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
+  const { ref, inView } = useInView(0.15);
   const total = testimonials.length;
 
   const prev = () => setCurrent((current - 1 + total) % total);
   const next = () => setCurrent((current + 1) % total);
 
   const visible = [
-    testimonials[(current) % total],
+    testimonials[current % total],
     testimonials[(current + 1) % total],
     testimonials[(current + 2) % total],
   ];
 
   return (
     <section className="py-20 md:py-28 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-4 md:px-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="red-line" />
@@ -77,7 +82,7 @@ export default function TestimonialsSection() {
             What Our <span className="text-primary">Clients Say</span>
           </h2>
           <p className="section-subheading">
-            The trust of over 300 satisfied clients across India is what drives our commitment 
+            The trust of over 300 satisfied clients across India is what drives our commitment
             to excellence every single day.
           </p>
         </div>
@@ -92,7 +97,7 @@ export default function TestimonialsSection() {
               }`}
             >
               <Quote className="text-primary/20 mb-4" size={36} />
-              
+
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: rating }).map((_, j) => (

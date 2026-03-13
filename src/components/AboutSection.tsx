@@ -1,3 +1,4 @@
+import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap } from "lucide-react";
 
 const highlights = [
@@ -28,12 +29,17 @@ const values = [
 ];
 
 export default function AboutSection() {
+  const { ref, inView } = useInView(0.15);
+
   return (
     <section id="about" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-4 md:px-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Visual */}
-          <div className="relative animate-slide-in-left">
+          <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-card-hover">
               <img
                 src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80"
@@ -59,7 +65,7 @@ export default function AboutSection() {
           </div>
 
           {/* Right: Content */}
-          <div className="animate-slide-in-right">
+          <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="red-line" />
               <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">
@@ -73,15 +79,15 @@ export default function AboutSection() {
             </h2>
 
             <p className="section-subheading mb-5">
-              Eletech Trading Corporation is a leading supplier and distributor of premium elevator 
-              and lift solutions across India. Founded with a vision to transform vertical 
-              transportation, we have grown into one of India's most reliable names in the elevator 
+              Eletech Trading Corporation is a leading supplier and distributor of premium elevator
+              and lift solutions across India. Founded with a vision to transform vertical
+              transportation, we have grown into one of India's most reliable names in the elevator
               industry.
             </p>
 
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              With over 15 years of industry expertise, we serve residential complexes, commercial 
-              towers, hospitals, hotels, and industrial facilities — delivering customized, 
+              With over 15 years of industry expertise, we serve residential complexes, commercial
+              towers, hospitals, hotels, and industrial facilities — delivering customized,
               high-quality elevator systems backed by comprehensive after-sales support.
             </p>
 
@@ -98,10 +104,7 @@ export default function AboutSection() {
             {/* Value cards */}
             <div className="grid grid-cols-3 gap-3">
               {values.map(({ icon: Icon, title, desc }, i) => (
-                <div
-                  key={i}
-                  className="bg-section-alt rounded-xl p-4 border border-border card-hover"
-                >
+                <div key={i} className="bg-section-alt rounded-xl p-4 border border-border card-hover">
                   <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
                     <Icon className="text-primary" size={18} />
                   </div>
