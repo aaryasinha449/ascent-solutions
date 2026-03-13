@@ -6,47 +6,35 @@ interface StatItem {
   numericValue: number;
   suffix: string;
   label: string;
-  color: string;
+  iconColor: string;
+  bgColor: string;
 }
 
 const stats: StatItem[] = [
-  { icon: TrendingUp, numericValue: 15,   suffix: "+",  label: "Years Experience",     color: "bg-primary/10 text-primary" },
-  { icon: Users,      numericValue: 300,  suffix: "+",  label: "Satisfied Clients",    color: "bg-blue-50 text-blue-600" },
-  { icon: Building2,  numericValue: 5000, suffix: "+",  label: "Elevators Installed",  color: "bg-green-50 text-green-600" },
-  { icon: Star,       numericValue: 99,   suffix: "%",  label: "Client Satisfaction",  color: "bg-amber-50 text-amber-600" },
-  { icon: Wrench,     numericValue: 24,   suffix: "/7", label: "Support Available",    color: "bg-purple-50 text-purple-600" },
-  { icon: MapPin,     numericValue: 28,   suffix: "+",  label: "States Covered",       color: "bg-red-50 text-red-600" },
+  { icon: TrendingUp, numericValue: 15,   suffix: "+",  label: "Years Experience",    iconColor: "text-primary",    bgColor: "bg-primary/15" },
+  { icon: Users,      numericValue: 300,  suffix: "+",  label: "Satisfied Clients",   iconColor: "text-blue-600",   bgColor: "bg-blue-500/15" },
+  { icon: Building2,  numericValue: 5000, suffix: "+",  label: "Elevators Installed", iconColor: "text-emerald-500", bgColor: "bg-emerald-500/15" },
+  { icon: Star,       numericValue: 99,   suffix: "%",  label: "Client Satisfaction", iconColor: "text-amber-400",  bgColor: "bg-amber-400/15" },
+  { icon: Wrench,     numericValue: 24,   suffix: "/7", label: "Support Available",   iconColor: "text-purple-400", bgColor: "bg-purple-400/15" },
+  { icon: MapPin,     numericValue: 28,   suffix: "+",  label: "States Covered",      iconColor: "text-rose-400",   bgColor: "bg-rose-400/15" },
 ];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!active) return;
-    // Special case: "24/7" — just jump straight to target
     if (suffix === "/7") { setCount(target); return; }
-
-    const duration = 1800;
-    const steps = 60;
+    const duration = 1800, steps = 60;
     const increment = target / steps;
     let current = 0;
     const timer = setInterval(() => {
       current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
+      if (current >= target) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(current));
     }, duration / steps);
     return () => clearInterval(timer);
   }, [active, target, suffix]);
-
-  return (
-    <span>
-      {count}{suffix}
-    </span>
-  );
+  return <span>{count}{suffix}</span>;
 }
 
 export default function StatsSection() {
@@ -56,53 +44,60 @@ export default function StatsSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="py-16 bg-section-dark relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-section-dark relative overflow-hidden">
       {/* Dot texture */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="w-full h-full"
-          style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "40px 40px" }}
-        />
-      </div>
-      {/* Top accent */}
+      <div className="absolute inset-0 bg-dot-pattern-dark pointer-events-none" />
+      {/* Glow orbs */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/8 rounded-full blur-3xl pointer-events-none" />
+      {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
 
-      <div className="container mx-auto px-4 md:px-6" ref={ref}>
-        <div className="text-center mb-10">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <span className="red-line mx-auto" />
-          </div>
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-2">
+      <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="badge-primary mb-4 inline-flex" style={{ background: "hsl(0 75% 42% / 0.15)", color: "hsl(0 75% 70%)", border: "1px solid hsl(0 75% 42% / 0.3)" }}>
+            Our Achievements
+          </span>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-3">
             Numbers That Speak for Themselves
           </h2>
-          <p className="font-body text-white/60 text-sm">
+          <p className="font-body text-white/55 text-base max-w-xl mx-auto">
             Over a decade of excellence in elevator solutions across India
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {stats.map(({ icon: Icon, numericValue, suffix, label, color }, i) => (
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+          {stats.map(({ icon: Icon, numericValue, suffix, label, iconColor, bgColor }, i) => (
             <div
               key={i}
-              className={`text-center p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:bg-white/8 ${
-                visible ? "animate-count-up opacity-100" : "opacity-0"
+              className={`group relative text-center p-6 md:p-7 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 transition-all duration-400 cursor-default ${
+                visible ? "animate-count-up" : "opacity-0"
               }`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className={`w-12 h-12 rounded-xl ${color} flex items-center justify-center mx-auto mb-3`}>
-                <Icon size={22} />
+              {/* Icon */}
+              <div className={`w-13 h-13 rounded-2xl ${bgColor} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                   style={{ width: "52px", height: "52px" }}>
+                <Icon className={iconColor} size={24} />
               </div>
-              <p className="font-heading font-black text-3xl md:text-4xl text-white leading-none mb-1 tabular-nums">
+              {/* Value */}
+              <p className="font-heading font-black text-4xl md:text-5xl text-white leading-none mb-2 tabular-nums tracking-tight">
                 <AnimatedCounter target={numericValue} suffix={suffix} active={visible} />
               </p>
-              <p className="font-body text-white/60 text-xs leading-tight">{label}</p>
+              <p className="font-body text-white/55 text-xs leading-tight font-medium">{label}</p>
+
+              {/* Bottom accent */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>
