@@ -28,23 +28,27 @@ export default function ClientLogosSection() {
 
         {/* Scrolling logos */}
         <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-section-alt to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-section-alt to-transparent pointer-events-none" />
-          
-          <div className="flex gap-4 animate-[marquee_30s_linear_infinite]">
+          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-section-alt to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-section-alt to-transparent pointer-events-none" />
+
+          <div className="flex gap-4 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
             {[...clients, ...clients].map(({ name, sector }, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-44 bg-background border border-border rounded-xl p-4 flex flex-col items-center justify-center text-center hover:border-primary hover:shadow-card-hover transition-all duration-300"
+                className="group flex-shrink-0 w-44 bg-background border border-border rounded-xl p-4 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-primary hover:shadow-card-hover cursor-default"
               >
-                {/* Logo placeholder with initials */}
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-2">
-                  <span className="font-heading font-black text-primary text-base">
+                {/* Initials logo — grayscale by default, color on hover */}
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-2 transition-all duration-300 bg-muted group-hover:bg-primary/10 filter grayscale group-hover:grayscale-0">
+                  <span className="font-heading font-black text-base text-muted-foreground group-hover:text-primary transition-colors duration-300">
                     {name.split(" ").map(w => w[0]).slice(0, 2).join("")}
                   </span>
                 </div>
-                <p className="font-heading font-bold text-xs text-foreground leading-tight">{name}</p>
-                <p className="font-body text-xs text-muted-foreground mt-0.5">{sector}</p>
+                <p className="font-heading font-bold text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-300 leading-tight">
+                  {name}
+                </p>
+                <p className="font-body text-xs text-muted-foreground/70 group-hover:text-primary transition-colors duration-300 mt-0.5">
+                  {sector}
+                </p>
               </div>
             ))}
           </div>
