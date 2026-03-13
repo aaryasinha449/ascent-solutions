@@ -1,12 +1,62 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import HeroSlider from "@/components/HeroSlider";
+import AboutSection from "@/components/AboutSection";
+import StatsSection from "@/components/StatsSection";
+import ServicesSection from "@/components/ServicesSection";
+import ProductsSection from "@/components/ProductsSection";
+import CertificatesSection from "@/components/CertificatesSection";
+import ClientLogosSection from "@/components/ClientLogosSection";
+import GallerySection from "@/components/GallerySection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ServiceCoverageSection from "@/components/ServiceCoverageSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* Fixed Nav */}
+      <Navbar />
+
+      {/* Hero */}
+      <HeroSlider />
+
+      {/* About Company */}
+      <AboutSection />
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Services */}
+      <ServicesSection />
+
+      {/* Products */}
+      <ProductsSection />
+
+      {/* Certificates & Awards */}
+      <CertificatesSection />
+
+      {/* Client Logos */}
+      <ClientLogosSection />
+
+      {/* Gallery */}
+      <GallerySection />
+
+      {/* Testimonials */}
+      <TestimonialsSection />
+
+      {/* Coverage */}
+      <ServiceCoverageSection />
+
+      {/* Contact */}
+      <ContactSection />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating WhatsApp */}
+      <WhatsAppButton />
     </div>
   );
 };
