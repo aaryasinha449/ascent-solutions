@@ -70,6 +70,22 @@ const statesData = [
     ],
   },
   {
+    name: "Gujarat",
+    region: "West",
+    cities: [
+      {
+        name: "Ahmedabad",
+        landmark: "Sabarmati Ashram",
+        img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=85",
+      },
+      {
+        name: "Surat",
+        landmark: "Diamond City",
+        img: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=85",
+      },
+    ],
+  },
+  {
     name: "Delhi NCR",
     region: "North",
     cities: [
@@ -93,8 +109,8 @@ const statesData = [
 ];
 
 const coverageStats = [
-  { icon: MapPin,     value: "6",     label: "States Covered" },
-  { icon: Users,      value: "10+",   label: "Cities Served" },
+  { icon: MapPin,     value: "7",     label: "States Covered" },
+  { icon: Users,      value: "12+",   label: "Cities Served" },
   { icon: Clock,      value: "4 hrs", label: "Avg Response Time" },
   { icon: PhoneCall,  value: "24/7",  label: "Emergency Support" },
 ];
