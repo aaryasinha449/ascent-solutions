@@ -70,6 +70,22 @@ const statesData = [
     ],
   },
   {
+    name: "Gujarat",
+    region: "West",
+    cities: [
+      {
+        name: "Ahmedabad",
+        landmark: "Sabarmati Ashram",
+        img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=85",
+      },
+      {
+        name: "Surat",
+        landmark: "Diamond City",
+        img: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=85",
+      },
+    ],
+  },
+  {
     name: "Delhi NCR",
     region: "North",
     cities: [
