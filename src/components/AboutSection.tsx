@@ -144,8 +144,8 @@ export default function AboutSection() {
 
             {/* Vision & Mission */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {visionMission.map(({ icon: Icon, title, desc, accent }, i) => (
-                <div key={i} className={`p-4 rounded-2xl bg-gradient-to-br ${accent} border border-border/60`}>
+              {visionMission.map(({ icon: Icon, title, desc, accentClass }, i) => (
+                <div key={i} className={`p-4 rounded-2xl border ${accentClass}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <Icon className="text-primary" size={16} />
                     <p className="font-heading font-bold text-sm text-foreground">{title}</p>
