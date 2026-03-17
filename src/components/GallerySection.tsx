@@ -1,31 +1,29 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
-import hero1 from "@/assets/hero-elevator-1.jpg";
-import hero2 from "@/assets/hero-elevator-2.jpg";
-import hero3 from "@/assets/hero-elevator-3.jpg";
-import hero4 from "@/assets/hero-elevator-4.jpg";
-import productPassenger from "@/assets/product-passenger-elevator.jpg";
-import productCapsule from "@/assets/product-capsule-elevator.jpg";
-import productFreight from "@/assets/product-freight-elevator.jpg";
-import productHospital from "@/assets/product-hospital-elevator.jpg";
-import productHome from "@/assets/product-home-elevator.jpg";
-import maintenance from "@/assets/service-maintenance.jpg";
+import exhibitionTeam from "@/assets/about-exhibition-team.jpg";
+import ribbonCutting from "@/assets/about-ribbon-cutting.jpg";
+import awardTrophy from "@/assets/award-gmv-distributor-trophy.jpg";
+import awardCeremony from "@/assets/award-gmv-office-ceremony.jpg";
+import awardStrategy from "@/assets/award-gmv-strategy-meet.jpg";
+import awardExhibition from "@/assets/award-eletech-exhibition.jpg";
+import certGmv from "@/assets/cert-gmv-authorised-distributor.jpg";
+import certShivshakti from "@/assets/cert-shivshakti-appreciation.jpg";
+import gmvAward10 from "@/assets/award-gmv-10years.jpg";
 
 const galleryItems = [
-  { src: hero1, title: "Luxury Glass Capsule Elevator", category: "Premium Residential", large: true },
-  { src: hero2, title: "Mirror Interior Elevator", category: "Luxury Commercial" },
-  { src: hero3, title: "Commercial Elevator Bank", category: "Corporate Office" },
-  { src: productPassenger, title: "Passenger Elevator", category: "Commercial" },
-  { src: hero4, title: "Panoramic Glass Tower Lift", category: "High-Rise", large: true },
-  { src: productCapsule, title: "Capsule Elevator Atrium", category: "Luxury Retail" },
-  { src: productFreight, title: "Freight Elevator", category: "Industrial" },
-  { src: productHospital, title: "Hospital Lift", category: "Healthcare" },
-  { src: productHome, title: "Residential Home Lift", category: "Residential" },
-  { src: maintenance, title: "AMC Maintenance Service", category: "Service" },
+  { src: exhibitionTeam,  title: "Eletech at National Elevator Exhibition", category: "Events", large: true },
+  { src: ribbonCutting,   title: "GMV Elevator Inauguration Ceremony", category: "Events" },
+  { src: awardTrophy,     title: "GMV Distributor of the Year Trophy", category: "Awards" },
+  { src: awardCeremony,   title: "GMV Award Ceremony – Office", category: "Awards" },
+  { src: awardExhibition, title: "Eletech Exhibition Booth", category: "Events", large: true },
+  { src: awardStrategy,   title: "GMV Strategy Meet", category: "Team" },
+  { src: certGmv,         title: "GMV Authorised Distributor Certificate", category: "Certificates" },
+  { src: certShivshakti,  title: "Shiv Shakti Appreciation Certificate", category: "Certificates" },
+  { src: gmvAward10,      title: "GMV 10 Years Partnership Award", category: "Awards" },
 ];
 
-const filters = ["All", "Commercial", "Residential", "Healthcare", "Industrial", "Luxury"];
+const filters = ["All", "Events", "Awards", "Team", "Certificates"];
 
 export default function GallerySection() {
   const [selected, setSelected] = useState<number | null>(null);
@@ -34,10 +32,7 @@ export default function GallerySection() {
 
   const filtered = activeFilter === "All"
     ? galleryItems
-    : galleryItems.filter(item =>
-        item.category.toLowerCase().includes(activeFilter.toLowerCase()) ||
-        activeFilter.toLowerCase().includes(item.category.toLowerCase())
-      );
+    : galleryItems.filter(item => item.category === activeFilter);
 
   const openLightbox = (index: number) => setSelected(index);
 
@@ -58,16 +53,16 @@ export default function GallerySection() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="red-line" />
             <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">
-              Our Work
+              Our Gallery
             </span>
             <span className="red-line" />
           </div>
           <h2 className="section-heading mb-4">
-            Project <span className="text-primary">Gallery</span>
+            Our <span className="text-primary">Gallery</span>
           </h2>
           <p className="section-subheading">
-            A showcase of our completed elevator installations across India — from luxury
-            residential towers to large commercial complexes.
+            A glimpse into Eletech's journey — our office, team events, award ceremonies,
+            and industry exhibitions showcasing over a decade of excellence.
           </p>
         </div>
 
@@ -89,17 +84,18 @@ export default function GallerySection() {
         </div>
 
         {/* Masonry-style Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[180px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[200px]">
           {filtered.map(({ src, title, category, large }, i) => (
             <div
               key={`${activeFilter}-${i}`}
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer animate-fade-in ${large ? "md:col-span-2 md:row-span-2" : ""}`}
+              className={`group relative rounded-2xl overflow-hidden cursor-pointer animate-fade-in border border-border/50 ${large ? "md:col-span-2 md:row-span-2" : ""}`}
               onClick={() => openLightbox(i)}
             >
               <img
                 src={src}
                 alt={title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-108"
+                style={{ filter: "none" }}
                 loading="lazy"
               />
               {/* Gradient overlay */}
@@ -123,7 +119,7 @@ export default function GallerySection() {
 
         {/* Item count */}
         <p className="text-center font-body text-sm text-muted-foreground mt-6">
-          Showing <span className="text-primary font-semibold">{filtered.length}</span> projects
+          Showing <span className="text-primary font-semibold">{filtered.length}</span> photos
         </p>
       </div>
 
@@ -156,6 +152,7 @@ export default function GallerySection() {
               src={filtered[selected].src}
               alt={filtered[selected].title}
               className="w-full max-h-[75vh] object-contain rounded-2xl"
+              style={{ filter: "none" }}
             />
             <div className="text-center mt-4">
               <p className="text-white font-heading font-bold text-lg">{filtered[selected].title}</p>

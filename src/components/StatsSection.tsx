@@ -11,12 +11,12 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { icon: TrendingUp, numericValue: 15,   suffix: "+",  label: "Years Experience",    iconColor: "text-primary",    bgColor: "bg-primary/15" },
-  { icon: Users,      numericValue: 300,  suffix: "+",  label: "Satisfied Clients",   iconColor: "text-blue-600",   bgColor: "bg-blue-500/15" },
-  { icon: Building2,  numericValue: 5000, suffix: "+",  label: "Elevators Installed", iconColor: "text-emerald-500", bgColor: "bg-emerald-500/15" },
-  { icon: Star,       numericValue: 99,   suffix: "%",  label: "Client Satisfaction", iconColor: "text-amber-400",  bgColor: "bg-amber-400/15" },
-  { icon: Wrench,     numericValue: 24,   suffix: "/7", label: "Support Available",   iconColor: "text-purple-400", bgColor: "bg-purple-400/15" },
-  { icon: MapPin,     numericValue: 28,   suffix: "+",  label: "States Covered",      iconColor: "text-rose-400",   bgColor: "bg-rose-400/15" },
+  { icon: TrendingUp, numericValue: 10,   suffix: "+",  label: "Years Experience",      iconColor: "text-primary",     bgColor: "bg-primary/15" },
+  { icon: Users,      numericValue: 500,  suffix: "+",  label: "Satisfied Clients",     iconColor: "text-blue-400",    bgColor: "bg-blue-500/15" },
+  { icon: Building2,  numericValue: 5000, suffix: "+",  label: "Components Supplied",   iconColor: "text-emerald-400", bgColor: "bg-emerald-500/15" },
+  { icon: Star,       numericValue: 5,    suffix: "",   label: "Authorized Brands",     iconColor: "text-amber-400",   bgColor: "bg-amber-400/15" },
+  { icon: Wrench,     numericValue: 24,   suffix: "/7", label: "Support Available",     iconColor: "text-purple-400",  bgColor: "bg-purple-400/15" },
+  { icon: MapPin,     numericValue: 7,    suffix: "+",  label: "States Covered",        iconColor: "text-rose-400",    bgColor: "bg-rose-400/15" },
 ];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
@@ -71,7 +71,7 @@ export default function StatsSection() {
             Numbers That Speak for Themselves
           </h2>
           <p className="font-body text-white/55 text-base max-w-xl mx-auto">
-            Over a decade of excellence in elevator solutions across India
+            Established in 2015 — a decade of excellence in elevator components across West &amp; North India
           </p>
         </div>
 
@@ -100,6 +100,20 @@ export default function StatsSection() {
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
+        </div>
+
+        {/* Brand strip */}
+        <div className="mt-12 pt-10 border-t border-white/10">
+          <p className="text-center font-body text-white/40 text-xs uppercase tracking-widest mb-6">
+            Authorized Distributor For
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+            {["GMV", "ARKEL", "Tectronics", "Marazzi", "Shiv Shakti"].map((brand) => (
+              <span key={brand} className="font-heading font-black text-lg md:text-xl text-white/25 hover:text-white/60 transition-colors duration-300 cursor-default tracking-wide">
+                {brand}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

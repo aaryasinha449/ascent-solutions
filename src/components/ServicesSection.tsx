@@ -1,4 +1,4 @@
-import { Settings, RefreshCcw, Wrench, Package, MessageSquare, ArrowRight, CheckCircle } from "lucide-react";
+import { Settings, RefreshCcw, Wrench, Package, MessageSquare, ArrowRight, CheckCircle, Cpu, Layers } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
 
@@ -11,11 +11,11 @@ const services = [
     points: ["Site survey & consultation", "Custom fabrication & supply", "Professional installation team", "Final testing & handover"],
   },
   {
-    icon: RefreshCcw,
+    icon: Package,
     number: "02",
-    title: "Elevator Modernization",
-    desc: "Upgrade your existing elevator systems with the latest technology, improving performance, safety, aesthetics, and energy efficiency.",
-    points: ["Control system upgrades", "Cabin refurbishment", "Safety component upgrade", "Energy efficiency improvement"],
+    title: "Elevator Components Supply",
+    desc: "Genuine OEM components from GMV, ARKEL, Tectronics, Marazzi & Shiv Shakti — fast delivery across India with warranty assured.",
+    points: ["GMV Hydraulic Power Units", "ARKEL & Tectronics Controllers", "Marazzi Traction Machines", "Doors, Guide Rails & Hydraulic Jacks"],
   },
   {
     icon: Wrench,
@@ -25,15 +25,22 @@ const services = [
     points: ["Regular preventive maintenance", "Emergency breakdown service", "Certified technicians", "Detailed service reports"],
   },
   {
-    icon: Package,
+    icon: RefreshCcw,
     number: "04",
-    title: "Spare Parts Supply",
-    desc: "Genuine OEM spare parts for all major elevator brands. Fast delivery across India with warranty on all supplied components.",
-    points: ["Genuine branded parts", "Pan-India delivery", "Competitive pricing", "Warranty assured"],
+    title: "Elevator Modernization",
+    desc: "Upgrade your existing elevator systems with the latest technology, improving performance, safety, aesthetics, and energy efficiency.",
+    points: ["Control system upgrades", "Cabin refurbishment", "Safety component upgrade", "Energy efficiency improvement"],
+  },
+  {
+    icon: Cpu,
+    number: "05",
+    title: "Drive & Control Systems",
+    desc: "Supply and integration of advanced drive and control systems — ARKEL ARCube, Tectronics RTG 24P Series, and other globally certified controllers.",
+    points: ["ARKEL ARCube controllers", "Tectronics RTG 24P Series", "Variable frequency drives", "Remote monitoring systems"],
   },
   {
     icon: MessageSquare,
-    number: "05",
+    number: "06",
     title: "Technical Consultation",
     desc: "Expert advisory services for selecting the right elevator solution. Our engineers guide you from design stage to commissioning.",
     points: ["Needs assessment", "Technical specifications", "Regulatory compliance", "Project management"],
@@ -62,7 +69,7 @@ export default function ServicesSection() {
           </h2>
           <p className="section-subheading">
             From initial consultation to ongoing maintenance, Eletech provides a full spectrum
-            of elevator services to meet every requirement.
+            of elevator services — backed by globally authorized brands.
           </p>
         </div>
 
@@ -107,8 +114,11 @@ export default function ServicesSection() {
                   ))}
                 </ul>
 
-                <button className="group/btn flex items-center gap-2 text-primary font-body font-semibold text-sm hover:gap-3 transition-all duration-200">
-                  Learn More
+                <button
+                  onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="group/btn flex items-center gap-2 text-primary font-body font-semibold text-sm hover:gap-3 transition-all duration-200"
+                >
+                  Enquire Now
                   <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
                 </button>
               </div>
