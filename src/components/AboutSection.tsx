@@ -24,13 +24,13 @@ const visionMission = [
     icon: Eye,
     title: "Our Vision",
     desc: "To be a leading elevator solution provider in our regions and become a significant player by providing high quality, affordable and innovative solutions to elevator companies.",
-    accent: "from-primary/20 to-primary/5",
+    accentClass: "bg-primary/5 border-primary/20",
   },
   {
     icon: Target,
     title: "Our Mission",
     desc: "To become a leading technology partner to provide innovative and quality-oriented elevator solutions across West & North India.",
-    accent: "from-blue-500/20 to-blue-500/5",
+    accentClass: "bg-muted border-border",
   },
 ];
 
