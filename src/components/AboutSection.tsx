@@ -1,23 +1,47 @@
 import { useInView } from "@/hooks/use-in-view";
-import { CheckCircle2, Award, Shield, Zap, ArrowRight } from "lucide-react";
+import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
+import { useState } from "react";
+import ribbonImg from "@/assets/about-ribbon-cutting.jpg";
+import exhibitionImg from "@/assets/about-exhibition-team.jpg";
 
 const highlights = [
-  "Authorized distributor of India's leading elevator brands",
-  "ISO certified installation and maintenance processes",
-  "Nationwide service network with 24/7 support",
-  "Expert team of certified elevator engineers & technicians",
-  "Customized solutions for residential, commercial & industrial",
-  "Transparent pricing with no hidden charges",
+  "Authorized distributor — GMV, ARKEL, Tectronics, Marazzi, Shiv Shakti",
+  "Safe, Reliable & Energy Efficient components",
+  "Emerging components supplier in West & North India",
+  "Strong technical support team across regions",
+  "Customized solutions for all building types",
+  "Cost-effective vertical transportation solutions",
 ];
 
 const values = [
-  { icon: Shield, title: "Safety First",    desc: "Every installation meets IS/ISO safety standards with rigorous quality checks." },
-  { icon: Award,  title: "Quality Assured", desc: "We partner only with globally certified elevator manufacturers." },
-  { icon: Zap,    title: "Fast Delivery",   desc: "Efficient project timelines with minimal disruption to your operations." },
+  { icon: Shield, title: "Safety First",    desc: "Components meeting global safety standards with rigorous quality checks." },
+  { icon: Award,  title: "Quality Assured", desc: "Partnered with globally certified elevator manufacturers worldwide." },
+  { icon: Zap,    title: "Fast Delivery",   desc: "Efficient project timelines with minimal disruption to operations." },
+];
+
+const visionMission = [
+  {
+    icon: Eye,
+    title: "Our Vision",
+    desc: "To be a leading elevator solution provider in our regions and become a significant player by providing high quality, affordable and innovative solutions to elevator companies.",
+    accentClass: "bg-primary/5 border-primary/20",
+  },
+  {
+    icon: Target,
+    title: "Our Mission",
+    desc: "To become a leading technology partner to provide innovative and quality-oriented elevator solutions across West & North India.",
+    accentClass: "bg-muted border-border",
+  },
 ];
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.12);
+  const [activeImg, setActiveImg] = useState(0);
+
+  const photos = [
+    { src: exhibitionImg, label: "Eletech at National Exhibition" },
+    { src: ribbonImg,     label: "GMV Elevator Inauguration Ceremony" },
+  ];
 
   return (
     <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden">
@@ -34,14 +58,23 @@ export default function AboutSection() {
 
           {/* ── Left: Visual ── */}
           <div className="relative">
-            {/* Main image */}
+            {/* Main image with switcher */}
             <div className="relative rounded-3xl overflow-hidden shadow-card-hover glow-red">
               <img
-                src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85"
-                alt="Eletech Trading Corporation team"
-                className="w-full h-[460px] md:h-[540px] object-cover"
+                key={activeImg}
+                src={photos[activeImg].src}
+                alt={photos[activeImg].label}
+                className="w-full h-[460px] md:h-[540px] object-cover object-center animate-fade-in"
+                style={{ objectPosition: activeImg === 0 ? "center top" : "center center" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+              {/* Caption */}
+              <div className="absolute bottom-20 left-6 right-6">
+                <span className="inline-block bg-primary/90 backdrop-blur text-primary-foreground font-body text-xs px-3 py-1.5 rounded-full">
+                  {photos[activeImg].label}
+                </span>
+              </div>
 
               {/* Experience badge overlaid on image bottom-left */}
               <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-white/95 backdrop-blur rounded-2xl px-4 py-3 shadow-card">
@@ -49,9 +82,20 @@ export default function AboutSection() {
                   <Award className="text-primary-foreground" size={22} />
                 </div>
                 <div>
-                  <p className="font-heading font-black text-3xl text-foreground leading-tight">15+</p>
+                  <p className="font-heading font-black text-3xl text-foreground leading-tight">10+</p>
                   <p className="font-body text-xs text-muted-foreground">Years of Excellence</p>
                 </div>
+              </div>
+
+              {/* Image switcher dots */}
+              <div className="absolute bottom-6 right-6 flex gap-2">
+                {photos.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className={`rounded-full transition-all duration-300 ${i === activeImg ? "w-6 h-2.5 bg-primary" : "w-2.5 h-2.5 bg-white/60 hover:bg-white"}`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -62,8 +106,8 @@ export default function AboutSection() {
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-sm text-foreground leading-tight">5000+ Installs</p>
-                  <p className="font-body text-xs text-green-600">Pan-India Coverage</p>
+                  <p className="font-heading font-bold text-sm text-foreground leading-tight">Est. 2015</p>
+                  <p className="font-body text-xs text-green-600">Pune, Maharashtra</p>
                 </div>
               </div>
             </div>
@@ -84,17 +128,32 @@ export default function AboutSection() {
                 <span className="gradient-text">Elevator Solutions</span>
               </h2>
               <p className="font-body text-muted-foreground leading-relaxed text-base">
-                Eletech Trading Corporation is a leading supplier and distributor of premium elevator
-                and lift solutions across India. Founded with a vision to transform vertical
-                transportation, we have grown into one of India's most reliable names in the elevator industry.
+                Eletech Trading Corporation was established in 2015 by a team of successful professionals
+                with rich corporate experience in the field of vertical transportation. We enable you to design,
+                specify, procure and execute exceptional elevator solutions — we are here to partner in your
+                success and deliver efficient, cost-effective vertical solutions.
               </p>
             </div>
 
             <p className="font-body text-muted-foreground leading-relaxed">
-              With over 15 years of industry expertise, we serve residential complexes, commercial
-              towers, hospitals, hotels, and industrial facilities — delivering customized,
-              high-quality elevator systems backed by comprehensive after-sales support.
+              Our strength lies in our strong ethical value systems and industry knowledge, combined with
+              practical leadership experience and domain expertise. We provide Safe, Reliable &amp; Energy
+              Efficient components meeting global safety standards — emerging as a premier elevator
+              components supplier in West &amp; North India.
             </p>
+
+            {/* Vision & Mission */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {visionMission.map(({ icon: Icon, title, desc, accentClass }, i) => (
+                <div key={i} className={`p-4 rounded-2xl border ${accentClass}`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="text-primary" size={16} />
+                    <p className="font-heading font-bold text-sm text-foreground">{title}</p>
+                  </div>
+                  <p className="font-body text-xs text-muted-foreground leading-snug">{desc}</p>
+                </div>
+              ))}
+            </div>
 
             {/* Highlights in 2-col grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">

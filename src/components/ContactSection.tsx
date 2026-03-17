@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Send, Clock, CheckCircle2, ArrowRight, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock, CheckCircle2, ArrowRight, MessageCircle, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,38 +9,47 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Call Us",
-    value: "+91 98765 43210",
-    subvalue: "+91 22 1234 5678",
-    link: "tel:+919876543210",
+    value: "+91 77220 91584",
+    subvalue: "Mon – Sat: 9:00 AM – 6:00 PM",
+    link: "tel:+917722091584",
     iconBg: "bg-blue-500",
     bg: "bg-blue-50 border-blue-200",
   },
   {
     icon: Mail,
     label: "Email Us",
-    value: "info@eletechtrading.in",
-    subvalue: "sales@eletechtrading.in",
-    link: "mailto:info@eletechtrading.in",
+    value: "Sales@eletechtradingcorp.com",
+    subvalue: "We respond within 2–4 hours",
+    link: "mailto:Sales@eletechtradingcorp.com",
     iconBg: "bg-primary",
     bg: "bg-red-50 border-red-200",
   },
   {
-    icon: MapPin,
-    label: "Our Office",
-    value: "Plot No. 42, MIDC Industrial Area",
-    subvalue: "Andheri East, Mumbai – 400093",
-    link: "https://maps.google.com/?q=Andheri+East+Mumbai",
+    icon: Building2,
+    label: "Corporate Office",
+    value: "Office No. 12, 4th Floor, Vishnupriya Apartment",
+    subvalue: "Sinhagad Road, Dattawadi, Pune – 411030",
+    link: "https://maps.google.com/?q=Vishnupriya+Apartment+Sinhagad+Road+Dattawadi+Pune",
     iconBg: "bg-green-600",
     bg: "bg-green-50 border-green-200",
+  },
+  {
+    icon: MapPin,
+    label: "Gujarat Office / Warehouse",
+    value: "27 & 28, Fortune Industrial Park",
+    subvalue: "Odhav Industrial Estate, Ahmedabad – 382430",
+    link: "https://maps.google.com/?q=Fortune+Industrial+Park+Odhav+Ahmedabad",
+    iconBg: "bg-amber-500",
+    bg: "bg-amber-50 border-amber-200",
   },
   {
     icon: Clock,
     label: "Working Hours",
     value: "Mon – Sat: 9:00 AM – 6:00 PM",
-    subvalue: "Emergency: 24/7 Support",
+    subvalue: "Emergency Support: 24/7",
     link: null,
-    iconBg: "bg-amber-500",
-    bg: "bg-amber-50 border-amber-200",
+    iconBg: "bg-purple-500",
+    bg: "bg-purple-50 border-purple-200",
   },
 ];
 
@@ -77,7 +86,7 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-5 gap-8 items-start">
 
           {/* ── Left column ── */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="lg:col-span-2 space-y-4">
 
             {/* Contact cards */}
             <div className="grid grid-cols-1 gap-3">
@@ -86,48 +95,49 @@ export default function ContactSection() {
                   key={i}
                   className={`group flex gap-4 p-4 rounded-2xl border ${bg} card-hover transition-all duration-200`}
                 >
-                  <div className={`w-12 h-12 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-200`}>
-                    <Icon className="text-white" size={18} />
+                  <div className={`w-11 h-11 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-200`}>
+                    <Icon className="text-white" size={17} />
                   </div>
                   <div className="min-w-0">
                     <p className="font-body text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">{label}</p>
                     {link ? (
-                      <a href={link} className="font-heading font-bold text-sm text-foreground hover:text-primary transition-colors block truncate">
+                      <a href={link} target={link.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
+                         className="font-heading font-bold text-sm text-foreground hover:text-primary transition-colors block leading-tight">
                         {value}
                       </a>
                     ) : (
-                      <p className="font-heading font-bold text-sm text-foreground">{value}</p>
+                      <p className="font-heading font-bold text-sm text-foreground leading-tight">{value}</p>
                     )}
-                    <p className="font-body text-xs text-muted-foreground mt-0.5 truncate">{subvalue}</p>
+                    <p className="font-body text-xs text-muted-foreground mt-0.5">{subvalue}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Map */}
+            {/* Map — Pune office */}
             <div className="rounded-2xl overflow-hidden border-2 border-border shadow-card" style={{ height: "200px" }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60296.55505855427!2d72.8082866!3d19.1075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9b888ae67fd%3A0x99f154024cfc5fc1!2sAndheri%20East%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1710000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.7388765745!2d73.82!3d18.4857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955b13451a4b%3A0x9ffd4f96e5ba1e2d!2sDattawadi%2C%20Pune%2C%20Maharashtra%20411030!5e0!3m2!1sen!2sin!4v1710000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Eletech Office Location"
+                title="Eletech Corporate Office – Pune"
               />
             </div>
 
             {/* Quick action buttons */}
             <div className="grid grid-cols-2 gap-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+917722091584"
                 className="flex items-center justify-center gap-2 bg-background border-2 border-border hover:border-primary hover:text-primary rounded-xl py-3 px-4 font-heading font-bold text-sm text-foreground transition-all duration-200 hover:shadow-card"
               >
                 <Phone size={14} /> Call Now
               </a>
               <a
-                href="https://wa.me/919876543210?text=Hi%2C%20I%20need%20elevator%20services"
+                href="https://wa.me/917722091584?text=Hi%2C%20I%20need%20elevator%20services%20from%20Eletech"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 rounded-xl py-3 px-4 font-heading font-bold text-sm text-white transition-all duration-200 shadow-sm hover:shadow-md"
@@ -189,7 +199,7 @@ export default function ContactSection() {
                         </label>
                         <Input
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 77220 91584"
                           value={form.phone}
                           onChange={(e) => setForm({ ...form, phone: e.target.value })}
                           className="font-body h-11 rounded-xl border-border focus:border-primary"
@@ -221,10 +231,13 @@ export default function ContactSection() {
                         <option value="">Select a service...</option>
                         <option>New Elevator Installation</option>
                         <option>Elevator Modernization</option>
-                        <option>Annual Maintenance Contract</option>
+                        <option>Annual Maintenance Contract (AMC)</option>
                         <option>Spare Parts Supply</option>
                         <option>Technical Consultation</option>
                         <option>Emergency Repair</option>
+                        <option>GMV Hydraulic Power Unit</option>
+                        <option>ARKEL / Tectronics Controller</option>
+                        <option>Marazzi Traction Machine</option>
                       </select>
                     </div>
 
