@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MapPin, Clock, PhoneCall, Users, ChevronRight, CheckCircle } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-/* ── Data — only specified service locations ─────────────────── */
 const statesData = [
   {
     name: "Maharashtra",
@@ -11,7 +10,7 @@ const statesData = [
       {
         name: "Pune",
         landmark: "Shaniwar Wada",
-        img: "https://images.unsplash.com/photo-1580581096469-c6a7c5a5e8a3?w=600&q=85",
+        img: "https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?w=600&q=85",
       },
       {
         name: "Nashik",
@@ -51,10 +50,32 @@ const statesData = [
         landmark: "Kamakhya Temple",
         img: "https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?w=600&q=85",
       },
+    ],
+  },
+  {
+    name: "Jharkhand",
+    region: "East",
+    cities: [
       {
-        name: "Dibrugarh",
-        landmark: "Brahmaputra River",
+        name: "Ranchi",
+        landmark: "Jagannath Temple",
         img: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=85",
+      },
+      {
+        name: "Jamshedpur",
+        landmark: "Tata Steel Plant",
+        img: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Odisha",
+    region: "East",
+    cities: [
+      {
+        name: "Bhubaneswar",
+        landmark: "Lingaraj Temple",
+        img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=85",
       },
     ],
   },
@@ -109,8 +130,8 @@ const statesData = [
 ];
 
 const coverageStats = [
-  { icon: MapPin,     value: "7",     label: "States Covered" },
-  { icon: Users,      value: "12+",   label: "Cities Served" },
+  { icon: MapPin,     value: "9",     label: "States Covered" },
+  { icon: Users,      value: "15+",   label: "Cities Served" },
   { icon: Clock,      value: "4 hrs", label: "Avg Response Time" },
   { icon: PhoneCall,  value: "24/7",  label: "Emergency Support" },
 ];

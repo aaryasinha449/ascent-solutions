@@ -89,12 +89,10 @@ export default function HeroSlider() {
                 isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              {/* Red accent bar */}
+              {/* Red accent bar — decorative only */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-0.5 bg-primary rounded-full" />
-                <span className="text-primary font-body font-semibold text-sm uppercase tracking-wider">
-                  Eletech Trading Corporation
-                </span>
+                <div className="w-8 h-0.5 bg-primary/50 rounded-full" />
               </div>
 
               {/* PRIMARY heading — Company name */}
