@@ -3,6 +3,8 @@ import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucid
 import { useState } from "react";
 import ribbonImg from "@/assets/about-ribbon-cutting.jpg";
 import exhibitionImg from "@/assets/about-exhibition-team.jpg";
+import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
+import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
 
 const highlights = [
   "Authorized distributor — GMV, ARKEL, Tectronics, Marazzi, Shiv Shakti",
