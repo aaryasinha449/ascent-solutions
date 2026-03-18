@@ -27,7 +27,7 @@ const stats: StatItem[] = [
   },
   {
     icon: Users,
-    numericValue: 500,
+    numericValue: 300,
     suffix: "+",
     label: "Satisfied Clients",
     sublabel: "Across West & North India",
