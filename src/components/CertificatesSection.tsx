@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Award, Star, Trophy } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Trophy } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-// ── Real award & certificate images ──
+// Award & certificate images
 import awardGmv10Years      from "@/assets/award-gmv-10years.jpg";
 import awardGmvTrophy       from "@/assets/award-gmv-distributor-trophy.jpg";
 import awardGmvStrategyMeet from "@/assets/award-gmv-strategy-meet.jpg";
@@ -12,6 +12,13 @@ import certGmvDistributor   from "@/assets/cert-gmv-authorised-distributor.jpg";
 import awardExhibition      from "@/assets/award-eletech-exhibition.jpg";
 import awardOfficeCeremony  from "@/assets/award-gmv-office-ceremony.jpg";
 import certShivShakti       from "@/assets/cert-shivshakti-appreciation.jpg";
+
+// Authorized distributor logos
+import logoGmv        from "@/assets/logo-gmv.png";
+import logoShivShakti from "@/assets/logo-shivshakti.png";
+import logoTectronics from "@/assets/logo-tectronics.png";
+import logoMarazzi    from "@/assets/logo-marazzi.png";
+import logoArkel      from "@/assets/logo-arkel.png";
 
 const slides = [
   {
@@ -79,13 +86,12 @@ const awards = [
   { year: "2019",    title: "10 Years of Partnership Award", org: "GMV Lift Systems — For Constant Support & Leadership" },
 ];
 
-const brands = [
-  { name: "GMV Lift Systems", country: "Italy 🇮🇹" },
-  { name: "Tectronics",       country: "India 🇮🇳" },
-  { name: "ARKEL",            country: "Turkey 🇹🇷" },
-  { name: "Marazzi",          country: "Italy 🇮🇹" },
-  { name: "Shiv Shakti",      country: "India 🇮🇳" },
-  { name: "GreenLift",        country: "India 🇮🇳" },
+const distributorLogos = [
+  { logo: logoGmv,        name: "GMV Lift Systems",  country: "Italy 🇮🇹" },
+  { logo: logoArkel,      name: "ARKEL",             country: "Turkey 🇹🇷" },
+  { logo: logoTectronics, name: "Tectronics",        country: "India 🇮🇳" },
+  { logo: logoMarazzi,    name: "Marazzi",           country: "Italy 🇮🇹" },
+  { logo: logoShivShakti, name: "Shiv Shakti",       country: "India 🇮🇳" },
 ];
 
 export default function CertificatesSection() {
@@ -159,32 +165,24 @@ export default function CertificatesSection() {
             <ChevronRight size={20} />
           </button>
 
-          {/* Embla viewport */}
           <div ref={emblaRef} className="overflow-hidden mx-8">
             <div className="flex gap-6">
               {slides.map((slide, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 w-[300px] md:w-[380px] group rounded-3xl overflow-hidden border border-border bg-background shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default"
+                  className="flex-shrink-0 w-[300px] md:w-[380px] rounded-2xl overflow-hidden border border-border bg-background shadow-card transition-all duration-300 cursor-default"
                 >
-                  {/* Photo — object-contain so full certificate/trophy is always visible */}
                   <div className="relative overflow-hidden bg-muted flex items-center justify-center" style={{ height: "280px" }}>
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-103"
+                      className="w-full h-full object-contain p-2"
                       loading="lazy"
-                      style={{ filter: "none" }}
                     />
-                    {/* Tag */}
                     <span className={`absolute top-4 left-4 ${slide.tagColor} text-white text-xs font-body font-bold px-3 py-1 rounded-full shadow-sm`}>
                       {slide.tag}
                     </span>
-                    {/* Top red bar on hover */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
                   </div>
-
-                  {/* Text */}
                   <div className="p-5 bg-background">
                     <p className="font-body text-xs font-semibold text-primary uppercase tracking-wider mb-1">{slide.subtitle}</p>
                     <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">{slide.title}</h3>
@@ -225,7 +223,7 @@ export default function CertificatesSection() {
               {awards.map(({ year, title, org }, i) => (
                 <div
                   key={i}
-                  className="flex gap-4 p-4 rounded-2xl bg-background border border-border shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200"
+                  className="flex gap-4 p-4 rounded-2xl bg-background border border-border shadow-card"
                 >
                   <div className="flex-shrink-0 w-14 h-14 bg-gradient-primary rounded-xl flex flex-col items-center justify-center shadow-button">
                     <Star className="text-primary-foreground" size={13} />
@@ -240,26 +238,29 @@ export default function CertificatesSection() {
             </div>
           </div>
 
-          {/* Authorized distributor logos */}
+          {/* Authorized distributor logos — real images */}
           <div>
             <h3 className="font-heading font-bold text-xl text-foreground mb-6 flex items-center gap-2.5">
               <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Award className="text-primary" size={17} />
+                <Star className="text-primary" size={17} />
               </div>
               Authorized Distributor For
             </h3>
-            <div className="grid grid-cols-3 gap-3">
-              {brands.map(({ name, country }, i) => (
+            <div className="grid grid-cols-2 gap-4">
+              {distributorLogos.map(({ logo, name, country }, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center justify-center p-4 bg-background border border-border rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group text-center"
+                  className="flex flex-col items-center justify-center p-4 bg-background border border-border rounded-xl shadow-card text-center"
                 >
-                  <div className="w-12 h-12 bg-section-alt rounded-full border border-border flex items-center justify-center mb-2 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-200">
-                    <span className="font-heading font-black text-primary text-sm">
-                      {name.split(" ").map((w) => w[0]).slice(0, 2).join("")}
-                    </span>
+                  <div className="w-full h-16 flex items-center justify-center mb-3">
+                    <img
+                      src={logo}
+                      alt={name}
+                      className="max-w-full max-h-full object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  <p className="font-body text-sm font-semibold text-foreground leading-tight">{name}</p>
+                  <p className="font-body text-xs font-semibold text-foreground leading-tight">{name}</p>
                   <p className="font-body text-xs text-muted-foreground mt-0.5">{country}</p>
                 </div>
               ))}

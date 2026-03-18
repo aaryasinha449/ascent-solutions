@@ -47,24 +47,11 @@ export default function Navbar() {
             <img
               src={eletechLogo}
               alt="Eletech Trading Corporation"
-              className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button"
+              className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button flex-shrink-0"
             />
-            <div className="flex flex-col">
-              <span
-                className={`font-heading font-bold text-base leading-tight transition-colors duration-300 ${
-                  scrolled ? "text-foreground" : "text-white"
-                }`}
-              >
-                Eletech
-              </span>
-              <span
-                className={`font-body text-xs leading-tight transition-colors duration-300 ${
-                  scrolled ? "text-muted-foreground" : "text-white/80"
-                }`}
-              >
-                Trading Corporation
-              </span>
-            </div>
+            <span className="font-heading font-semibold text-sm md:text-base text-primary leading-none whitespace-nowrap">
+              Eletech Trading Corporation
+            </span>
           </button>
 
           {/* Desktop Nav */}

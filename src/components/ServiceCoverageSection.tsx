@@ -10,83 +10,12 @@ const statesData = [
       {
         name: "Pune",
         landmark: "Shaniwar Wada",
-        img: "https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?w=600&q=85",
+        img: "https://images.unsplash.com/photo-1570034733733-7f3f0cf6e0a5?w=600&q=85",
       },
       {
         name: "Nashik",
-        landmark: "Panchavati Temples",
-        img: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "Rajasthan",
-    region: "North",
-    cities: [
-      {
-        name: "Jaipur",
-        landmark: "Hawa Mahal",
-        img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "West Bengal",
-    region: "East",
-    cities: [
-      {
-        name: "Kolkata",
-        landmark: "Howrah Bridge",
-        img: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "Assam",
-    region: "East",
-    cities: [
-      {
-        name: "Guwahati",
-        landmark: "Kamakhya Temple",
-        img: "https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "Jharkhand",
-    region: "East",
-    cities: [
-      {
-        name: "Ranchi",
-        landmark: "Jagannath Temple",
-        img: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=85",
-      },
-      {
-        name: "Jamshedpur",
-        landmark: "Tata Steel Plant",
-        img: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "Odisha",
-    region: "East",
-    cities: [
-      {
-        name: "Bhubaneswar",
-        landmark: "Lingaraj Temple",
-        img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=85",
-      },
-    ],
-  },
-  {
-    name: "Uttar Pradesh",
-    region: "North",
-    cities: [
-      {
-        name: "Ayodhya",
-        landmark: "Ram Mandir",
-        img: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=600&q=85",
+        landmark: "Trimbakeshwar Temple",
+        img: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=85",
       },
     ],
   },
@@ -103,6 +32,17 @@ const statesData = [
         name: "Surat",
         landmark: "Diamond City",
         img: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Rajasthan",
+    region: "North",
+    cities: [
+      {
+        name: "Jaipur",
+        landmark: "Hawa Mahal",
+        img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=85",
       },
     ],
   },
@@ -124,6 +64,66 @@ const statesData = [
         name: "Gurgaon",
         landmark: "Cyber Hub",
         img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Uttar Pradesh",
+    region: "North",
+    cities: [
+      {
+        name: "Ayodhya",
+        landmark: "Ram Mandir",
+        img: "https://images.unsplash.com/photo-1609766418204-94aae0ecfdfc?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "West Bengal",
+    region: "East",
+    cities: [
+      {
+        name: "Kolkata",
+        landmark: "Howrah Bridge",
+        img: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Assam",
+    region: "East",
+    cities: [
+      {
+        name: "Guwahati",
+        landmark: "Kamakhya Temple",
+        img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Jharkhand",
+    region: "East",
+    cities: [
+      {
+        name: "Ranchi",
+        landmark: "Hundru Falls",
+        img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85",
+      },
+      {
+        name: "Jamshedpur",
+        landmark: "Jubilee Park",
+        img: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=85",
+      },
+    ],
+  },
+  {
+    name: "Odisha",
+    region: "East",
+    cities: [
+      {
+        name: "Bhubaneswar",
+        landmark: "Lingaraj Temple",
+        img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=85",
       },
     ],
   },
@@ -157,7 +157,6 @@ export default function ServiceCoverageSection() {
 
   return (
     <section id="coverage" className="py-24 md:py-32 bg-section-alt relative overflow-hidden">
-      {/* Subtle pattern */}
       <div className="absolute inset-0 bg-dot-pattern opacity-40 pointer-events-none" />
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/4 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl pointer-events-none" />
 
@@ -196,7 +195,7 @@ export default function ServiceCoverageSection() {
         {/* Main panel */}
         <div className="grid lg:grid-cols-[340px_1fr] gap-8 items-start">
 
-          {/* ── Left: State selector ── */}
+          {/* Left: State selector */}
           <div className="bg-background border border-border rounded-2xl overflow-hidden shadow-card">
             <div className="bg-gradient-primary px-5 py-4">
               <h3 className="font-heading font-bold text-base text-primary-foreground">Select a State</h3>
@@ -239,7 +238,7 @@ export default function ServiceCoverageSection() {
             </div>
           </div>
 
-          {/* ── Right: City cards ── */}
+          {/* Right: City cards */}
           <div>
             {/* State header */}
             <div className="flex flex-wrap items-center gap-3 mb-7">
@@ -265,7 +264,6 @@ export default function ServiceCoverageSection() {
                   className="group relative bg-background border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
-                  {/* Image */}
                   <div className="relative h-44 overflow-hidden">
                     <img
                       src={city.img}
@@ -275,22 +273,18 @@ export default function ServiceCoverageSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
 
-                    {/* Active badge */}
                     <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/20">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
                       <span className="font-body text-white text-xs font-semibold">Active</span>
                     </div>
 
-                    {/* City name over image */}
                     <div className="absolute bottom-3 left-3 right-3">
                       <p className="font-heading font-bold text-white text-lg leading-tight drop-shadow">{city.name}</p>
                     </div>
 
-                    {/* Top red accent */}
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
                   </div>
 
-                  {/* Info bar */}
                   <div className="px-4 py-3 flex items-center gap-2">
                     <div className="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <MapPin size={12} className="text-primary" />

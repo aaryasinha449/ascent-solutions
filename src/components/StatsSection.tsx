@@ -82,13 +82,6 @@ const stats: StatItem[] = [
   },
 ];
 
-const brands = [
-  { name: "GMV", origin: "Italy" },
-  { name: "ARKEL", origin: "Turkey" },
-  { name: "Tectronics", origin: "India" },
-  { name: "Marazzi", origin: "Italy" },
-  { name: "Shiv Shakti", origin: "India" },
-];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0);
@@ -221,21 +214,6 @@ export default function StatsSection() {
           ))}
         </div>
 
-        {/* Authorized distributor brand strip */}
-        <div className="border-t border-border pt-10">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-            {brands.map(({ name, origin }) => (
-              <div key={name} className="text-center cursor-default">
-                <p className="font-heading font-black text-xl md:text-2xl text-muted-foreground/50 tracking-wide">
-                  {name}
-                </p>
-                <p className="font-body text-xs text-muted-foreground/40 mt-0.5">
-                  {origin}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
