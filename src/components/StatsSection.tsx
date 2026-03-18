@@ -223,16 +223,13 @@ export default function StatsSection() {
 
         {/* Authorized distributor brand strip */}
         <div className="border-t border-border pt-10">
-          <p className="text-center font-body text-muted-foreground text-xs uppercase tracking-widest mb-7">
-            Authorized Distributor For
-          </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
             {brands.map(({ name, origin }) => (
-              <div key={name} className="text-center group cursor-default">
-                <p className="font-heading font-black text-xl md:text-2xl text-muted-foreground/40 hover:text-primary transition-colors duration-300 tracking-wide">
+              <div key={name} className="text-center cursor-default">
+                <p className="font-heading font-black text-xl md:text-2xl text-muted-foreground/50 tracking-wide">
                   {name}
                 </p>
-                <p className="font-body text-xs text-muted-foreground/30 group-hover:text-muted-foreground transition-colors duration-300 mt-0.5">
+                <p className="font-body text-xs text-muted-foreground/40 mt-0.5">
                   {origin}
                 </p>
               </div>
