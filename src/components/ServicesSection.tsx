@@ -107,14 +107,14 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ icon: Icon, number, title, desc, points, iconBg, iconColor, topBar }, i) => (
+          {services.map(({ icon: Icon, number, title, desc, iconBg, iconColor, topBar }, i) => (
             <div
               key={i}
               className="group relative bg-background border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default flex flex-col"
               style={{ transitionDelay: `${i * 50}ms` }}
             >
               {/* Animated top accent bar */}
-              <div className={`absolute top-0 left-0 right-0 h-1 ${topBar} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10`} />
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${topBar} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10`} />
 
               <div className="p-6 flex flex-col flex-1">
                 {/* Icon + number row */}
@@ -136,27 +136,7 @@ export default function ServicesSection() {
                 <div className="w-10 h-0.5 bg-primary/30 rounded-full mb-4 group-hover:w-16 transition-all duration-300" />
 
                 {/* Description */}
-                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{desc}</p>
-
-                {/* Points */}
-                <ul className="space-y-2 mb-5">
-                  {points.map((pt, j) => (
-                    <li key={j} className="flex items-center gap-2.5">
-                      <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="text-primary" size={11} />
-                      </div>
-                      <span className="font-body text-xs text-muted-foreground">{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group/btn flex items-center gap-2 text-primary font-body font-semibold text-sm hover:gap-3 transition-all duration-200 mt-auto"
-                >
-                  Enquire Now
-                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
-                </button>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
               </div>
             </div>
           ))}
