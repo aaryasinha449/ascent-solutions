@@ -1,4 +1,4 @@
-import { RefreshCcw, Wrench, Package, MessageSquare, ArrowRight, CheckCircle, Cpu, Layers } from "lucide-react";
+import { Package, Layers, Lightbulb, BadgeCheck, ShieldCheck, Truck, TrendingUp, HeartHandshake, ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 const services = [
@@ -6,61 +6,73 @@ const services = [
     icon: Package,
     number: "01",
     title: "Elevator Components Supply",
-    desc: "Genuine OEM components from GMV, ARKEL, Tectronics, Marazzi & Shiv Shakti — fast delivery across India with warranty assured.",
-    points: ["GMV Hydraulic Power Units", "ARKEL & Tectronics Controllers", "Marazzi Traction Machines", "Doors, Guide Rails & Hydraulic Jacks"],
+    desc: "We offer an exclusive range of precision-engineered elevator components, sourced from globally renowned manufacturers to ensure exceptional performance, durability, and reliability.",
     iconBg: "bg-primary/10 border-primary/20",
     iconColor: "text-primary",
-    topBar: "bg-primary",
-  },
-  {
-    icon: Wrench,
-    number: "02",
-    title: "AMC Maintenance",
-    desc: "Comprehensive Annual Maintenance Contracts to keep your elevators running safely and efficiently with zero downtime.",
-    points: ["Regular preventive maintenance", "Emergency breakdown service", "Certified technicians", "Detailed service reports"],
-    iconBg: "bg-blue-50 border-blue-100",
-    iconColor: "text-blue-600",
-    topBar: "bg-blue-500",
-  },
-  {
-    icon: RefreshCcw,
-    number: "03",
-    title: "Elevator Modernization",
-    desc: "Upgrade your existing elevator systems with the latest technology, improving performance, safety, aesthetics, and energy efficiency.",
-    points: ["Control system upgrades", "Cabin refurbishment", "Safety component upgrade", "Energy efficiency improvement"],
-    iconBg: "bg-emerald-50 border-emerald-100",
-    iconColor: "text-emerald-600",
-    topBar: "bg-emerald-500",
-  },
-  {
-    icon: Cpu,
-    number: "04",
-    title: "Drive & Control Systems",
-    desc: "Supply and integration of advanced drive and control systems — ARKEL ARCube, Tectronics RTG 24P Series, and other globally certified controllers.",
-    points: ["ARKEL ARCube controllers", "Tectronics RTG 24P Series", "Variable frequency drives", "Remote monitoring systems"],
-    iconBg: "bg-amber-50 border-amber-100",
-    iconColor: "text-amber-600",
-    topBar: "bg-amber-500",
+    topBar: "from-primary to-primary/60",
   },
   {
     icon: Layers,
-    number: "05",
-    title: "Turnkey Project Supply",
-    desc: "Complete end-to-end supply of all elevator components for new projects. From structural components to control panels — delivered to site.",
-    points: ["Complete component packages", "Project-specific sourcing", "Timely delivery guarantee", "Post-supply technical support"],
-    iconBg: "bg-purple-50 border-purple-100",
-    iconColor: "text-purple-600",
-    topBar: "bg-purple-500",
+    number: "02",
+    title: "Customized Elevator Solutions",
+    desc: "Every space deserves a tailored approach. We deliver bespoke elevator solutions designed to seamlessly integrate with diverse architectural and functional requirements.",
+    iconBg: "bg-blue-50 border-blue-100",
+    iconColor: "text-blue-600",
+    topBar: "from-blue-500 to-blue-300",
   },
   {
-    icon: MessageSquare,
+    icon: Lightbulb,
+    number: "03",
+    title: "Technical Consultation & Expertise",
+    desc: "Backed by deep industry knowledge and practical experience, our team provides strategic guidance to help you make informed, future-ready decisions.",
+    iconBg: "bg-amber-50 border-amber-100",
+    iconColor: "text-amber-600",
+    topBar: "from-amber-500 to-amber-300",
+  },
+  {
+    icon: BadgeCheck,
+    number: "04",
+    title: "Authorized Distribution",
+    desc: "As trusted partners of leading international brands, we ensure access to authentic, high-quality components that meet the highest global standards.",
+    iconBg: "bg-emerald-50 border-emerald-100",
+    iconColor: "text-emerald-600",
+    topBar: "from-emerald-500 to-emerald-300",
+  },
+  {
+    icon: ShieldCheck,
+    number: "05",
+    title: "Safety & Compliance Assurance",
+    desc: "Safety is at the core of everything we deliver. Our solutions adhere to stringent international safety norms, ensuring complete peace of mind.",
+    iconBg: "bg-purple-50 border-purple-100",
+    iconColor: "text-purple-600",
+    topBar: "from-purple-500 to-purple-300",
+  },
+  {
+    icon: Truck,
     number: "06",
-    title: "Technical Consultation",
-    desc: "Expert advisory services for selecting the right elevator solution. Our engineers guide you from design stage to commissioning.",
-    points: ["Needs assessment", "Technical specifications", "Regulatory compliance", "Project management"],
+    title: "Fast & Reliable Delivery",
+    desc: "With a robust and efficient supply network, we ensure timely execution and seamless delivery, maintaining the highest standards of professionalism.",
+    iconBg: "bg-sky-50 border-sky-100",
+    iconColor: "text-sky-600",
+    topBar: "from-sky-500 to-sky-300",
+  },
+  {
+    icon: TrendingUp,
+    number: "07",
+    title: "Cost-Effective Excellence",
+    desc: "We combine premium quality with intelligent cost efficiency, delivering solutions that offer long-term value without compromise.",
     iconBg: "bg-rose-50 border-rose-100",
     iconColor: "text-rose-600",
-    topBar: "bg-rose-500",
+    topBar: "from-rose-500 to-rose-300",
+  },
+  {
+    icon: HeartHandshake,
+    number: "08",
+    title: "After-Sales Commitment",
+    desc: "Our relationship extends beyond delivery. We provide dedicated support to ensure sustained performance and operational excellence over time.",
+    iconBg: "bg-teal-50 border-teal-100",
+    iconColor: "text-teal-600",
+    topBar: "from-teal-500 to-teal-300",
   },
 ];
 
@@ -95,14 +107,14 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ icon: Icon, number, title, desc, points, iconBg, iconColor, topBar }, i) => (
+          {services.map(({ icon: Icon, number, title, desc, iconBg, iconColor, topBar }, i) => (
             <div
               key={i}
               className="group relative bg-background border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default flex flex-col"
               style={{ transitionDelay: `${i * 50}ms` }}
             >
               {/* Animated top accent bar */}
-              <div className={`absolute top-0 left-0 right-0 h-1 ${topBar} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10`} />
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${topBar} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10`} />
 
               <div className="p-6 flex flex-col flex-1">
                 {/* Icon + number row */}
@@ -124,27 +136,7 @@ export default function ServicesSection() {
                 <div className="w-10 h-0.5 bg-primary/30 rounded-full mb-4 group-hover:w-16 transition-all duration-300" />
 
                 {/* Description */}
-                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{desc}</p>
-
-                {/* Points */}
-                <ul className="space-y-2 mb-5">
-                  {points.map((pt, j) => (
-                    <li key={j} className="flex items-center gap-2.5">
-                      <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="text-primary" size={11} />
-                      </div>
-                      <span className="font-body text-xs text-muted-foreground">{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group/btn flex items-center gap-2 text-primary font-body font-semibold text-sm hover:gap-3 transition-all duration-200 mt-auto"
-                >
-                  Enquire Now
-                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
-                </button>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
               </div>
             </div>
           ))}
