@@ -10,7 +10,7 @@ const slides = [
   {
     image: hero1,
     subtitle: "Excellence in Vertical Transportation",
-    body: "Premier supplier & distributor of world-class elevator solutions across India. Delivering safety, reliability, and innovation since 2009.",
+    body: "Authorized distributor of GMV, ARKEL, Tectronics, Marazzi & Shiv Shakti — supplying precision elevator components, AMC services, and modernization solutions across India since 2015.",
   },
   {
     image: hero2,

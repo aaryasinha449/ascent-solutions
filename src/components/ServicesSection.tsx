@@ -1,4 +1,4 @@
-import { Package, Layers, Lightbulb, BadgeCheck, ShieldCheck, Truck, TrendingUp, HeartHandshake, ArrowRight, CheckCircle } from "lucide-react";
+import { Package, Layers, Lightbulb, BadgeCheck, ShieldCheck, Truck, TrendingUp, HeartHandshake } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 const services = [
