@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import eletechLogo from "@/assets/eletech-logo.jpg";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -43,9 +44,11 @@ export default function Navbar() {
             onClick={() => scrollTo("#home")}
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-button group-hover:scale-105 transition-transform duration-200">
-              <span className="text-primary-foreground font-heading font-black text-lg leading-none">E</span>
-            </div>
+            <img
+              src={eletechLogo}
+              alt="Eletech Trading Corporation"
+              className="w-11 h-11 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button"
+            />
             <div className="flex flex-col">
               <span
                 className={`font-heading font-bold text-base leading-tight transition-colors duration-300 ${
