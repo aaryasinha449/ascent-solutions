@@ -41,8 +41,10 @@ export default function AboutSection() {
   const [activeImg, setActiveImg] = useState(0);
 
   const photos = [
-    { src: exhibitionImg, label: "Eletech at National Exhibition" },
-    { src: ribbonImg,     label: "GMV Elevator Inauguration Ceremony" },
+    { src: teamExhibitionImg,  label: "Eletech Team at National Exhibition" },
+    { src: officeEntranceImg,  label: "Corporate Office — Pune" },
+    { src: exhibitionImg,      label: "Eletech at Industry Exhibition" },
+    { src: ribbonImg,          label: "GMV Elevator Inauguration Ceremony" },
   ];
 
   return (
