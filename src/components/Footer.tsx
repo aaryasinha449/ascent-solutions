@@ -18,12 +18,12 @@ const footerLinks = {
     { label: "Emergency Repair",         href: "#contact" },
   ],
   "Products": [
-    { label: "Passenger Elevators", href: "#products" },
-    { label: "Hospital Elevators",  href: "#products" },
-    { label: "Freight Elevators",   href: "#products" },
-    { label: "Capsule Elevators",   href: "#products" },
-    { label: "Home Elevators",      href: "#products" },
-    { label: "Glass Elevators",     href: "#products" },
+    { label: "Hydraulic Systems",      href: "#products" },
+    { label: "Drive & Control",        href: "#products" },
+    { label: "Doors & Entrances",      href: "#products" },
+    { label: "Guide Rails & Brackets", href: "#products" },
+    { label: "Home & Glass Lifts",     href: "#products" },
+    { label: "Glass Elevators",        href: "#products" },
   ],
 };
 
@@ -67,30 +67,50 @@ export default function Footer() {
             </div>
 
             <p className="font-body text-white/60 text-sm leading-relaxed mb-6 max-w-xs">
-              India's trusted partner for premium elevator and lift solutions.
-              Delivering excellence in vertical transportation since 2009.
+              India's trusted partner for premium elevator components and lift solutions.
+              Authorized distributor of GMV, ARKEL, Tectronics, Marazzi &amp; Shiv Shakti since 2015.
             </p>
 
-            {/* Contact quick info */}
-            <div className="space-y-3 mb-6">
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-200 group">
+            {/* ── Office 1: Pune ── */}
+            <p className="font-heading font-bold text-white/80 text-xs uppercase tracking-widest mb-2 flex items-center gap-1.5">
+              <span className="w-3 h-0.5 bg-primary rounded-full" /> Corporate Office — Pune
+            </p>
+            <div className="space-y-2.5 mb-5">
+              <a href="tel:+917722091584" className="flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-200 group">
                 <div className="w-8 h-8 bg-white/8 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
                   <Phone size={13} />
                 </div>
-                <span className="font-body text-sm">+91 98765 43210</span>
+                <span className="font-body text-sm">+91 77220 91584</span>
               </a>
-              <a href="mailto:info@eletechtrading.in" className="flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-200 group">
+              <a href="mailto:Sales@eletechtradingcorp.com" className="flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-200 group">
                 <div className="w-8 h-8 bg-white/8 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
                   <Mail size={13} />
                 </div>
-                <span className="font-body text-sm">info@eletechtrading.in</span>
+                <span className="font-body text-sm">Sales@eletechtradingcorp.com</span>
               </a>
               <div className="flex items-start gap-3 text-white/60">
-                <div className="w-8 h-8 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin size={13} />
                 </div>
-                <span className="font-body text-sm leading-snug">Andheri East, Mumbai – 400093, Maharashtra</span>
+                <span className="font-body text-sm leading-snug">
+                  Office No. 12, 4th Floor, Vishnupriya Apartment,<br />
+                  Sinhagad Road, Dattawadi, Pune – 411030
+                </span>
               </div>
+            </div>
+
+            {/* ── Office 2: Gujarat ── */}
+            <p className="font-heading font-bold text-white/80 text-xs uppercase tracking-widest mb-2 flex items-center gap-1.5">
+              <span className="w-3 h-0.5 bg-primary rounded-full" /> Gujarat Office / Warehouse
+            </p>
+            <div className="flex items-start gap-3 text-white/60 mb-6">
+              <div className="w-8 h-8 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin size={13} />
+              </div>
+              <span className="font-body text-sm leading-snug">
+                27 &amp; 28, Fortune Industrial Park,<br />
+                Odhav Industrial Estate, Ahmedabad – 382430
+              </span>
             </div>
 
             {/* Social */}
