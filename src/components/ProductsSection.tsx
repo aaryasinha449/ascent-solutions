@@ -2,23 +2,17 @@ import { useState } from "react";
 import { ArrowRight, ChevronDown, Package } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-// ── Real product images from pamphlet ──
-import gmvPowerUnit    from "@/assets/prod-gmv-power-unit.jpg";
-import controlPanel    from "@/assets/prod-control-panel.jpg";
-import guideRail       from "@/assets/prod-guide-rail.jpg";
-import hydraulicJack   from "@/assets/prod-hydraulic-jack.jpg";
-import landingDoor     from "@/assets/prod-landing-door.jpg";
-import cabinDoor       from "@/assets/prod-cabin-door.jpg";
-import arkelController from "@/assets/prod-arkel-controller.jpg";
-import tractionMachine from "@/assets/prod-traction-machine.jpg";
-import glassLift1      from "@/assets/prod-glass-lift-1.jpg";
-import glassLift2      from "@/assets/prod-glass-lift-2.jpg";
-import homeLift        from "@/assets/prod-home-lift.jpg";
+// ── NEW real product images from uploaded screenshots ──
+import gmvPowerUnit     from "@/assets/prod-gmv-powerunit-new.jpg";
+import gmvControlPanel  from "@/assets/prod-gmv-controlpanel-new.jpg";
+import guideRailNew     from "@/assets/prod-guide-rail-new.jpg";
+import guideBrackets    from "@/assets/prod-guide-brackets-new.jpg";
+import arkelArcube      from "@/assets/prod-arkel-arcube-new.jpg";
+import tractionRTG      from "@/assets/prod-traction-machine-rtg.jpg";
+import glassLiftNew     from "@/assets/prod-glass-lift-new.jpg";
+import homeLiftNew      from "@/assets/prod-home-lift-new.jpg";
+import landingDoorNew   from "@/assets/prod-landing-door-new.jpg";
 
-/* ─── Product catalogue — sourced from Eletech pamphlet ──────────────
-   Eletech is an authorised distributor/supplier of elevator components
-   (GMV, Tectronics, Arkel, Marazzi, Shiv Shakti, etc.)
-   ─────────────────────────────────────────────────────────────────── */
 const categories = [
   {
     id: "hydraulic",
@@ -35,11 +29,11 @@ const categories = [
         specs: ["Made in Italy", "Energy-saving VSM", "Compact design", "10-year warranty"],
       },
       {
-        image: hydraulicJack,
-        name: "Hydraulic Jack / Cylinder",
+        image: gmvControlPanel,
+        name: "GMV Hydraulic Control Panel",
         badge: "GMV",
-        desc: "GMV hydraulic jack and cylinder — precision-engineered single or telescopic models for pit-less and in-ground hydraulic elevator installations.",
-        specs: ["Single & telescopic", "Corrosion-resistant", "Pit-less option", "Up to 5000 kg load"],
+        desc: "Factory-assembled GMV electrical control panel — fully wired, pre-tested, and compliant with EN81 safety standards for hydraulic elevators.",
+        specs: ["EN81 compliant", "Pre-wired & tested", "Overload protection", "Digital diagnostics"],
       },
     ],
   },
@@ -51,25 +45,18 @@ const categories = [
     desc: "ARKEL Arcube drives and Tectronics RTG 24P traction machines for MRL elevators",
     products: [
       {
-        image: arkelController,
+        image: arkelArcube,
         name: "ARKEL Arcube Controller",
-        badge: "Arkel",
+        badge: "ARKEL",
         desc: "ARKEL's advanced Arcube elevator controller offering intuitive programming, smooth ride quality, and full remote diagnostics via RS-485 / CAN bus.",
         specs: ["VVVF drive", "Remote diagnostics", "RS-485 / CAN bus", "Multi-car compatible"],
       },
       {
-        image: tractionMachine,
+        image: tractionRTG,
         name: "Tectronics RTG 24P Traction Machine",
         badge: "Tectronics",
         desc: "Gearless permanent-magnet synchronous motor (PMSM) traction machine by Tectronics. Designed for MRL installations with low noise and high efficiency.",
         specs: ["Gearless PMSM", "MRL compatible", "Low noise < 45 dB", "High efficiency"],
-      },
-      {
-        image: controlPanel,
-        name: "GMV Control Panel",
-        badge: "GMV",
-        desc: "Factory-assembled GMV electrical control panel — fully wired, pre-tested, and compliant with EN81 safety standards for hydraulic elevators.",
-        specs: ["EN81 compliant", "Pre-wired & tested", "Overload protection", "Digital diagnostics"],
       },
     ],
   },
@@ -77,22 +64,15 @@ const categories = [
     id: "doors",
     label: "Doors & Entrances",
     icon: "🚪",
-    brand: "Multiple Premium Brands",
+    brand: "Premium Stainless Steel",
     desc: "Stainless steel cabin doors and landing doors for every elevator type",
     products: [
       {
-        image: landingDoor,
-        name: "Stainless Steel Landing Doors",
+        image: landingDoorNew,
+        name: "Stainless Steel Landing & Cabin Doors",
         badge: "Premium SS",
-        desc: "Heavy-duty stainless-steel landing doors with robust frames. Available in single-speed, two-speed, and centre-opening configurations for all cabin widths.",
+        desc: "Heavy-duty stainless-steel landing and cabin doors. Available in single-speed, two-speed, and centre-opening configurations. Suitable for all commercial and residential elevators.",
         specs: ["SS 304 / SS 316", "Single & centre-open", "Fire rated option", "Custom sizes"],
-      },
-      {
-        image: cabinDoor,
-        name: "Cabin Door (Auto Door)",
-        badge: "Auto-Open",
-        desc: "Automatic cabin doors with precision door operators. Smooth, silent, and certified to withstand high-cycle daily operation in commercial and residential elevators.",
-        specs: ["Automatic operator", "High-cycle rated", "Anti-reopening safety", "Custom finish"],
       },
     ],
   },
@@ -104,11 +84,18 @@ const categories = [
     desc: "Precision guide rails, brackets, and structural components for all elevator types",
     products: [
       {
-        image: guideRail,
-        name: "T-Section Guide Rails",
+        image: guideRailNew,
+        name: "T-Section Guide Rails & Hose Pipe",
         badge: "Marazzi",
-        desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — available in cold-drawn and machined profiles.",
+        desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — available in cold-drawn and machined profiles. Includes hydraulic hose pipes.",
         specs: ["T-8, T-9, T-16 profiles", "Cold-drawn", "Low friction", "ISO 7465 compliant"],
+      },
+      {
+        image: guideBrackets,
+        name: "Guide Rail Brackets & Clips",
+        badge: "Structural",
+        desc: "Galvanised steel guide rail brackets and fixing clips engineered for precise rail alignment. Compatible with all standard T-section guide rail profiles.",
+        specs: ["Galvanised steel", "Precision machined", "Anti-vibration", "Universal fit"],
       },
     ],
   },
@@ -120,21 +107,14 @@ const categories = [
     desc: "Compact glass home lifts — panoramic, pit-free, ideal for villas & residences",
     products: [
       {
-        image: glassLift1,
-        name: "Glass Home Lift (Compact)",
+        image: glassLiftNew,
+        name: "Panoramic Glass Home Lift",
         badge: "Pit-Free",
         desc: "Elegant all-glass pit-free home lift — minimal footprint, whisper-quiet hydraulic or pneumatic drive. Perfect for 2–4 floor villas, duplexes, and bungalows.",
         specs: ["Pit-free option", "All-glass cabin", "2–4 floors", "Whisper quiet"],
       },
       {
-        image: glassLift2,
-        name: "Panoramic Glass Lift",
-        badge: "Premium",
-        desc: "360° panoramic glass elevator for premium residences and lobbies. Full glass shaft and cabin — an architectural centrepiece that elevates any interior.",
-        specs: ["360° glass view", "Custom cabin size", "LED lighting", "Architectural design"],
-      },
-      {
-        image: homeLift,
+        image: homeLiftNew,
         name: "Residential Home Lift",
         badge: "Home Friendly",
         desc: "Space-saving residential lift with glass and aluminium construction. Smooth, safe, and smart-home ready — blends perfectly with modern interior designs.",
@@ -171,7 +151,7 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* ── Brand strip ── */}
+        {/* Brand strip */}
         <div className="flex flex-wrap justify-center items-center gap-3 mb-10">
           {["GMV — Italy", "Tectronics", "ARKEL", "Marazzi", "Shiv Shakti"].map((b) => (
             <span
@@ -184,7 +164,7 @@ export default function ProductsSection() {
           ))}
         </div>
 
-        {/* ── Category tabs ── */}
+        {/* Category tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((cat) => {
             const isActive = cat.id === activeCategory;
@@ -206,7 +186,7 @@ export default function ProductsSection() {
           })}
         </div>
 
-        {/* ── Active category banner ── */}
+        {/* Active category banner */}
         <div className="mb-8 flex items-center gap-4 p-4 bg-section-alt border border-border rounded-2xl">
           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
             {current.icon}
@@ -221,10 +201,10 @@ export default function ProductsSection() {
           </div>
         </div>
 
-        {/* ── Product grid ── */}
+        {/* Product grid */}
         <div
           key={activeCategory}
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-7 ${current.products.length === 2 ? "lg:grid-cols-2 max-w-3xl mx-auto" : ""}`}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-7 ${current.products.length === 1 ? "lg:grid-cols-1 max-w-lg mx-auto" : current.products.length === 2 ? "lg:grid-cols-2 max-w-3xl mx-auto" : ""}`}
         >
           {current.products.map(({ image, name, badge, desc, specs }, i) => (
             <div
@@ -232,24 +212,20 @@ export default function ProductsSection() {
               className="group bg-background rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 border border-border hover:border-primary/30 transition-all duration-300 animate-fade-in-up flex flex-col"
               style={{ animationDelay: `${i * 90}ms` }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden h-56 bg-section-alt">
+              {/* Image — object-contain so full product is always visible */}
+              <div className="relative overflow-hidden bg-section-alt" style={{ height: "240px" }}>
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-105 p-4"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                {/* Subtle gradient only at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
 
                 {/* Badge */}
-                <span className="absolute top-4 right-4 bg-black/55 backdrop-blur-sm text-white text-xs font-body font-semibold px-2.5 py-1.5 rounded-full border border-white/20">
+                <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-body font-bold px-3 py-1.5 rounded-full shadow-button">
                   {badge}
-                </span>
-
-                {/* Category chip */}
-                <span className="absolute bottom-4 left-4 bg-primary text-primary-foreground text-xs font-body font-bold px-3 py-1 rounded-full shadow-button">
-                  {current.label}
                 </span>
 
                 {/* Top hover bar */}
