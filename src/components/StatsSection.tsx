@@ -82,13 +82,6 @@ const stats: StatItem[] = [
   },
 ];
 
-const brands = [
-  { name: "GMV", origin: "Italy" },
-  { name: "ARKEL", origin: "Turkey" },
-  { name: "Tectronics", origin: "India" },
-  { name: "Marazzi", origin: "Italy" },
-  { name: "Shiv Shakti", origin: "India" },
-];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0);
