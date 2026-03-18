@@ -130,8 +130,8 @@ const statesData = [
 ];
 
 const coverageStats = [
-  { icon: MapPin,     value: "7",     label: "States Covered" },
-  { icon: Users,      value: "12+",   label: "Cities Served" },
+  { icon: MapPin,     value: "9",     label: "States Covered" },
+  { icon: Users,      value: "15+",   label: "Cities Served" },
   { icon: Clock,      value: "4 hrs", label: "Avg Response Time" },
   { icon: PhoneCall,  value: "24/7",  label: "Emergency Support" },
 ];
