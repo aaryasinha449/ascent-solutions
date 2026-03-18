@@ -240,7 +240,7 @@ export default function CertificatesSection() {
             </div>
           </div>
 
-          {/* Authorized brands */}
+          {/* Authorized distributor logos */}
           <div>
             <h3 className="font-heading font-bold text-xl text-foreground mb-6 flex items-center gap-2.5">
               <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -248,21 +248,19 @@ export default function CertificatesSection() {
               </div>
               Authorized Distributor For
             </h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-3">
               {brands.map(({ name, country }, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-4 bg-background border border-border rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="flex flex-col items-center justify-center p-4 bg-background border border-border rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group text-center"
                 >
-                  <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200">
-                    <span className="font-heading font-black text-primary group-hover:text-primary-foreground transition-colors duration-200 text-xs">
+                  <div className="w-12 h-12 bg-section-alt rounded-full border border-border flex items-center justify-center mb-2 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-200">
+                    <span className="font-heading font-black text-primary text-sm">
                       {name.split(" ").map((w) => w[0]).slice(0, 2).join("")}
                     </span>
                   </div>
-                  <div>
-                    <p className="font-body text-sm font-semibold text-foreground leading-tight">{name}</p>
-                    <p className="font-body text-xs text-muted-foreground">{country}</p>
-                  </div>
+                  <p className="font-body text-sm font-semibold text-foreground leading-tight">{name}</p>
+                  <p className="font-body text-xs text-muted-foreground mt-0.5">{country}</p>
                 </div>
               ))}
             </div>
