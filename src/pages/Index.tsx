@@ -36,9 +36,6 @@ const Index = () => {
       {/* Certificates & Awards */}
       <CertificatesSection />
 
-      {/* Client Logos */}
-      <ClientLogosSection />
-
       {/* Gallery */}
       <GallerySection />
 
