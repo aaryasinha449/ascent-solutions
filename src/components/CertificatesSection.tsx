@@ -5,24 +5,15 @@ import { ChevronLeft, ChevronRight, Award, Star, Trophy } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 // ── Real award & certificate images ──
-import awardGmv10Years       from "@/assets/award-gmv-10years.jpg";
-import awardGmvTrophy        from "@/assets/award-gmv-distributor-trophy.jpg";
-import awardGmvStrategyMeet  from "@/assets/award-gmv-strategy-meet.jpg";
-import certGmvDistributor    from "@/assets/cert-gmv-authorised-distributor.jpg";
-import awardExhibition       from "@/assets/award-eletech-exhibition.jpg";
-import awardOfficeCeremony   from "@/assets/award-gmv-office-ceremony.jpg";
-import certShivShakti        from "@/assets/cert-shivshakti-appreciation.jpg";
+import awardGmv10Years      from "@/assets/award-gmv-10years.jpg";
+import awardGmvTrophy       from "@/assets/award-gmv-distributor-trophy.jpg";
+import awardGmvStrategyMeet from "@/assets/award-gmv-strategy-meet.jpg";
+import certGmvDistributor   from "@/assets/cert-gmv-authorised-distributor.jpg";
+import awardExhibition      from "@/assets/award-eletech-exhibition.jpg";
+import awardOfficeCeremony  from "@/assets/award-gmv-office-ceremony.jpg";
+import certShivShakti       from "@/assets/cert-shivshakti-appreciation.jpg";
 
-/* ─── Slider items — real uploaded photos ────────────────────────── */
 const slides = [
-  {
-    image: certGmvDistributor,
-    title: "GMV Authorised Distributor Certificate",
-    subtitle: "GMV India Pvt. Ltd.",
-    desc: "Official certificate certifying Eletech Trading Corporation as an Authorised Distributor of GMV India for the territory of Pune — valid from 1st April 2022.",
-    tag: "Certificate",
-    tagColor: "bg-blue-600",
-  },
   {
     image: awardGmvTrophy,
     title: "Distributor of the Year — GMV India 2024–25",
@@ -30,6 +21,22 @@ const slides = [
     desc: "Eletech Trading Corporation, Gujarat, recognised as the Distributor of the Year for GMV India for the financial year 2024–25 at the GMV India Strategy Meet.",
     tag: "Award",
     tagColor: "bg-amber-500",
+  },
+  {
+    image: certShivShakti,
+    title: "Certificate of Appreciation — Shiv Shakti",
+    subtitle: "Shiv Shakti Elevator Components Pvt. Ltd.",
+    desc: "Certificate of Appreciation presented to Eletech Trading Corporation for esteemed partnership and business contribution in FY 24–25.",
+    tag: "Certificate",
+    tagColor: "bg-blue-600",
+  },
+  {
+    image: certGmvDistributor,
+    title: "GMV Authorised Distributor Certificate",
+    subtitle: "GMV India Pvt. Ltd.",
+    desc: "Official certificate certifying Eletech Trading Corporation as an Authorised Distributor of GMV India for Pune — valid from 1st April 2022.",
+    tag: "Certificate",
+    tagColor: "bg-blue-600",
   },
   {
     image: awardGmv10Years,
@@ -43,7 +50,7 @@ const slides = [
     image: awardGmvStrategyMeet,
     title: "GMV India Strategy Meet 2025",
     subtitle: "GMV Lift Systems — No.1 in Hydraulic Elevator Technology",
-    desc: "Eletech's Director receiving the prestigious Distributor of the Year award at the GMV India Strategy Meet 2025, held across India.",
+    desc: "Eletech's Director receiving the prestigious Distributor of the Year award at the GMV India Strategy Meet 2025.",
     tag: "Recognition",
     tagColor: "bg-primary",
   },
@@ -63,25 +70,15 @@ const slides = [
     tag: "Recognition",
     tagColor: "bg-green-600",
   },
-  {
-    image: certShivShakti,
-    title: "Certificate of Appreciation — Shiv Shakti",
-    subtitle: "Shiv Shakti Elevator Components Pvt. Ltd.",
-    desc: "M/s. Eletech Trading Corporation recognised for esteemed organisation partnership in FY 22–23 by Shiv Shakti Elevator Components Pvt. Ltd.",
-    tag: "Certificate",
-    tagColor: "bg-blue-600",
-  },
 ];
 
-/* ─── Awards list ─────────────────────────────────────────────────── */
 const awards = [
   { year: "2024–25", title: "Distributor of the Year — GMV India", org: "GMV Lift Systems India" },
-  { year: "2022–23", title: "Certificate of Appreciation", org: "Shiv Shakti Elevator Components Pvt. Ltd." },
+  { year: "2024–25", title: "Certificate of Appreciation", org: "Shiv Shakti Elevator Components Pvt. Ltd." },
   { year: "2022",    title: "Authorised Distributor Certificate", org: "GMV India Pvt. Ltd." },
   { year: "2019",    title: "10 Years of Partnership Award", org: "GMV Lift Systems — For Constant Support & Leadership" },
 ];
 
-/* ─── Authorized brands ──────────────────────────────────────────── */
 const brands = [
   { name: "GMV Lift Systems", country: "Italy 🇮🇹" },
   { name: "Tectronics",       country: "India 🇮🇳" },
@@ -121,9 +118,9 @@ export default function CertificatesSection() {
   const scrollTo   = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
 
   return (
-    <section id="industries" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/4 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
+    <section id="industries" className="py-24 md:py-32 bg-section-alt relative overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
 
       <div
         ref={ref}
@@ -131,9 +128,13 @@ export default function CertificatesSection() {
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="badge-primary mb-4">Certified & Awarded</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="red-line" />
+            <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Certified & Awarded</span>
+            <span className="red-line" />
+          </div>
           <h2 className="section-heading mb-4">
-            Certifications & <span className="gradient-text">Awards</span>
+            Certifications & <span className="text-primary">Awards</span>
           </h2>
           <p className="section-subheading">
             Recognised by GMV India, Shiv Shakti, and leading industry bodies for our consistent
@@ -143,7 +144,6 @@ export default function CertificatesSection() {
 
         {/* ── Embla Carousel ── */}
         <div className="mb-16 relative">
-          {/* Arrow buttons */}
           <button
             onClick={scrollPrev}
             className="absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-background border-2 border-border shadow-card hover:border-primary hover:bg-primary hover:text-primary-foreground text-foreground flex items-center justify-center transition-all duration-200"
@@ -165,19 +165,19 @@ export default function CertificatesSection() {
               {slides.map((slide, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 w-[320px] md:w-[400px] group rounded-3xl overflow-hidden border border-border bg-background shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default"
+                  className="flex-shrink-0 w-[300px] md:w-[380px] group rounded-3xl overflow-hidden border border-border bg-background shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default"
                 >
-                  {/* Photo */}
-                  <div className="relative h-64 overflow-hidden bg-section-alt">
+                  {/* Photo — object-contain so full certificate/trophy is always visible */}
+                  <div className="relative overflow-hidden bg-muted flex items-center justify-center" style={{ height: "280px" }}>
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-103"
                       loading="lazy"
+                      style={{ filter: "none" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     {/* Tag */}
-                    <span className={`absolute top-4 left-4 ${slide.tagColor} text-white text-xs font-body font-bold px-3 py-1 rounded-full`}>
+                    <span className={`absolute top-4 left-4 ${slide.tagColor} text-white text-xs font-body font-bold px-3 py-1 rounded-full shadow-sm`}>
                       {slide.tag}
                     </span>
                     {/* Top red bar on hover */}
@@ -185,7 +185,7 @@ export default function CertificatesSection() {
                   </div>
 
                   {/* Text */}
-                  <div className="p-5">
+                  <div className="p-5 bg-background">
                     <p className="font-body text-xs font-semibold text-primary uppercase tracking-wider mb-1">{slide.subtitle}</p>
                     <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">{slide.title}</h3>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-3">{slide.desc}</p>
@@ -202,7 +202,7 @@ export default function CertificatesSection() {
                 key={i}
                 onClick={() => scrollTo(i)}
                 className={`rounded-full transition-all duration-300 ${
-                  i === selectedIndex ? "w-7 h-2.5 bg-primary" : "w-2.5 h-2.5 bg-muted hover:bg-primary/40"
+                  i === selectedIndex ? "w-7 h-2.5 bg-primary" : "w-2.5 h-2.5 bg-muted-foreground/30 hover:bg-primary/40"
                 }`}
                 aria-label={`Slide ${i + 1}`}
               />
@@ -225,7 +225,7 @@ export default function CertificatesSection() {
               {awards.map(({ year, title, org }, i) => (
                 <div
                   key={i}
-                  className="flex gap-4 p-4 rounded-2xl bg-section-alt border border-border card-hover"
+                  className="flex gap-4 p-4 rounded-2xl bg-background border border-border shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <div className="flex-shrink-0 w-14 h-14 bg-gradient-primary rounded-xl flex flex-col items-center justify-center shadow-button">
                     <Star className="text-primary-foreground" size={13} />
@@ -252,7 +252,7 @@ export default function CertificatesSection() {
               {brands.map(({ name, country }, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-4 bg-section-alt border border-border rounded-xl card-hover group"
+                  className="flex items-center gap-3 p-4 bg-background border border-border rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200">
                     <span className="font-heading font-black text-primary group-hover:text-primary-foreground transition-colors duration-200 text-xs">

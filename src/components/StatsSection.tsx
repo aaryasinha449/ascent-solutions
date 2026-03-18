@@ -10,6 +10,7 @@ interface StatItem {
   iconColor: string;
   bgColor: string;
   borderColor: string;
+  valueColor: string;
 }
 
 const stats: StatItem[] = [
@@ -20,8 +21,9 @@ const stats: StatItem[] = [
     label: "Years Experience",
     sublabel: "Established 2015",
     iconColor: "text-primary",
-    bgColor: "bg-primary/20",
-    borderColor: "border-primary/30",
+    bgColor: "bg-primary/10",
+    borderColor: "border-primary/20",
+    valueColor: "text-primary",
   },
   {
     icon: Users,
@@ -29,9 +31,10 @@ const stats: StatItem[] = [
     suffix: "+",
     label: "Satisfied Clients",
     sublabel: "Across West & North India",
-    iconColor: "text-blue-400",
-    bgColor: "bg-blue-500/20",
-    borderColor: "border-blue-500/30",
+    iconColor: "text-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-100",
+    valueColor: "text-blue-600",
   },
   {
     icon: Building2,
@@ -39,9 +42,10 @@ const stats: StatItem[] = [
     suffix: "+",
     label: "Components Supplied",
     sublabel: "Yearly across India",
-    iconColor: "text-emerald-400",
-    bgColor: "bg-emerald-500/20",
-    borderColor: "border-emerald-500/30",
+    iconColor: "text-emerald-600",
+    bgColor: "bg-emerald-50",
+    borderColor: "border-emerald-100",
+    valueColor: "text-emerald-600",
   },
   {
     icon: Award,
@@ -49,9 +53,10 @@ const stats: StatItem[] = [
     suffix: "",
     label: "Authorized Brands",
     sublabel: "GMV, ARKEL, Tectronics & more",
-    iconColor: "text-amber-400",
-    bgColor: "bg-amber-400/20",
-    borderColor: "border-amber-400/30",
+    iconColor: "text-amber-600",
+    bgColor: "bg-amber-50",
+    borderColor: "border-amber-100",
+    valueColor: "text-amber-600",
   },
   {
     icon: Wrench,
@@ -59,9 +64,10 @@ const stats: StatItem[] = [
     suffix: "/7",
     label: "Support Available",
     sublabel: "Emergency helpline",
-    iconColor: "text-purple-400",
-    bgColor: "bg-purple-400/20",
-    borderColor: "border-purple-400/30",
+    iconColor: "text-purple-600",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-100",
+    valueColor: "text-purple-600",
   },
   {
     icon: MapPin,
@@ -69,9 +75,10 @@ const stats: StatItem[] = [
     suffix: "+",
     label: "States Covered",
     sublabel: "Pan-India network",
-    iconColor: "text-rose-400",
-    bgColor: "bg-rose-400/20",
-    borderColor: "border-rose-400/30",
+    iconColor: "text-rose-600",
+    bgColor: "bg-rose-50",
+    borderColor: "border-rose-100",
+    valueColor: "text-rose-600",
   },
 ];
 
@@ -115,119 +122,117 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section className="py-20 md:py-28 bg-section-dark relative overflow-hidden">
-      {/* Background layers */}
-      <div className="absolute inset-0 bg-dot-pattern-dark pointer-events-none" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
+      {/* Light background pattern */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-50 rounded-full blur-3xl pointer-events-none" />
+      {/* Top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary rounded-full px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest mb-5">
-            <Star size={12} className="text-amber-400 fill-amber-400" />
-            Our Achievements
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="red-line" />
+            <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Our Achievements</span>
+            <span className="red-line" />
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4 leading-tight">
+          <h2 className="section-heading mb-4">
             Numbers That <span className="text-primary">Speak</span> for Themselves
           </h2>
-          <p className="font-body text-white/50 text-base max-w-xl mx-auto leading-relaxed">
+          <p className="section-subheading">
             Established in 2015 — a decade of excellence in elevator components across West &amp; North India
           </p>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 mb-14">
-          {stats.map(({ icon: Icon, numericValue, suffix, label, sublabel, iconColor, bgColor, borderColor }, i) => (
+        {/* Stats grid — light cards */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 mb-12">
+          {stats.map(({ icon: Icon, numericValue, suffix, label, sublabel, iconColor, bgColor, borderColor, valueColor }, i) => (
             <div
               key={i}
-              className={`group relative text-center p-6 md:p-7 rounded-2xl border ${borderColor} bg-white/4 backdrop-blur-sm hover:bg-white/8 hover:-translate-y-2 transition-all duration-400 cursor-default ${
-                visible ? "animate-fade-in-up" : "opacity-0"
+              className={`group relative text-center p-5 md:p-6 rounded-2xl border ${borderColor} bg-background shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default ${
+                visible ? "animate-fade-in" : "opacity-0"
               }`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              {/* Subtle corner accent */}
-              <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-white/4 to-transparent rounded-bl-2xl rounded-tr-2xl" />
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-gradient-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Icon */}
               <div
-                className={`w-14 h-14 rounded-2xl ${bgColor} border ${borderColor} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                className={`w-12 h-12 rounded-xl ${bgColor} border ${borderColor} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}
               >
-                <Icon className={iconColor} size={24} />
+                <Icon className={iconColor} size={22} />
               </div>
 
               {/* Value */}
-              <p className="font-heading font-black text-4xl md:text-5xl text-white leading-none mb-1.5 tabular-nums tracking-tight">
+              <p className={`font-heading font-black text-3xl md:text-4xl ${valueColor} leading-none mb-1 tabular-nums tracking-tight`}>
                 <AnimatedCounter target={numericValue} suffix={suffix} active={visible} />
               </p>
 
-              <p className="font-heading font-bold text-white/80 text-sm mb-1 leading-tight">{label}</p>
-              <p className="font-body text-white/35 text-xs leading-tight">{sublabel}</p>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <p className="font-heading font-bold text-foreground text-sm mb-0.5 leading-tight">{label}</p>
+              <p className="font-body text-muted-foreground text-xs leading-tight">{sublabel}</p>
             </div>
           ))}
         </div>
 
-        {/* Achievement highlight cards */}
-        <div className="grid md:grid-cols-3 gap-5 mb-14">
+        {/* Achievement highlight cards — light bg */}
+        <div className="grid md:grid-cols-3 gap-5 mb-12">
           {[
             {
               icon: ShieldCheck,
               title: "Authorized Distributor",
               desc: "Officially certified by GMV Italy, ARKEL, Tectronics, Marazzi & Shiv Shakti for Western & Northern India",
-              color: "text-emerald-400",
-              bg: "bg-emerald-400/10",
-              border: "border-emerald-400/20",
+              iconColor: "text-emerald-600",
+              bg: "bg-emerald-50",
+              border: "border-emerald-100",
             },
             {
               icon: Award,
               title: "Distributor of the Year",
               desc: "Recognized as GMV's top performing distributor multiple times for outstanding sales and customer satisfaction",
-              color: "text-amber-400",
-              bg: "bg-amber-400/10",
-              border: "border-amber-400/20",
+              iconColor: "text-amber-600",
+              bg: "bg-amber-50",
+              border: "border-amber-100",
             },
             {
               icon: TrendingUp,
               title: "Decade of Growth",
               desc: "From a startup in 2015 to serving 500+ clients across 7+ states — Eletech has grown into a nationally recognized brand",
-              color: "text-blue-400",
-              bg: "bg-blue-400/10",
-              border: "border-blue-400/20",
+              iconColor: "text-blue-600",
+              bg: "bg-blue-50",
+              border: "border-blue-100",
             },
-          ].map(({ icon: Icon, title, desc, color, bg, border }, i) => (
+          ].map(({ icon: Icon, title, desc, iconColor, bg, border }, i) => (
             <div
               key={i}
-              className={`group flex gap-4 p-6 rounded-2xl border ${border} ${bg} hover:-translate-y-1 transition-all duration-300`}
+              className={`group flex gap-4 p-6 rounded-2xl border ${border} ${bg} shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300`}
             >
-              <div className={`w-12 h-12 rounded-xl ${bg} border ${border} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
-                <Icon className={color} size={22} />
+              <div className={`w-12 h-12 rounded-xl bg-background border ${border} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                <Icon className={iconColor} size={22} />
               </div>
               <div>
-                <h4 className="font-heading font-bold text-white text-base mb-1.5">{title}</h4>
-                <p className="font-body text-white/50 text-sm leading-relaxed">{desc}</p>
+                <h4 className="font-heading font-bold text-foreground text-base mb-1.5">{title}</h4>
+                <p className="font-body text-muted-foreground text-sm leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Authorized distributor brand strip */}
-        <div className="border-t border-white/10 pt-10">
-          <p className="text-center font-body text-white/35 text-xs uppercase tracking-widest mb-7">
+        <div className="border-t border-border pt-10">
+          <p className="text-center font-body text-muted-foreground text-xs uppercase tracking-widest mb-7">
             Authorized Distributor For
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
             {brands.map(({ name, origin }) => (
               <div key={name} className="text-center group cursor-default">
-                <p className="font-heading font-black text-xl md:text-2xl text-white/25 hover:text-white/70 transition-colors duration-300 tracking-wide">
+                <p className="font-heading font-black text-xl md:text-2xl text-muted-foreground/40 hover:text-primary transition-colors duration-300 tracking-wide">
                   {name}
                 </p>
-                <p className="font-body text-xs text-white/20 group-hover:text-white/45 transition-colors duration-300 mt-0.5">
+                <p className="font-body text-xs text-muted-foreground/30 group-hover:text-muted-foreground transition-colors duration-300 mt-0.5">
                   {origin}
                 </p>
               </div>

@@ -9,23 +9,23 @@ import hero4 from "@/assets/hero-elevator-4.jpg";
 const slides = [
   {
     image: hero1,
-    title: "Excellence in Vertical Transportation",
-    subtitle: "Premier supplier & distributor of world-class elevator solutions across India. Delivering safety, reliability, and innovation since 2009.",
+    subtitle: "Excellence in Vertical Transportation",
+    body: "Premier supplier & distributor of world-class elevator solutions across India. Delivering safety, reliability, and innovation since 2009.",
   },
   {
     image: hero2,
-    title: "Luxury Elevator Interiors",
-    subtitle: "From elegant residential home lifts to high-capacity commercial elevators — we craft solutions tailored to your exact requirements.",
+    subtitle: "Luxury Elevator Interiors",
+    body: "From elegant residential home lifts to high-capacity commercial elevators — we craft solutions tailored to your exact requirements.",
   },
   {
     image: hero3,
-    title: "Trusted Across Industries",
-    subtitle: "Serving residential complexes, commercial towers, hospitals, shopping malls, and industrial facilities with precision-engineered lift systems.",
+    subtitle: "Trusted Across Industries",
+    body: "Serving residential complexes, commercial towers, hospitals, shopping malls, and industrial facilities with precision-engineered lift systems.",
   },
   {
     image: hero4,
-    title: "Elevating Your World",
-    subtitle: "Authorized dealer for India's leading elevator brands. Comprehensive installation, AMC, and modernization services nationwide.",
+    subtitle: "Elevating Your World",
+    body: "Authorized dealer for India's leading elevator brands. Comprehensive installation, AMC, and modernization services nationwide.",
   },
 ];
 
@@ -71,11 +71,11 @@ export default function HeroSlider() {
         >
           <img
             src={slide.image}
-            alt={slide.title}
+            alt={slide.subtitle}
             className="w-full h-full object-cover"
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
         </div>
       ))}
 
@@ -90,19 +90,37 @@ export default function HeroSlider() {
               }`}
             >
               {/* Red accent bar */}
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-0.5 bg-primary rounded-full" />
                 <span className="text-primary font-body font-semibold text-sm uppercase tracking-wider">
                   Eletech Trading Corporation
                 </span>
               </div>
 
-              <h1 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-5">
-                {slides[current].title}
+              {/* PRIMARY heading — Company name */}
+              <h1 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-2">
+                ELETECH TRADING
+                <br />
+                CORPORATION
               </h1>
 
-              <p className="font-body text-base md:text-lg text-white/85 leading-relaxed mb-8 max-w-xl">
+              {/* TAGLINE — "Together we win" — italic, elegant, subtle */}
+              <p
+                className={`font-body italic text-white/70 text-xl md:text-2xl mb-4 leading-snug tracking-wide transition-all duration-700 delay-150 ${
+                  isTransitioning ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                }`}
+                style={{ fontStyle: "italic", letterSpacing: "0.03em" }}
+              >
+                — Together we win
+              </p>
+
+              {/* SECONDARY heading — slide subtitle */}
+              <h2 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 leading-snug">
                 {slides[current].subtitle}
+              </h2>
+
+              <p className="font-body text-base md:text-lg text-white/80 leading-relaxed mb-8 max-w-xl">
+                {slides[current].body}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

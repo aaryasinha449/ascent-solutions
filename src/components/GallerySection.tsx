@@ -1,29 +1,33 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
-import exhibitionTeam from "@/assets/about-exhibition-team.jpg";
-import ribbonCutting from "@/assets/about-ribbon-cutting.jpg";
-import awardTrophy from "@/assets/award-gmv-distributor-trophy.jpg";
-import awardCeremony from "@/assets/award-gmv-office-ceremony.jpg";
-import awardStrategy from "@/assets/award-gmv-strategy-meet.jpg";
-import awardExhibition from "@/assets/award-eletech-exhibition.jpg";
-import certGmv from "@/assets/cert-gmv-authorised-distributor.jpg";
-import certShivshakti from "@/assets/cert-shivshakti-appreciation.jpg";
-import gmvAward10 from "@/assets/award-gmv-10years.jpg";
+import exhibitionTeam    from "@/assets/about-exhibition-team.jpg";
+import ribbonCutting     from "@/assets/about-ribbon-cutting.jpg";
+import awardTrophy       from "@/assets/award-gmv-distributor-trophy.jpg";
+import awardCeremony     from "@/assets/award-gmv-office-ceremony.jpg";
+import awardStrategy     from "@/assets/award-gmv-strategy-meet.jpg";
+import awardExhibition   from "@/assets/award-eletech-exhibition.jpg";
+import certGmv           from "@/assets/cert-gmv-authorised-distributor.jpg";
+import certShivshakti    from "@/assets/cert-shivshakti-appreciation.jpg";
+import gmvAward10        from "@/assets/award-gmv-10years.jpg";
+import teamExhibition    from "@/assets/gallery-team-exhibition.jpg";
+import officeEntrance    from "@/assets/gallery-office-entrance.jpg";
 
 const galleryItems = [
-  { src: exhibitionTeam,  title: "Eletech at National Elevator Exhibition", category: "Events", large: true },
+  { src: teamExhibition,  title: "Eletech Team at National Exhibition", category: "Team", large: true },
+  { src: officeEntrance,  title: "Corporate Office — Pune", category: "Office" },
+  { src: exhibitionTeam,  title: "Eletech at Industry Exhibition", category: "Events", large: true },
   { src: ribbonCutting,   title: "GMV Elevator Inauguration Ceremony", category: "Events" },
   { src: awardTrophy,     title: "GMV Distributor of the Year Trophy", category: "Awards" },
   { src: awardCeremony,   title: "GMV Award Ceremony – Office", category: "Awards" },
-  { src: awardExhibition, title: "Eletech Exhibition Booth", category: "Events", large: true },
+  { src: awardExhibition, title: "Eletech Exhibition Booth", category: "Events" },
   { src: awardStrategy,   title: "GMV Strategy Meet", category: "Team" },
   { src: certGmv,         title: "GMV Authorised Distributor Certificate", category: "Certificates" },
   { src: certShivshakti,  title: "Shiv Shakti Appreciation Certificate", category: "Certificates" },
   { src: gmvAward10,      title: "GMV 10 Years Partnership Award", category: "Awards" },
 ];
 
-const filters = ["All", "Events", "Awards", "Team", "Certificates"];
+const filters = ["All", "Events", "Awards", "Team", "Office", "Certificates"];
 
 export default function GallerySection() {
   const [selected, setSelected] = useState<number | null>(null);
@@ -83,21 +87,25 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* Masonry-style Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[200px]">
+        {/* Responsive Grid — aspect-ratio boxes so images are never cropped */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
           {filtered.map(({ src, title, category, large }, i) => (
             <div
               key={`${activeFilter}-${i}`}
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer animate-fade-in border border-border/50 ${large ? "md:col-span-2 md:row-span-2" : ""}`}
+              className={`group relative rounded-2xl overflow-hidden cursor-pointer animate-fade-in border border-border/50 break-inside-avoid mb-3 ${large ? "row-span-2" : ""}`}
               onClick={() => openLightbox(i)}
             >
-              <img
-                src={src}
-                alt={title}
-                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-108"
-                style={{ filter: "none" }}
-                loading="lazy"
-              />
+              {/* Image — contain so nothing is ever cropped */}
+              <div className="bg-muted flex items-center justify-center w-full">
+                <img
+                  src={src}
+                  alt={title}
+                  className="w-full h-auto object-contain block"
+                  style={{ maxHeight: large ? "460px" : "260px", minHeight: "160px", objectFit: "contain" }}
+                  loading="lazy"
+                />
+              </div>
+
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -151,8 +159,7 @@ export default function GallerySection() {
             <img
               src={filtered[selected].src}
               alt={filtered[selected].title}
-              className="w-full max-h-[75vh] object-contain rounded-2xl"
-              style={{ filter: "none" }}
+              className="w-full max-h-[78vh] object-contain rounded-2xl"
             />
             <div className="text-center mt-4">
               <p className="text-white font-heading font-bold text-lg">{filtered[selected].title}</p>
