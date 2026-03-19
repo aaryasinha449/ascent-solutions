@@ -12,6 +12,10 @@ import cityGurgaon from "@/assets/city-gurgaon.jpg";
 import cityAyodhya from "@/assets/city-ayodhya.jpg";
 import cityGuwahati from "@/assets/city-guwahati.jpg";
 import cityBhubaneswar from "@/assets/city-bhubaneswar.jpg";
+import citySurat from "@/assets/city-surat.jpg";
+import cityKolkata from "@/assets/city-kolkata.jpg";
+import cityRanchi from "@/assets/city-ranchi.jpg";
+import cityJamshedpur from "@/assets/city-jamshedpur.jpg";
 
 const statesData = [
   {
