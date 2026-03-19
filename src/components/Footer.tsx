@@ -69,7 +69,7 @@ export default function Footer() {
 
             <p className="font-body text-white/60 text-sm leading-relaxed mb-6 max-w-xs">
               India's trusted partner for premium elevator components and lift solutions.
-              Authorized distributor of GMV, ARKEL, Tectronics, Marazzi &amp; Shiv Shakti since 2015.
+              Authorized distributor of GMV, Shiv Shakti, Techtronics, Arkel &amp; Marazzi since 2015.
             </p>
 
             {/* ── Office 1: Pune ── */}
