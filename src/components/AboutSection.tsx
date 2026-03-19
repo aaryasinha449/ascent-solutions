@@ -2,12 +2,11 @@ import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
 import { useState, useEffect } from "react";
 import ribbonImg from "@/assets/about-ribbon-cutting.jpg";
-import exhibitionImg from "@/assets/about-exhibition-team.jpg";
 import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
 import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
 
 const highlights = [
-  "Authorized distributor — GMV, ARKEL, Tectronics, Marazzi, Shiv Shakti",
+  "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
   "Safe, Reliable & Energy Efficient components",
   "Emerging components supplier in West & North India",
   "Strong technical support team across regions",
@@ -43,7 +42,6 @@ export default function AboutSection() {
   const photos = [
     { src: teamExhibitionImg,  label: "Eletech Team at National Exhibition" },
     { src: officeEntranceImg,  label: "Corporate Office — Pune" },
-    { src: exhibitionImg,      label: "Eletech at Industry Exhibition" },
     { src: ribbonImg,          label: "GMV Elevator Inauguration Ceremony" },
   ];
 

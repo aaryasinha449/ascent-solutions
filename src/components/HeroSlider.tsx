@@ -10,7 +10,7 @@ const slides = [
   {
     image: hero1,
     subtitle: "Excellence in Vertical Transportation",
-    body: "Authorized distributor of GMV, ARKEL, Tectronics, Marazzi & Shiv Shakti — supplying precision elevator components, AMC services, and modernization solutions across India since 2015.",
+    body: "Supplying precision elevator components, technical consultation, authorized distribution, safety-compliant solutions, and dedicated after-sales support — proudly partnered with GMV, Shiv Shakti, Techtronics, Arkel & Marazzi.",
   },
   {
     image: hero2,
