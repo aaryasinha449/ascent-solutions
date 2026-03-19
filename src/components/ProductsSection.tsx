@@ -1,15 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-import gmvPowerUnit     from "@/assets/prod-gmv-powerunit-new.jpg";
-import gmvControlPanel  from "@/assets/prod-gmv-controlpanel-new.jpg";
-import guideRailNew     from "@/assets/prod-guide-rail-new.jpg";
-import guideBrackets    from "@/assets/prod-guide-brackets-new.jpg";
-import arkelArcube      from "@/assets/prod-arkel-arcube-new.jpg";
-import tractionRTG      from "@/assets/prod-traction-machine-rtg.jpg";
-import glassLiftNew     from "@/assets/prod-glass-lift-new.jpg";
-import homeLiftNew      from "@/assets/prod-home-lift-new.jpg";
-import landingDoorNew   from "@/assets/prod-landing-door-new.jpg";
+import gmvPowerUnit    from "@/assets/prod-gmv-powerunit-new.jpg";
+import gmvControlPanel from "@/assets/prod-gmv-controlpanel-new.jpg";
+import guideRailNew    from "@/assets/prod-guide-rail-new.jpg";
+import guideBrackets   from "@/assets/prod-guide-brackets-new.jpg";
+import arkelArcube     from "@/assets/prod-arkel-arcube-new.jpg";
+import tractionRTG     from "@/assets/prod-traction-machine-rtg.jpg";
+import glassLiftNew    from "@/assets/prod-glass-lift-new.jpg";
+import homeLiftNew     from "@/assets/prod-home-lift-new.jpg";
+import landingDoorNew  from "@/assets/prod-landing-door-new.jpg";
 
 const products = [
   {
@@ -40,7 +40,7 @@ const products = [
   {
     image: guideRailNew,
     name: "T-Section Guide Rails & Hose Pipe",
-    desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — available in cold-drawn and machined profiles.",
+    desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — cold-drawn and machined profiles.",
   },
   {
     image: guideBrackets,
@@ -64,15 +64,16 @@ export default function ProductsSection() {
 
   return (
     <section id="products" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/4 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.18] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-primary/4 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-muted rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
 
       <div
         ref={ref}
         className={`container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        {/* Header */}
+        {/* ── Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="red-line" />
@@ -88,39 +89,43 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* Product grid */}
+        {/* ── Premium product grid ── */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {products.map(({ image, name, desc }, i) => (
             <div
               key={i}
-              className="group bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-350 flex flex-col"
-              style={{ animationDelay: `${i * 60}ms` }}
+              className="group bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/25 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
+              style={{ transitionDelay: `${i * 30}ms` }}
             >
-              {/* Image area */}
-              <div className="relative overflow-hidden bg-muted/40" style={{ height: "260px" }}>
+              {/* Image container — contain so nothing is cropped */}
+              <div className="relative overflow-hidden bg-muted/30" style={{ height: "260px" }}>
+                {/* Accent top bar on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10 rounded-t-2xl" />
+
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.06]"
+                  className="w-full h-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.05]"
                   loading="lazy"
                 />
-                {/* Top accent bar on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-2xl" />
-                {/* Subtle bottom gradient */}
-                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background/60 to-transparent" />
+
+                {/* Bottom fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
               </div>
 
-              {/* Content */}
+              {/* Card content */}
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-heading font-bold text-[15px] text-foreground group-hover:text-primary transition-colors duration-200 leading-snug mb-2">
                   {name}
                 </h3>
-                <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3 group-hover:w-16 transition-all duration-300" />
+                {/* Animated underline */}
+                <div className="h-0.5 bg-primary/35 rounded-full mb-3 w-8 group-hover:w-14 transition-all duration-300" />
                 <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
 
+                {/* CTA */}
                 <button
                   onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group/btn mt-5 flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-button"
+                  className="group/btn mt-5 flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-[var(--shadow-button)]"
                 >
                   Request Quote
                   <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
@@ -130,14 +135,14 @@ export default function ProductsSection() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* ── Bottom CTA ── */}
         <div className="mt-14 text-center">
           <p className="font-body text-muted-foreground text-sm mb-5">
             Need a full system or bulk supply? Contact us for custom pricing.
           </p>
           <button
             onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="inline-flex items-center gap-2.5 bg-gradient-primary text-primary-foreground font-heading font-bold px-8 py-3.5 rounded-2xl shadow-button hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
+            className="inline-flex items-center gap-2.5 bg-gradient-primary text-primary-foreground font-heading font-bold px-8 py-3.5 rounded-2xl shadow-[var(--shadow-button)] hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
           >
             Get a Custom Quote <ArrowRight size={16} />
           </button>
