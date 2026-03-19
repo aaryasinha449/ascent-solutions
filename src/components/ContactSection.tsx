@@ -194,9 +194,9 @@ export default function ContactSection() {
                     <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-green-200 shadow-sm">
                       <CheckCircle2 className="text-green-600" size={36} />
                     </div>
-                    <h3 className="font-heading font-bold text-2xl text-foreground mb-2">Message Sent!</h3>
+                    <h3 className="font-heading font-bold text-2xl text-foreground mb-2">Request Submitted!</h3>
                     <p className="font-body text-muted-foreground text-sm leading-relaxed mb-6 max-w-sm mx-auto">
-                      Thank you for contacting Eletech. Our team will review your request and get back to you within 24 hours.
+                      Your request has been submitted successfully. Our team will get back to you within 24 hours.
                     </p>
                     <Button
                       onClick={() => setSubmitted(false)}
