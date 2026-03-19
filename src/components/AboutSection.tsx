@@ -96,7 +96,7 @@ export default function AboutSection() {
       >
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* ════ LEFT: Premium Image Slider ════ */}
+          {/* ════ LEFT: Image ════ */}
           <div
             className={`relative transition-all duration-900 ${
               inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
@@ -116,22 +116,13 @@ export default function AboutSection() {
             >
               {/* Fixed-height container — prevents layout shift */}
               <div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden rounded-3xl"
                 style={{ height: "520px", background: "hsl(var(--muted)/0.25)" }}
               >
-                {/* Cross-fade image — no caption label */}
-                <div
-                  className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fading ? 0 : 1 }}
-                >
-                  <ImgWithSkeleton
-                    src={photos[activeImg].src}
-                    alt={photos[activeImg].alt}
-                  />
-                </div>
-
-                {/* Overlay gradient for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
+                <ImgWithSkeleton
+                  src={exhibitionTeamImg}
+                  alt="Eletech Trading Corporation Team"
+                />
 
                 {/* Experience badge — glassmorphism */}
                 <div
@@ -151,26 +142,6 @@ export default function AboutSection() {
                     <p className="font-heading font-black text-2xl text-foreground leading-tight">10+</p>
                     <p className="font-body text-xs text-muted-foreground">Years of Excellence</p>
                   </div>
-                </div>
-
-                {/* Dot indicators */}
-                <div className="absolute bottom-5 right-5 flex gap-2 items-center">
-                  {photos.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => goTo(i)}
-                      aria-label={`Go to slide ${i + 1}`}
-                      className="rounded-full transition-all duration-500"
-                      style={{
-                        width: i === activeImg ? "24px" : "10px",
-                        height: "10px",
-                        background: i === activeImg
-                          ? "hsl(var(--primary))"
-                          : "rgba(255,255,255,0.55)",
-                        boxShadow: i === activeImg ? "0 0 8px hsl(var(--primary)/0.5)" : "none",
-                      }}
-                    />
-                  ))}
                 </div>
               </div>
             </div>
