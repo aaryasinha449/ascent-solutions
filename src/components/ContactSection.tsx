@@ -191,7 +191,7 @@ export default function ContactSection() {
             <div
               className="rounded-2xl overflow-hidden"
               style={{
-                height: "190px",
+                height: "400px",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                 border: "1px solid rgba(255,255,255,0.5)",
               }}
