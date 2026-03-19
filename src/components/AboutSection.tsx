@@ -42,7 +42,6 @@ export default function AboutSection() {
   const photos = [
     { src: teamExhibitionImg,  label: "Eletech Team at National Exhibition" },
     { src: officeEntranceImg,  label: "Corporate Office — Pune" },
-    { src: exhibitionImg,      label: "Eletech at Industry Exhibition" },
     { src: ribbonImg,          label: "GMV Elevator Inauguration Ceremony" },
   ];
 
