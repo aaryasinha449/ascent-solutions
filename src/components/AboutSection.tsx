@@ -1,7 +1,9 @@
 import { useInView } from "@/hooks/use-in-view";
-import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
-import { useState } from "react";
+import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import exhibitionTeamImg from "@/assets/about-exhibition-team.jpg";
+import gmvStrategyMeetImg from "@/assets/about-gmv-strategy-meet.jpg";
+import ribbonCuttingImg from "@/assets/about-ribbon-cutting.jpg";
 
 const highlights = [
   "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
@@ -33,7 +35,12 @@ const visionMission = [
   },
 ];
 
-// Only 2 required images — teamExhibitionImg removed
+const slides = [
+  { src: exhibitionTeamImg,   alt: "Eletech Trading Corporation Team at Exhibition" },
+  { src: gmvStrategyMeetImg,  alt: "GMV Strategy Meet — Eletech Award" },
+  { src: ribbonCuttingImg,    alt: "Eletech Elevator Ribbon Cutting Ceremony" },
+];
+
 function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -72,6 +79,33 @@ function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.1);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveSlide(index);
+      setIsTransitioning(false);
+    }, 300);
+  }, [isTransitioning]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide((activeSlide - 1 + slides.length) % slides.length);
+  }, [activeSlide, goToSlide]);
+
+  const nextSlide = useCallback(() => {
+    goToSlide((activeSlide + 1) % slides.length);
+  }, [activeSlide, goToSlide]);
+
+  // Auto-advance every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -96,7 +130,7 @@ export default function AboutSection() {
       >
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* ════ LEFT: Image ════ */}
+          {/* ════ LEFT: Image Slider ════ */}
           <div
             className={`relative transition-all duration-900 ${
               inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
@@ -114,19 +148,78 @@ export default function AboutSection() {
                 border: "1px solid rgba(255,255,255,0.5)",
               }}
             >
-              {/* Fixed-height container — prevents layout shift */}
+              {/* Fixed-height container */}
               <div
                 className="relative overflow-hidden rounded-3xl"
                 style={{ height: "520px", background: "hsl(var(--muted)/0.25)" }}
               >
-                <ImgWithSkeleton
-                  src={exhibitionTeamImg}
-                  alt="Eletech Trading Corporation Team"
-                />
+                {/* Slides */}
+                {slides.map((slide, i) => (
+                  <div
+                    key={i}
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      opacity: activeSlide === i ? (isTransitioning ? 0 : 1) : 0,
+                      transition: "opacity 0.55s cubic-bezier(0.4,0,0.2,1)",
+                      pointerEvents: activeSlide === i ? "auto" : "none",
+                    }}
+                  >
+                    <ImgWithSkeleton src={slide.src} alt={slide.alt} />
+                  </div>
+                ))}
+
+                {/* Prev / Next buttons */}
+                <button
+                  onClick={prevSlide}
+                  aria-label="Previous slide"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  style={{
+                    background: "rgba(255,255,255,0.88)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <ChevronLeft size={18} className="text-foreground" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  aria-label="Next slide"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  style={{
+                    background: "rgba(255,255,255,0.88)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <ChevronRight size={18} className="text-foreground" />
+                </button>
+
+                {/* Dot indicators */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goToSlide(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className="transition-all duration-300"
+                      style={{
+                        width: activeSlide === i ? "20px" : "8px",
+                        height: "8px",
+                        borderRadius: "999px",
+                        background: activeSlide === i
+                          ? "hsl(var(--primary))"
+                          : "rgba(255,255,255,0.7)",
+                        boxShadow: "0 1px 4px rgba(0,0,0,0.2)",
+                      }}
+                    />
+                  ))}
+                </div>
 
                 {/* Experience badge — glassmorphism */}
                 <div
-                  className="absolute bottom-5 left-5 flex items-center gap-3 rounded-2xl px-4 py-3"
+                  className="absolute bottom-5 left-5 flex items-center gap-3 rounded-2xl px-4 py-3 z-10"
                   style={{
                     background: "rgba(255,255,255,0.92)",
                     backdropFilter: "blur(12px)",
@@ -212,7 +305,7 @@ export default function AboutSection() {
               <div className="w-1.5 h-1.5 bg-primary rounded-full opacity-60" />
             </div>
 
-            {/* Vision & Mission — refined glassmorphism cards */}
+            {/* Vision & Mission */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {visionMission.map(({ icon: Icon, title, desc, accentClass }, i) => (
                 <div
