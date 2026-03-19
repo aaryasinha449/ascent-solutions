@@ -283,13 +283,7 @@ export default function AboutSection() {
               {values.map(({ icon: Icon, title, desc }, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl p-4 border border-border/60 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group"
-                  style={{
-                    background: "rgba(255,255,255,0.65)",
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-                  }}
+            className="rounded-2xl p-4 border border-border/60 bg-background/70 backdrop-blur-sm hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
                 >
                   <div className="w-10 h-10 bg-primary/10 group-hover:bg-primary/18 rounded-xl flex items-center justify-center mb-3 transition-colors duration-200">
                     <Icon className="text-primary" size={18} />
