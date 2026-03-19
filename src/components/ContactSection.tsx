@@ -197,7 +197,7 @@ export default function ContactSection() {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.9!2d73.8319!3d18.4760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955b13451a4b%3A0x9ffd4f96e5ba1e2d!2sVishnupriya+Apartment%2C+Sinhagad+Rd%2C+Dattawadi%2C+Pune%2C+Maharashtra+411030!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.6819856695624!2d73.83823097382667!3d18.498058682591132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf86d2d956c1%3A0xf4a6d002049fc11e!2sIshan%20Pure%20Veg%20Restaurant!5e0!3m2!1sen!2sin!4v1773946054138!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
