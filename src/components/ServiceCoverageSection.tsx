@@ -34,10 +34,7 @@ const statesData = [
         name: "Ahmedabad",
         img: cityAhmedabad,
       },
-      {
-        name: "Surat",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Surat_Castle_-_India.jpg/1200px-Surat_Castle_-_India.jpg",
-      },
+      { name: "Surat", img: citySurat },
     ],
   },
   {
