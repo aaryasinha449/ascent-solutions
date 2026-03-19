@@ -10,12 +10,12 @@ const statesData = [
       {
         name: "Pune",
         landmark: "Shaniwar Wada",
-        img: "https://images.unsplash.com/photo-1570034733733-7f3f0cf6e0a5?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Shaniwar_Wada_gate.jpg/1200px-Shaniwar_Wada_gate.jpg",
       },
       {
         name: "Nashik",
         landmark: "Trimbakeshwar Temple",
-        img: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Trimbakeshwar_Shiva_Temple.jpg/1200px-Trimbakeshwar_Shiva_Temple.jpg",
       },
     ],
   },
@@ -26,12 +26,12 @@ const statesData = [
       {
         name: "Ahmedabad",
         landmark: "Sabarmati Ashram",
-        img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Sabarmati_Ashram.jpg/1200px-Sabarmati_Ashram.jpg",
       },
       {
         name: "Surat",
-        landmark: "Diamond City",
-        img: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=85",
+        landmark: "Surat Castle",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Surat_Castle_-_India.jpg/1200px-Surat_Castle_-_India.jpg",
       },
     ],
   },
@@ -42,7 +42,7 @@ const statesData = [
       {
         name: "Jaipur",
         landmark: "Hawa Mahal",
-        img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hawa_Mahal_Jaipur_2.jpg/1200px-Hawa_Mahal_Jaipur_2.jpg",
       },
     ],
   },
@@ -53,12 +53,12 @@ const statesData = [
       {
         name: "New Delhi",
         landmark: "India Gate",
-        img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/India_Gate_in_New_Delhi_03-2016.jpg/1200px-India_Gate_in_New_Delhi_03-2016.jpg",
       },
       {
         name: "Noida",
-        landmark: "Sector 18 Market",
-        img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=85",
+        landmark: "DND Flyway",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/DND_flyway.jpg/1200px-DND_flyway.jpg",
       },
       {
         name: "Gurgaon",
@@ -74,7 +74,7 @@ const statesData = [
       {
         name: "Ayodhya",
         landmark: "Ram Mandir",
-        img: "https://images.unsplash.com/photo-1609766418204-94aae0ecfdfc?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Ram_Mandir_Ayodhya.jpg/1200px-Ram_Mandir_Ayodhya.jpg",
       },
     ],
   },
@@ -85,7 +85,7 @@ const statesData = [
       {
         name: "Kolkata",
         landmark: "Howrah Bridge",
-        img: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg/1200px-Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg",
       },
     ],
   },
@@ -96,7 +96,7 @@ const statesData = [
       {
         name: "Guwahati",
         landmark: "Kamakhya Temple",
-        img: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Kamakhya_Temple.jpg/1200px-Kamakhya_Temple.jpg",
       },
     ],
   },
@@ -107,12 +107,12 @@ const statesData = [
       {
         name: "Ranchi",
         landmark: "Hundru Falls",
-        img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Hundru_Falls.jpg/1200px-Hundru_Falls.jpg",
       },
       {
         name: "Jamshedpur",
         landmark: "Jubilee Park",
-        img: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Jubilee_Park_Jamshedpur.jpg/1200px-Jubilee_Park_Jamshedpur.jpg",
       },
     ],
   },
@@ -123,7 +123,7 @@ const statesData = [
       {
         name: "Bhubaneswar",
         landmark: "Lingaraj Temple",
-        img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=85",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Lingaraj_temple_Bhubaneswar.jpg/1200px-Lingaraj_temple_Bhubaneswar.jpg",
       },
     ],
   },
