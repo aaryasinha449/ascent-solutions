@@ -1,6 +1,6 @@
 import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import exhibitionTeamImg from "@/assets/about-exhibition-team.jpg";
 
 const highlights = [
