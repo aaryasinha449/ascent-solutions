@@ -34,19 +34,13 @@ const visionMission = [
 ];
 
 // Only 2 required images — teamExhibitionImg removed
-const photos = [
-  { src: officeEntranceImg,  alt: "Corporate Office — Pune" },
-  { src: ribbonImg,          alt: "GMV Elevator Inauguration Ceremony" },
-];
-
 function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className="relative w-full h-full">
-      {/* Shimmer skeleton shown until image loads */}
       {!loaded && (
         <div
-          className="absolute inset-0 rounded-none overflow-hidden"
+          className="absolute inset-0 overflow-hidden"
           style={{ background: "hsl(var(--muted)/0.5)" }}
         >
           <div
@@ -65,7 +59,7 @@ function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
         loading="lazy"
         decoding="async"
         onLoad={() => setLoaded(true)}
-        className="w-full h-full object-contain p-5"
+        className="w-full h-full object-contain p-4"
         style={{
           transition: "opacity 0.55s cubic-bezier(0.4,0,0.2,1)",
           opacity: loaded ? 1 : 0,
@@ -78,29 +72,6 @@ function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.1);
-  const [activeImg, setActiveImg] = useState(0);
-  const [fading, setFading] = useState(false);
-
-  // Smooth cross-fade auto-slider — 5 s interval, 600 ms fade
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setActiveImg((prev) => (prev + 1) % photos.length);
-        setFading(false);
-      }, 600);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goTo = (i: number) => {
-    if (i === activeImg) return;
-    setFading(true);
-    setTimeout(() => {
-      setActiveImg(i);
-      setFading(false);
-    }, 400);
-  };
 
   return (
     <section
