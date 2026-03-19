@@ -1,8 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
 import { useState, useEffect } from "react";
-import ribbonImg         from "@/assets/about-ribbon-cutting.jpg";
-import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
+import exhibitionTeamImg from "@/assets/about-exhibition-team.jpg";
 
 const highlights = [
   "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
