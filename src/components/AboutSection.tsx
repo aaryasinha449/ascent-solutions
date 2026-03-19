@@ -1,7 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
 import { useState, useEffect } from "react";
-import ribbonImg        from "@/assets/about-ribbon-cutting.jpg";
+import ribbonImg         from "@/assets/about-ribbon-cutting.jpg";
 import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
 import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
 
@@ -24,14 +24,14 @@ const visionMission = [
   {
     icon: Eye,
     title: "Our Vision",
-    desc: "To be a leading elevator solution provider in our regions — delivering high quality, affordable and innovative solutions to elevator companies.",
+    desc: "To be a leading elevator solution provider — delivering high quality, affordable and innovative solutions.",
     accentClass: "bg-primary/5 border-primary/20",
   },
   {
     icon: Target,
     title: "Our Mission",
-    desc: "To become a leading technology partner providing innovative and quality-oriented elevator solutions across West & North India.",
-    accentClass: "bg-muted border-border",
+    desc: "To become a leading technology partner providing quality-oriented elevator solutions across West & North India.",
+    accentClass: "bg-muted/60 border-border",
   },
 ];
 
@@ -42,19 +42,19 @@ const photos = [
 ];
 
 export default function AboutSection() {
-  const { ref, inView } = useInView(0.12);
+  const { ref, inView } = useInView(0.1);
   const [activeImg, setActiveImg] = useState(0);
   const [fading, setFading] = useState(false);
 
-  // Smooth cross-fade auto-slider
+  // Smooth cross-fade auto-slider — 5 s interval, 600 ms fade
   useEffect(() => {
     const timer = setInterval(() => {
       setFading(true);
       setTimeout(() => {
         setActiveImg((prev) => (prev + 1) % photos.length);
         setFading(false);
-      }, 400);
-    }, 4000);
+      }, 600);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -64,49 +64,92 @@ export default function AboutSection() {
     setTimeout(() => {
       setActiveImg(i);
       setFading(false);
-    }, 300);
+    }, 400);
   };
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[480px] h-[480px] bg-primary/4 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
+    <section
+      id="about"
+      className="py-24 md:py-32 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(160deg, hsl(var(--background)) 0%, hsl(var(--muted)/0.3) 50%, hsl(var(--background)) 100%)",
+      }}
+    >
+      {/* Decorative ambient orbs */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-20 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[560px] h-[560px] bg-primary/3 rounded-full -translate-y-1/3 translate-x-1/3 blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/4 rounded-full translate-y-1/2 -translate-x-1/3 blur-[70px] pointer-events-none" />
 
       <div
         ref={ref}
-        className={`container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`container mx-auto px-4 md:px-6 relative z-10 transition-all duration-800 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+        style={{ transitionDuration: "800ms" }}
       >
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* ── Left: Image slider ── */}
-          <div className="relative">
-            {/* Red accent bar */}
-            <div className="absolute -left-5 top-8 bottom-8 w-1.5 bg-gradient-primary rounded-full hidden md:block" />
+          {/* ════ LEFT: Premium Image Slider ════ */}
+          <div
+            className={`relative transition-all duration-900 ${
+              inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+            }`}
+            style={{ transitionDuration: "900ms", transitionDelay: "100ms" }}
+          >
+            {/* Vertical red accent bar */}
+            <div className="absolute -left-4 top-10 bottom-10 w-[3px] bg-gradient-to-b from-primary via-primary/60 to-transparent rounded-full hidden md:block" />
 
-            {/* Main image card */}
-            <div className="relative rounded-3xl overflow-hidden shadow-[var(--shadow-card-hover)] glow-red">
-              {/* Cross-fade image */}
+            {/* Glassmorphism image card */}
+            <div
+              className="relative rounded-3xl overflow-hidden"
+              style={{
+                boxShadow: "0 20px 60px -10px rgba(0,0,0,0.18), 0 4px 16px 0 rgba(0,0,0,0.08)",
+                border: "1px solid rgba(255,255,255,0.5)",
+              }}
+            >
+              {/* Image with cross-fade */}
               <div className="relative overflow-hidden" style={{ height: "520px" }}>
                 <img
+                  key={activeImg}
                   src={photos[activeImg].src}
                   alt={photos[activeImg].label}
-                  className="w-full h-full object-contain bg-muted/30 transition-opacity duration-500"
-                  style={{ opacity: fading ? 0 : 1 }}
+                  className="w-full h-full object-contain bg-muted/20"
+                  style={{
+                    transition: "opacity 0.6s cubic-bezier(0.4,0,0.2,1)",
+                    opacity: fading ? 0 : 1,
+                    padding: "1.25rem",
+                  }}
                 />
-                {/* Subtle bottom gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
+
+                {/* Overlay gradient for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
                 {/* Caption pill */}
-                <div className="absolute bottom-[72px] left-5 right-5">
-                  <span className="inline-block bg-primary/90 backdrop-blur-sm text-primary-foreground font-body text-xs px-3 py-1.5 rounded-full shadow-sm">
+                <div className="absolute bottom-[78px] left-5 right-5">
+                  <span
+                    className="inline-block text-primary-foreground font-body text-xs px-3.5 py-1.5 rounded-full shadow-md"
+                    style={{
+                      background: "hsl(var(--primary)/0.88)",
+                      backdropFilter: "blur(8px)",
+                      WebkitBackdropFilter: "blur(8px)",
+                    }}
+                  >
                     {photos[activeImg].label}
                   </span>
                 </div>
 
-                {/* Experience badge */}
-                <div className="absolute bottom-5 left-5 flex items-center gap-3 bg-white/95 backdrop-blur rounded-2xl px-4 py-3 shadow-[var(--shadow-card)]">
+                {/* Experience badge — glassmorphism */}
+                <div
+                  className="absolute bottom-5 left-5 flex items-center gap-3 rounded-2xl px-4 py-3"
+                  style={{
+                    background: "rgba(255,255,255,0.92)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+                    border: "1px solid rgba(255,255,255,0.7)",
+                  }}
+                >
                   <div className="w-11 h-11 bg-gradient-primary rounded-xl flex items-center justify-center shadow-[var(--shadow-button)]">
                     <Award className="text-primary-foreground" size={20} />
                   </div>
@@ -123,11 +166,15 @@ export default function AboutSection() {
                       key={i}
                       onClick={() => goTo(i)}
                       aria-label={`Go to slide ${i + 1}`}
-                      className={`rounded-full transition-all duration-400 ${
-                        i === activeImg
-                          ? "w-6 h-2.5 bg-primary shadow-sm"
-                          : "w-2.5 h-2.5 bg-white/60 hover:bg-white/90"
-                      }`}
+                      className="rounded-full transition-all duration-500"
+                      style={{
+                        width: i === activeImg ? "24px" : "10px",
+                        height: "10px",
+                        background: i === activeImg
+                          ? "hsl(var(--primary))"
+                          : "rgba(255,255,255,0.55)",
+                        boxShadow: i === activeImg ? "0 0 8px hsl(var(--primary)/0.5)" : "none",
+                      }}
                     />
                   ))}
                 </div>
@@ -135,7 +182,16 @@ export default function AboutSection() {
             </div>
 
             {/* Floating "Est. 2015" card */}
-            <div className="absolute -top-5 -right-5 md:-right-10 bg-background border border-border rounded-2xl p-4 shadow-[var(--shadow-card-hover)] hidden md:block animate-float">
+            <div
+              className="absolute -top-5 -right-5 md:-right-10 rounded-2xl p-4 hidden md:block animate-float"
+              style={{
+                background: "rgba(255,255,255,0.92)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+                border: "1px solid rgba(255,255,255,0.7)",
+              }}
+            >
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center">
                   <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse block" />
@@ -148,56 +204,75 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* ── Right: Content ── */}
-          <div className="space-y-6">
+          {/* ════ RIGHT: Content ════ */}
+          <div
+            className={`space-y-6 transition-all duration-900 ${
+              inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            }`}
+            style={{ transitionDuration: "900ms", transitionDelay: "200ms" }}
+          >
+            {/* Section label + heading */}
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="red-line" />
-                <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">About Eletech</span>
+                <span className="font-body font-semibold text-primary text-sm uppercase tracking-widest">
+                  About Eletech
+                </span>
               </div>
               <h2 className="section-heading mb-4">
                 India's Trusted Partner in{" "}
                 <span className="gradient-text">Elevator Solutions</span>
               </h2>
-              <p className="font-body text-muted-foreground leading-relaxed text-base">
-                Eletech Trading Corporation was established in 2015 by a team of successful professionals
+              <p className="font-body text-muted-foreground leading-[1.8] text-base">
+                Eletech Trading Corporation was established in{" "}
+                <span className="font-semibold text-foreground">2015</span> by a team of successful professionals
                 with rich corporate experience in vertical transportation. We enable you to design,
                 specify, procure and execute exceptional elevator solutions — partnering in your success
                 with efficient, cost-effective vertical transportation.
               </p>
             </div>
 
-            <p className="font-body text-muted-foreground leading-relaxed">
-              Our strength lies in strong ethical values and deep industry knowledge, combined with
-              practical leadership experience and domain expertise. We supply Safe, Reliable &amp;
-              Energy Efficient components meeting global safety standards — emerging as a premier
-              elevator components supplier in West &amp; North India.
+            <p className="font-body text-muted-foreground leading-[1.8]">
+              Our strength lies in{" "}
+              <span className="font-semibold text-foreground">strong ethical values</span> and deep
+              industry knowledge, combined with practical leadership experience and domain expertise.
+              We supply Safe, Reliable &amp; Energy Efficient components meeting global safety
+              standards — emerging as a premier elevator components supplier in{" "}
+              <span className="font-semibold text-foreground">West &amp; North India</span>.
             </p>
 
-            {/* Subtle red divider */}
-            <div className="h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent rounded-full" />
+            {/* Elegant red divider */}
+            <div className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-gradient-to-r from-primary/40 via-primary/15 to-transparent rounded-full" />
+              <div className="w-1.5 h-1.5 bg-primary rounded-full opacity-60" />
+            </div>
 
-            {/* Vision & Mission */}
+            {/* Vision & Mission — refined glassmorphism cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {visionMission.map(({ icon: Icon, title, desc, accentClass }, i) => (
-                <div key={i} className={`p-4 rounded-2xl border ${accentClass} transition-shadow duration-200 hover:shadow-[var(--shadow-card)]`}>
+                <div
+                  key={i}
+                  className={`p-4 rounded-2xl border ${accentClass} transition-all duration-300 hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5`}
+                >
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className="text-primary" size={16} />
+                    <div className="w-7 h-7 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Icon className="text-primary" size={14} />
+                    </div>
                     <p className="font-heading font-bold text-sm text-foreground">{title}</p>
                   </div>
-                  <p className="font-body text-xs text-muted-foreground leading-snug">{desc}</p>
+                  <p className="font-body text-xs text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
 
             {/* Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {highlights.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-2.5 p-3 rounded-xl bg-section-alt border border-border/60 hover:border-primary/30 hover:bg-primary/3 transition-all duration-200"
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-muted/40 border border-border/50 hover:border-primary/25 hover:bg-primary/3 transition-all duration-200"
                 >
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={15} />
+                  <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={14} />
                   <span className="font-body text-xs text-foreground leading-snug">{item}</span>
                 </div>
               ))}
@@ -208,9 +283,9 @@ export default function AboutSection() {
               {values.map(({ icon: Icon, title, desc }, i) => (
                 <div
                   key={i}
-                  className="bg-background rounded-2xl p-4 border border-border shadow-[var(--shadow-card)] hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group"
+            className="rounded-2xl p-4 border border-border/60 bg-background/70 backdrop-blur-sm hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
                 >
-                  <div className="w-10 h-10 bg-primary/10 group-hover:bg-primary/20 rounded-xl flex items-center justify-center mb-3 transition-colors duration-200">
+                  <div className="w-10 h-10 bg-primary/10 group-hover:bg-primary/18 rounded-xl flex items-center justify-center mb-3 transition-colors duration-200">
                     <Icon className="text-primary" size={18} />
                   </div>
                   <p className="font-heading font-bold text-sm text-foreground mb-1">{title}</p>
@@ -219,9 +294,10 @@ export default function AboutSection() {
               ))}
             </div>
 
+            {/* CTA */}
             <button
               onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 bg-gradient-primary text-primary-foreground font-heading font-bold text-sm px-6 py-3.5 rounded-xl shadow-[var(--shadow-button)] hover:opacity-90 hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center gap-2 bg-gradient-primary text-primary-foreground font-heading font-bold text-sm px-6 py-3.5 rounded-xl shadow-[var(--shadow-button)] hover:opacity-90 hover:scale-[1.03] transition-all duration-300"
             >
               Get a Free Consultation <ArrowRight size={15} />
             </button>
