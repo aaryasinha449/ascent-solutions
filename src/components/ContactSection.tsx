@@ -279,14 +279,19 @@ export default function ContactSection() {
                       />
                     </div>
 
+                    {error && (
+                      <p className="font-body text-sm text-destructive text-center">{error}</p>
+                    )}
+
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-primary text-primary-foreground shadow-button hover:opacity-90 font-heading font-bold h-13 rounded-xl transition-all duration-200 hover:scale-[1.01] text-base"
+                      disabled={loading}
+                      className="w-full bg-gradient-primary text-primary-foreground shadow-button hover:opacity-90 font-heading font-bold h-13 rounded-xl transition-all duration-200 hover:scale-[1.01] text-base disabled:opacity-70"
                       style={{ height: "52px" }}
                     >
                       <Send size={16} className="mr-2" />
-                      Send My Request
-                      <ArrowRight size={16} className="ml-2" />
+                      {loading ? "Sending..." : "Send My Request"}
+                      {!loading && <ArrowRight size={16} className="ml-2" />}
                     </Button>
 
                     <p className="font-body text-xs text-muted-foreground text-center">
