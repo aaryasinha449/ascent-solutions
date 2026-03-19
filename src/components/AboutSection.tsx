@@ -47,6 +47,14 @@ export default function AboutSection() {
     { src: ribbonImg,          label: "GMV Elevator Inauguration Ceremony" },
   ];
 
+  // Auto-advance every 3.5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImg((prev) => (prev + 1) % photos.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [photos.length]);
+
   return (
     <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative background */}
