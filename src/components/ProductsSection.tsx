@@ -73,7 +73,7 @@ export default function ProductsSection() {
         className={`container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="red-line" />
             <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Our Products</span>
@@ -89,36 +89,38 @@ export default function ProductsSection() {
         </div>
 
         {/* Product grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {products.map(({ image, name, desc }, i) => (
             <div
               key={i}
-              className="group bg-background rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 border border-border hover:border-primary/30 transition-all duration-300 flex flex-col animate-fade-in"
+              className="group bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-350 flex flex-col"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden bg-muted/50 flex items-center justify-center" style={{ height: "240px" }}>
+              {/* Image area */}
+              <div className="relative overflow-hidden bg-muted/40" style={{ height: "260px" }}>
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.06]"
                   loading="lazy"
                 />
                 {/* Top accent bar on hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-2xl" />
+                {/* Subtle bottom gradient */}
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
 
               {/* Content */}
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-heading font-bold text-base text-foreground group-hover:text-primary transition-colors duration-200 leading-snug mb-2">
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="font-heading font-bold text-[15px] text-foreground group-hover:text-primary transition-colors duration-200 leading-snug mb-2">
                   {name}
                 </h3>
-                <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3 group-hover:w-14 transition-all duration-300" />
+                <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3 group-hover:w-16 transition-all duration-300" />
                 <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
 
                 <button
                   onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group/btn mt-4 flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-button"
+                  className="group/btn mt-5 flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-button"
                 >
                   Request Quote
                   <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
