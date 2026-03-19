@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
+import { useState } from "react";
 
 import gmvPowerUnit    from "@/assets/prod-gmv-powerunit-new.jpg";
 import gmvControlPanel from "@/assets/prod-gmv-controlpanel-new.jpg";
@@ -58,6 +59,40 @@ const products = [
     desc: "Space-saving glass and aluminium residential lift — smooth, safe, and smart-home ready for modern interiors.",
   },
 ];
+
+/** Shimmer skeleton + lazy image with no-jump loading */
+function ProductImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative w-full h-full">
+      {/* Shimmer shown until image loaded */}
+      {!loaded && (
+        <div
+          className="absolute inset-0"
+          style={{ background: "hsl(var(--muted)/0.45)" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, hsl(var(--muted)/0.75) 50%, transparent 100%)",
+              animation: "shimmer 1.6s infinite",
+            }}
+          />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className="absolute inset-0 w-full h-full object-contain p-6 transition-all duration-700 ease-out group-hover:scale-[1.04]"
+        style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.5s ease, transform 0.7s ease" }}
+      />
+    </div>
+  );
+}
 
 export default function ProductsSection() {
   const { ref, inView } = useInView(0.06);
@@ -122,22 +157,17 @@ export default function ProductsSection() {
               {/* Accent bar — slides in from left on hover */}
               <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-primary via-primary/70 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-20 rounded-t-2xl" />
 
-              {/* Image area */}
+              {/* Image area — fixed height prevents layout shift */}
               <div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden flex-shrink-0"
                 style={{
                   height: "260px",
                   background: "linear-gradient(145deg, hsl(var(--muted)/0.35) 0%, hsl(var(--muted)/0.15) 100%)",
                 }}
               >
-                <img
-                  src={image}
-                  alt={name}
-                  loading="lazy"
-                  className="w-full h-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
+                <ProductImage src={image} alt={name} />
                 {/* Soft bottom vignette */}
-                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/60 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/50 to-transparent pointer-events-none" />
               </div>
 
               {/* Content */}

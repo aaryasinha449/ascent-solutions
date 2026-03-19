@@ -2,7 +2,6 @@ import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
 import { useState, useEffect } from "react";
 import ribbonImg         from "@/assets/about-ribbon-cutting.jpg";
-import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
 import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
 
 const highlights = [
@@ -35,11 +34,48 @@ const visionMission = [
   },
 ];
 
+// Only 2 required images — teamExhibitionImg removed
 const photos = [
-  { src: teamExhibitionImg,  label: "Eletech Team at National Exhibition" },
-  { src: officeEntranceImg,  label: "Corporate Office — Pune" },
-  { src: ribbonImg,          label: "GMV Elevator Inauguration Ceremony" },
+  { src: officeEntranceImg,  alt: "Corporate Office — Pune" },
+  { src: ribbonImg,          alt: "GMV Elevator Inauguration Ceremony" },
 ];
+
+function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative w-full h-full">
+      {/* Shimmer skeleton shown until image loads */}
+      {!loaded && (
+        <div
+          className="absolute inset-0 rounded-none overflow-hidden"
+          style={{ background: "hsl(var(--muted)/0.5)" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, hsl(var(--muted)/0.8) 50%, transparent 100%)",
+              animation: "shimmer 1.6s infinite",
+            }}
+          />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className="w-full h-full object-contain p-5"
+        style={{
+          transition: "opacity 0.55s cubic-bezier(0.4,0,0.2,1)",
+          opacity: loaded ? 1 : 0,
+          display: "block",
+        }}
+      />
+    </div>
+  );
+}
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.1);
@@ -108,36 +144,24 @@ export default function AboutSection() {
                 border: "1px solid rgba(255,255,255,0.5)",
               }}
             >
-              {/* Image with cross-fade */}
-              <div className="relative overflow-hidden" style={{ height: "520px" }}>
-                <img
-                  key={activeImg}
-                  src={photos[activeImg].src}
-                  alt={photos[activeImg].label}
-                  className="w-full h-full object-contain bg-muted/20"
-                  style={{
-                    transition: "opacity 0.6s cubic-bezier(0.4,0,0.2,1)",
-                    opacity: fading ? 0 : 1,
-                    padding: "1.25rem",
-                  }}
-                />
-
-                {/* Overlay gradient for readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-
-                {/* Caption pill */}
-                <div className="absolute bottom-[78px] left-5 right-5">
-                  <span
-                    className="inline-block text-primary-foreground font-body text-xs px-3.5 py-1.5 rounded-full shadow-md"
-                    style={{
-                      background: "hsl(var(--primary)/0.88)",
-                      backdropFilter: "blur(8px)",
-                      WebkitBackdropFilter: "blur(8px)",
-                    }}
-                  >
-                    {photos[activeImg].label}
-                  </span>
+              {/* Fixed-height container — prevents layout shift */}
+              <div
+                className="relative overflow-hidden"
+                style={{ height: "520px", background: "hsl(var(--muted)/0.25)" }}
+              >
+                {/* Cross-fade image — no caption label */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: fading ? 0 : 1 }}
+                >
+                  <ImgWithSkeleton
+                    src={photos[activeImg].src}
+                    alt={photos[activeImg].alt}
+                  />
                 </div>
+
+                {/* Overlay gradient for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
 
                 {/* Experience badge — glassmorphism */}
                 <div
@@ -283,7 +307,7 @@ export default function AboutSection() {
               {values.map(({ icon: Icon, title, desc }, i) => (
                 <div
                   key={i}
-            className="rounded-2xl p-4 border border-border/60 bg-background/70 backdrop-blur-sm hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
+                  className="rounded-2xl p-4 border border-border/60 bg-background/70 backdrop-blur-sm hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 transition-all duration-300 group shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
                 >
                   <div className="w-10 h-10 bg-primary/10 group-hover:bg-primary/18 rounded-xl flex items-center justify-center mb-3 transition-colors duration-200">
                     <Icon className="text-primary" size={18} />

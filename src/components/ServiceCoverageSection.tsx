@@ -122,12 +122,46 @@ const coverageStats = [
   { icon: PhoneCall, value: "24/7",  label: "Emergency Support" },
 ];
 
-const regionMeta: Record<string, { pill: string; dot: string; label: string; accent: string }> = {
-  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",    dot: "bg-blue-500",    label: "North India", accent: "#3b82f6" },
-  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary",    label: "West India",  accent: "hsl(var(--primary))" },
-  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500",   label: "East India",  accent: "#f59e0b" },
-  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600",   label: "South India", accent: "#16a34a" },
+const regionMeta: Record<string, { pill: string; dot: string; label: string }> = {
+  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",    dot: "bg-blue-500",  label: "North India" },
+  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary",  label: "West India"  },
+  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500", label: "East India"  },
+  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600", label: "South India" },
 };
+
+/** City card image with shimmer skeleton */
+function CityImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative w-full h-full">
+      {/* Shimmer placeholder */}
+      {!loaded && (
+        <div
+          className="absolute inset-0"
+          style={{ background: "hsl(var(--muted)/0.5)" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, hsl(var(--muted)/0.8) 50%, transparent 100%)",
+              animation: "shimmer 1.6s infinite",
+            }}
+          />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+        style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.5s ease, transform 0.7s ease" }}
+      />
+    </div>
+  );
+}
 
 export default function ServiceCoverageSection() {
   const [activeState, setActiveState] = useState(statesData[0].name);
@@ -278,7 +312,7 @@ export default function ServiceCoverageSection() {
               </div>
             </div>
 
-            {/* City grid */}
+            {/* City grid — fixed height prevents layout shift */}
             <div
               key={activeState}
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 animate-fade-in"
@@ -302,17 +336,12 @@ export default function ServiceCoverageSection() {
                   {/* Top accent bar on hover */}
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left z-20" />
 
-                  {/* Image */}
-                  <div className="relative overflow-hidden" style={{ height: "220px" }}>
-                    <img
-                      src={city.img}
-                      alt={city.name}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      loading="lazy"
-                    />
+                  {/* Image — fixed height so skeleton & image occupy same space */}
+                  <div className="relative overflow-hidden" style={{ height: "220px", background: "hsl(var(--muted)/0.4)" }}>
+                    <CityImage src={city.img} alt={city.name} />
+
                     {/* Multi-layer gradient for depth */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                     {/* Active badge */}
                     <div
@@ -323,8 +352,8 @@ export default function ServiceCoverageSection() {
                       <span className="font-body text-white text-[10px] font-semibold tracking-wide">Active</span>
                     </div>
 
-                    {/* City name — bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 px-4 pb-5 pt-10 z-10">
+                    {/* City name only — no extra labels */}
+                    <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-10 z-10">
                       <div className="flex items-center gap-2">
                         <div className="w-5 h-5 bg-primary/90 rounded-full flex items-center justify-center flex-shrink-0">
                           <MapPin size={10} className="text-primary-foreground" />
@@ -340,9 +369,7 @@ export default function ServiceCoverageSection() {
             {/* Bottom CTA */}
             <div
               className="mt-8 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden"
-              style={{
-                background: "hsl(var(--foreground))",
-              }}
+              style={{ background: "hsl(var(--foreground))" }}
             >
               <div className="absolute inset-0 bg-dot-pattern-dark opacity-20 pointer-events-none" />
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl pointer-events-none" />
