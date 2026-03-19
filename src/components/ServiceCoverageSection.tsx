@@ -116,17 +116,17 @@ const statesData = [
 ];
 
 const coverageStats = [
-  { icon: MapPin,     value: "9",     label: "States Covered" },
-  { icon: Users,      value: "15+",   label: "Cities Served" },
-  { icon: Clock,      value: "4 hrs", label: "Avg Response Time" },
-  { icon: PhoneCall,  value: "24/7",  label: "Emergency Support" },
+  { icon: MapPin,    value: "9",     label: "States Covered" },
+  { icon: Users,     value: "15+",   label: "Cities Served" },
+  { icon: Clock,     value: "4 hrs", label: "Avg Response Time" },
+  { icon: PhoneCall, value: "24/7",  label: "Emergency Support" },
 ];
 
-const regionMeta: Record<string, { pill: string; dot: string; label: string }> = {
-  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",   dot: "bg-blue-500",  label: "North India" },
-  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary", label: "West India"  },
-  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500", label: "East India" },
-  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600", label: "South India"},
+const regionMeta: Record<string, { pill: string; dot: string; label: string; accent: string }> = {
+  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",    dot: "bg-blue-500",    label: "North India", accent: "#3b82f6" },
+  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary",    label: "West India",  accent: "hsl(var(--primary))" },
+  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500",   label: "East India",  accent: "#f59e0b" },
+  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600",   label: "South India", accent: "#16a34a" },
 };
 
 export default function ServiceCoverageSection() {
@@ -136,11 +136,13 @@ export default function ServiceCoverageSection() {
   const currentState = statesData.find((s) => s.name === activeState) ?? statesData[0];
 
   return (
-    <section id="coverage" className="py-24 md:py-32 bg-section-alt relative overflow-hidden">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/3 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none" />
+    <section id="coverage" className="py-24 md:py-32 relative overflow-hidden"
+      style={{ background: "linear-gradient(160deg, hsl(var(--background)) 0%, hsl(var(--muted)/0.4) 50%, hsl(var(--background)) 100%)" }}
+    >
+      {/* Background layers */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[560px] h-[560px] bg-primary/4 rounded-full -translate-x-1/2 -translate-y-1/3 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/3 rounded-full translate-x-1/3 translate-y-1/3 blur-[80px] pointer-events-none" />
 
       <div
         ref={ref}
@@ -148,7 +150,11 @@ export default function ServiceCoverageSection() {
       >
         {/* ── Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="badge-primary mb-4">Pan-India Presence</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="red-line" />
+            <span className="font-body font-semibold text-primary text-sm uppercase tracking-widest">Pan-India Presence</span>
+            <span className="red-line" />
+          </div>
           <h2 className="section-heading mb-4">
             Service Coverage <span className="gradient-text">Across India</span>
           </h2>
@@ -163,8 +169,19 @@ export default function ServiceCoverageSection() {
           {coverageStats.map(({ icon: Icon, value, label }, i) => (
             <div
               key={i}
-              className="bg-background border border-border rounded-2xl p-5 text-center group hover:-translate-y-1 transition-all duration-300 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"
+              className="group relative overflow-hidden rounded-2xl p-5 text-center hover:-translate-y-1 transition-all duration-300"
+              style={{
+                background: "rgba(255,255,255,0.72)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.55)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
+              }}
             >
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ boxShadow: "inset 0 0 0 1.5px hsl(var(--primary)/0.18)" }}
+              />
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary transition-colors duration-300">
                 <Icon className="text-primary group-hover:text-primary-foreground transition-colors duration-300" size={22} />
               </div>
@@ -175,19 +192,28 @@ export default function ServiceCoverageSection() {
         </div>
 
         {/* ── Main interactive panel ── */}
-        <div className="grid lg:grid-cols-[300px_1fr] gap-8 items-start">
+        <div className="grid lg:grid-cols-[280px_1fr] gap-8 items-start">
 
           {/* ── Left: pill-style state tabs ── */}
-          <div className="bg-background border border-border rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
+          <div
+            className="rounded-3xl overflow-hidden"
+            style={{
+              background: "rgba(255,255,255,0.80)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.6)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.08)",
+            }}
+          >
             {/* Header bar */}
-            <div className="bg-gradient-primary px-5 py-4 relative overflow-hidden">
+            <div className="bg-gradient-primary px-5 py-4 relative overflow-hidden rounded-t-3xl">
               <div className="absolute inset-0 bg-dot-pattern-dark opacity-20" />
               <p className="relative font-heading font-bold text-base text-primary-foreground">Select a State</p>
               <p className="relative font-body text-primary-foreground/70 text-xs mt-0.5">Click to see cities &amp; coverage</p>
             </div>
 
             {/* State list */}
-            <div className="divide-y divide-border/60">
+            <div className="divide-y divide-border/40 p-2">
               {statesData.map((state) => {
                 const isActive = state.name === activeState;
                 const meta = regionMeta[state.region] ?? regionMeta.West;
@@ -195,30 +221,31 @@ export default function ServiceCoverageSection() {
                   <button
                     key={state.name}
                     onClick={() => setActiveState(state.name)}
-                    className={`w-full flex items-center justify-between px-5 py-3.5 text-left transition-all duration-200 ${
+                    className={`w-full flex items-center justify-between px-4 py-3 text-left rounded-xl transition-all duration-250 ${
                       isActive
-                        ? "bg-primary/6 border-l-[3px] border-l-primary"
-                        : "hover:bg-section-alt border-l-[3px] border-l-transparent"
+                        ? "bg-primary text-primary-foreground shadow-[var(--shadow-button)]"
+                        : "hover:bg-primary/6 text-foreground"
                     }`}
+                    style={{ marginBottom: "2px" }}
                   >
                     <div className="flex items-center gap-3">
-                      <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${meta.dot}`} />
+                      <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${isActive ? "bg-primary-foreground/80" : meta.dot}`} />
                       <div>
-                        <p className={`font-heading font-bold text-sm leading-tight ${isActive ? "text-primary" : "text-foreground"}`}>
+                        <p className={`font-heading font-bold text-sm leading-tight ${isActive ? "text-primary-foreground" : "text-foreground"}`}>
                           {state.name}
                         </p>
-                        <span className={`inline-block text-[10px] font-body font-semibold px-2 py-0.5 rounded-full border mt-0.5 ${meta.pill}`}>
+                        <span className={`inline-block text-[10px] font-body font-semibold px-2 py-0.5 rounded-full border mt-0.5 ${isActive ? "bg-primary-foreground/20 border-primary-foreground/30 text-primary-foreground" : meta.pill}`}>
                           {meta.label}
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <span className="font-body text-xs text-muted-foreground">
+                      <span className={`font-body text-xs ${isActive ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                         {state.cities.length} {state.cities.length === 1 ? "city" : "cities"}
                       </span>
                       <ChevronRight
                         size={14}
-                        className={`transition-transform duration-200 ${isActive ? "text-primary rotate-90" : "text-muted-foreground"}`}
+                        className={`transition-transform duration-200 ${isActive ? "text-primary-foreground rotate-90" : "text-muted-foreground"}`}
                       />
                     </div>
                   </button>
@@ -236,7 +263,14 @@ export default function ServiceCoverageSection() {
               <span className={`inline-block text-xs font-body font-semibold px-3 py-1 rounded-full border ${regionMeta[currentState.region]?.pill}`}>
                 {regionMeta[currentState.region]?.label}
               </span>
-              <div className="flex items-center gap-1.5 ml-auto bg-green-50 border border-green-200 rounded-full px-3 py-1">
+              <div className="flex items-center gap-1.5 ml-auto"
+                style={{
+                  background: "rgba(220,252,231,0.9)",
+                  border: "1px solid rgba(134,239,172,0.6)",
+                  borderRadius: "999px",
+                  padding: "4px 12px",
+                }}
+              >
                 <CheckCircle size={12} className="text-green-600" />
                 <span className="font-body text-xs font-semibold text-green-700">
                   {currentState.cities.length} {currentState.cities.length === 1 ? "City" : "Cities"} Actively Served
@@ -244,7 +278,7 @@ export default function ServiceCoverageSection() {
               </div>
             </div>
 
-            {/* City grid — key forces re-mount animation on state change */}
+            {/* City grid */}
             <div
               key={activeState}
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 animate-fade-in"
@@ -252,34 +286,50 @@ export default function ServiceCoverageSection() {
               {currentState.cities.map((city, i) => (
                 <div
                   key={city.name}
-                  className="group relative bg-background border border-border rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-2 transition-all duration-350"
-                  style={{ animationDelay: `${i * 80}ms` }}
+                  className="group relative rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-350 cursor-pointer"
+                  style={{
+                    animationDelay: `${i * 80}ms`,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)",
+                    border: "1px solid rgba(255,255,255,0.5)",
+                  }}
                 >
+                  {/* Hover shadow upgrade */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none z-10"
+                    style={{ boxShadow: "0 16px 48px rgba(0,0,0,0.18), 0 0 0 1.5px hsl(var(--primary)/0.22)" }}
+                  />
+
+                  {/* Top accent bar on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left z-20" />
+
                   {/* Image */}
-                  <div className="relative overflow-hidden" style={{ height: "190px" }}>
+                  <div className="relative overflow-hidden" style={{ height: "220px" }}>
                     <img
                       src={city.img}
                       alt={city.name}
-                      className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       loading="lazy"
                     />
-                    {/* Gradient overlay for text legibility */}
+                    {/* Multi-layer gradient for depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent" />
 
                     {/* Active badge */}
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/20">
+                    <div
+                      className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-2.5 py-1 border border-white/20 z-10"
+                      style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+                    >
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                       <span className="font-body text-white text-[10px] font-semibold tracking-wide">Active</span>
                     </div>
 
-                    {/* Top accent line on hover */}
-                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
-
-                    {/* City name pinned to bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-8 bg-gradient-to-t from-black/70 to-transparent">
+                    {/* City name — bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 px-4 pb-5 pt-10 z-10">
                       <div className="flex items-center gap-2">
-                        <MapPin size={13} className="text-primary flex-shrink-0" />
-                        <p className="font-heading font-bold text-white text-base leading-tight">{city.name}</p>
+                        <div className="w-5 h-5 bg-primary/90 rounded-full flex items-center justify-center flex-shrink-0">
+                          <MapPin size={10} className="text-primary-foreground" />
+                        </div>
+                        <p className="font-heading font-bold text-white text-base leading-tight drop-shadow-sm">{city.name}</p>
                       </div>
                     </div>
                   </div>
@@ -288,8 +338,14 @@ export default function ServiceCoverageSection() {
             </div>
 
             {/* Bottom CTA */}
-            <div className="mt-8 bg-foreground rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
-              <div className="absolute inset-0 bg-dot-pattern-dark opacity-30" />
+            <div
+              className="mt-8 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden"
+              style={{
+                background: "hsl(var(--foreground))",
+              }}
+            >
+              <div className="absolute inset-0 bg-dot-pattern-dark opacity-20 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl pointer-events-none" />
               <div className="relative z-10 text-center md:text-left">
                 <p className="font-heading font-bold text-lg text-white">🇮🇳 Don't see your city?</p>
                 <p className="font-body text-white/65 text-sm mt-1">
@@ -298,7 +354,7 @@ export default function ServiceCoverageSection() {
               </div>
               <button
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="relative z-10 flex-shrink-0 flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-bold text-sm px-6 py-3 rounded-xl shadow-[var(--shadow-button)] transition-all duration-200 whitespace-nowrap hover:scale-105"
+                className="relative z-10 flex-shrink-0 flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-bold text-sm px-6 py-3 rounded-xl transition-all duration-200 whitespace-nowrap hover:scale-105 hover:shadow-[var(--shadow-button)]"
               >
                 <PhoneCall size={15} /> Check Your Coverage
               </button>
