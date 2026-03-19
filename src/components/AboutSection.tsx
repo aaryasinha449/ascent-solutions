@@ -1,6 +1,6 @@
 import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ribbonImg from "@/assets/about-ribbon-cutting.jpg";
 import exhibitionImg from "@/assets/about-exhibition-team.jpg";
 import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
