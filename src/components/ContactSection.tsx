@@ -55,12 +55,39 @@ const contactInfo = [
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const { ref, inView } = useInView(0.08);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("https://formspree.io/f/mzdjoewd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          _subject: "New Quote Request - Eletech Website",
+          "Full Name": form.name,
+          "Phone Number": form.phone,
+          "Email Address": form.email,
+          "Service Required": form.service,
+          "Message": form.message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -167,9 +194,9 @@ export default function ContactSection() {
                     <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-green-200 shadow-sm">
                       <CheckCircle2 className="text-green-600" size={36} />
                     </div>
-                    <h3 className="font-heading font-bold text-2xl text-foreground mb-2">Message Sent!</h3>
+                    <h3 className="font-heading font-bold text-2xl text-foreground mb-2">Request Submitted!</h3>
                     <p className="font-body text-muted-foreground text-sm leading-relaxed mb-6 max-w-sm mx-auto">
-                      Thank you for contacting Eletech. Our team will review your request and get back to you within 24 hours.
+                      Your request has been submitted successfully. Our team will get back to you within 24 hours.
                     </p>
                     <Button
                       onClick={() => setSubmitted(false)}
@@ -252,14 +279,19 @@ export default function ContactSection() {
                       />
                     </div>
 
+                    {error && (
+                      <p className="font-body text-sm text-destructive text-center">{error}</p>
+                    )}
+
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-primary text-primary-foreground shadow-button hover:opacity-90 font-heading font-bold h-13 rounded-xl transition-all duration-200 hover:scale-[1.01] text-base"
+                      disabled={loading}
+                      className="w-full bg-gradient-primary text-primary-foreground shadow-button hover:opacity-90 font-heading font-bold h-13 rounded-xl transition-all duration-200 hover:scale-[1.01] text-base disabled:opacity-70"
                       style={{ height: "52px" }}
                     >
                       <Send size={16} className="mr-2" />
-                      Send My Request
-                      <ArrowRight size={16} className="ml-2" />
+                      {loading ? "Sending..." : "Send My Request"}
+                      {!loading && <ArrowRight size={16} className="ml-2" />}
                     </Button>
 
                     <p className="font-body text-xs text-muted-foreground text-center">
