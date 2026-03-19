@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from "lucide-react";
+import eletechLogo from "@/assets/eletech-logo.jpg";
 
 const footerLinks = {
   "Quick Links": [
@@ -57,8 +58,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 bg-gradient-primary rounded-xl flex items-center justify-center shadow-button">
-                <span className="text-white font-heading font-black text-lg">E</span>
+              <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-white/10">
+                <img src={eletechLogo} alt="Eletech Trading Corporation" className="w-full h-full object-contain bg-white p-0.5" />
               </div>
               <div>
                 <p className="font-heading font-bold text-white text-base leading-tight">Eletech</p>
@@ -68,7 +69,7 @@ export default function Footer() {
 
             <p className="font-body text-white/60 text-sm leading-relaxed mb-6 max-w-xs">
               India's trusted partner for premium elevator components and lift solutions.
-              Authorized distributor of GMV, ARKEL, Tectronics, Marazzi &amp; Shiv Shakti since 2015.
+              Authorized distributor of GMV, Shiv Shakti, Techtronics, Arkel &amp; Marazzi since 2015.
             </p>
 
             {/* ── Office 1: Pune ── */}

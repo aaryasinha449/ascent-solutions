@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { ArrowRight, Package, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 import gmvPowerUnit     from "@/assets/prod-gmv-powerunit-new.jpg";
@@ -12,142 +11,62 @@ import glassLiftNew     from "@/assets/prod-glass-lift-new.jpg";
 import homeLiftNew      from "@/assets/prod-home-lift-new.jpg";
 import landingDoorNew   from "@/assets/prod-landing-door-new.jpg";
 
-const categories = [
+const products = [
   {
-    id: "hydraulic",
-    label: "Hydraulic Systems",
-    icon: "⚙️",
-    brand: "GMV — Made in Italy",
-    desc: "World No.1 in Hydraulic Elevator Technology",
-    color: "border-primary/30 bg-primary/5",
-    products: [
-      {
-        image: gmvPowerUnit,
-        name: "GMV Hydraulic Power Unit",
-        badge: "GMV Italy",
-        badgeColor: "bg-primary text-primary-foreground",
-        desc: "World No.1 hydraulic power unit by GMV, Made in Italy since 1958. Compact design with energy-saving variable-speed motor for smooth silent operation.",
-        specs: ["Made in Italy", "Energy-saving VSM", "Compact design", "10-year warranty"],
-      },
-      {
-        image: gmvControlPanel,
-        name: "GMV Hydraulic Control Panel",
-        badge: "GMV",
-        badgeColor: "bg-primary text-primary-foreground",
-        desc: "Factory-assembled GMV electrical control panel — fully wired, pre-tested, and compliant with EN81 safety standards for hydraulic elevators.",
-        specs: ["EN81 compliant", "Pre-wired & tested", "Overload protection", "Digital diagnostics"],
-      },
-    ],
+    image: gmvPowerUnit,
+    name: "GMV Hydraulic Power Unit",
+    desc: "World No.1 hydraulic power unit by GMV, Made in Italy since 1958. Compact design with energy-saving variable-speed motor for smooth silent operation.",
   },
   {
-    id: "drives",
-    label: "Drive & Control",
-    icon: "🖥️",
-    brand: "Arkel • Tectronics",
-    desc: "ARKEL Arcube drives and Tectronics RTG 24P traction machines",
-    color: "border-blue-200 bg-blue-50",
-    products: [
-      {
-        image: arkelArcube,
-        name: "ARKEL Arcube Controller",
-        badge: "ARKEL",
-        badgeColor: "bg-blue-600 text-white",
-        desc: "ARKEL's advanced Arcube elevator controller offering intuitive programming, smooth ride quality, and full remote diagnostics via RS-485 / CAN bus.",
-        specs: ["VVVF drive", "Remote diagnostics", "RS-485 / CAN bus", "Multi-car compatible"],
-      },
-      {
-        image: tractionRTG,
-        name: "Tectronics RTG 24P Traction Machine",
-        badge: "Tectronics",
-        badgeColor: "bg-blue-600 text-white",
-        desc: "Gearless permanent-magnet synchronous motor (PMSM) traction machine by Tectronics. Designed for MRL installations with low noise and high efficiency.",
-        specs: ["Gearless PMSM", "MRL compatible", "Low noise < 45 dB", "High efficiency"],
-      },
-    ],
+    image: gmvControlPanel,
+    name: "GMV Hydraulic Control Panel",
+    desc: "Factory-assembled GMV electrical control panel — fully wired, pre-tested, and compliant with EN81 safety standards for hydraulic elevators.",
   },
   {
-    id: "doors",
-    label: "Doors & Entrances",
-    icon: "🚪",
-    brand: "Premium Stainless Steel",
-    desc: "Stainless steel cabin & landing doors for all elevator types",
-    color: "border-emerald-200 bg-emerald-50",
-    products: [
-      {
-        image: landingDoorNew,
-        name: "Stainless Steel Landing & Cabin Doors",
-        badge: "Premium SS",
-        badgeColor: "bg-emerald-600 text-white",
-        desc: "Heavy-duty stainless-steel landing and cabin doors. Available in single-speed, two-speed, and centre-opening configurations for all elevator types.",
-        specs: ["SS 304 / SS 316", "Single & centre-open", "Fire rated option", "Custom sizes"],
-      },
-    ],
+    image: arkelArcube,
+    name: "ARKEL Arcube Controller",
+    desc: "ARKEL's advanced Arcube elevator controller offering intuitive programming, smooth ride quality, and full remote diagnostics via RS-485 / CAN bus.",
   },
   {
-    id: "structure",
-    label: "Guide Rails",
-    icon: "🏗️",
-    brand: "Marazzi • Premium",
-    desc: "Precision guide rails and structural components for all lifts",
-    color: "border-amber-200 bg-amber-50",
-    products: [
-      {
-        image: guideRailNew,
-        name: "T-Section Guide Rails & Hose Pipe",
-        badge: "Marazzi",
-        badgeColor: "bg-amber-600 text-white",
-        desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — available in cold-drawn and machined profiles.",
-        specs: ["T-8, T-9, T-16 profiles", "Cold-drawn", "Low friction", "ISO 7465 compliant"],
-      },
-      {
-        image: guideBrackets,
-        name: "Guide Rail Brackets & Clips",
-        badge: "Structural",
-        badgeColor: "bg-amber-600 text-white",
-        desc: "Galvanised steel guide rail brackets and fixing clips engineered for precise rail alignment. Compatible with all standard T-section guide rail profiles.",
-        specs: ["Galvanised steel", "Precision machined", "Anti-vibration", "Universal fit"],
-      },
-    ],
+    image: tractionRTG,
+    name: "Tectronics RTG 24P Traction Machine",
+    desc: "Gearless permanent-magnet synchronous motor traction machine by Tectronics. Designed for MRL installations with low noise and high efficiency.",
   },
   {
-    id: "homelift",
-    label: "Home & Glass Lifts",
-    icon: "🏠",
-    brand: "GMV • Custom",
-    desc: "Compact glass home lifts — panoramic, pit-free",
-    color: "border-purple-200 bg-purple-50",
-    products: [
-      {
-        image: glassLiftNew,
-        name: "Panoramic Glass Home Lift",
-        badge: "Pit-Free",
-        badgeColor: "bg-purple-600 text-white",
-        desc: "Elegant all-glass pit-free home lift — minimal footprint, whisper-quiet hydraulic or pneumatic drive. Perfect for 2–4 floor villas, duplexes, and bungalows.",
-        specs: ["Pit-free option", "All-glass cabin", "2–4 floors", "Whisper quiet"],
-      },
-      {
-        image: homeLiftNew,
-        name: "Residential Home Lift",
-        badge: "Home Friendly",
-        badgeColor: "bg-purple-600 text-white",
-        desc: "Space-saving residential lift with glass and aluminium construction. Smooth, safe, and smart-home ready — blends perfectly with modern interior designs.",
-        specs: ["Smart-home ready", "Compact frame", "Custom interiors", "Safety sensors"],
-      },
-    ],
+    image: landingDoorNew,
+    name: "Stainless Steel Landing & Cabin Doors",
+    desc: "Heavy-duty stainless-steel landing and cabin doors. Available in single-speed, two-speed, and centre-opening configurations for all elevator types.",
+  },
+  {
+    image: guideRailNew,
+    name: "T-Section Guide Rails & Hose Pipe",
+    desc: "Precision-machined T-section guide rails by Marazzi (Italy). Vibration-free guidance for smooth ride comfort — available in cold-drawn and machined profiles.",
+  },
+  {
+    image: guideBrackets,
+    name: "Guide Rail Brackets & Clips",
+    desc: "Galvanised steel guide rail brackets and fixing clips engineered for precise rail alignment. Compatible with all standard T-section guide rail profiles.",
+  },
+  {
+    image: glassLiftNew,
+    name: "Panoramic Glass Home Lift",
+    desc: "Elegant all-glass pit-free home lift — minimal footprint, whisper-quiet hydraulic or pneumatic drive. Perfect for 2–4 floor villas, duplexes, and bungalows.",
+  },
+  {
+    image: homeLiftNew,
+    name: "Residential Home Lift",
+    desc: "Space-saving residential lift with glass and aluminium construction. Smooth, safe, and smart-home ready — blends perfectly with modern interior designs.",
   },
 ];
 
 export default function ProductsSection() {
-  const [activeCategory, setActiveCategory] = useState(categories[0].id);
   const { ref, inView } = useInView(0.08);
-
-  const current = categories.find((c) => c.id === activeCategory) ?? categories[0];
 
   return (
     <section id="products" className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/4 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-muted rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
 
       <div
         ref={ref}
@@ -164,120 +83,42 @@ export default function ProductsSection() {
             Elevator <span className="gradient-text">Component Range</span>
           </h2>
           <p className="section-subheading">
-            As authorised distributors of GMV (Italy), Tectronics, ARKEL, Marazzi, and Shiv Shakti —
+            As authorised distributors of GMV, Shiv Shakti, Techtronics, Arkel and Marazzi —
             we supply globally certified elevator components for every application.
           </p>
         </div>
 
-        {/* Brand strip */}
-        <div className="flex flex-wrap justify-center items-center gap-3 mb-10">
-          {["GMV — Italy", "Tectronics", "ARKEL", "Marazzi", "Shiv Shakti"].map((b) => (
-            <span
-              key={b}
-              className="inline-flex items-center gap-1.5 bg-section-alt border border-border rounded-full px-4 py-1.5 font-body text-xs font-semibold text-muted-foreground"
-            >
-              <Package size={11} className="text-primary" />
-              {b}
-            </span>
-          ))}
-        </div>
-
-        {/* Category tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
-          {categories.map((cat) => {
-            const isActive = cat.id === activeCategory;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 md:px-5 py-2.5 rounded-xl text-sm font-body font-semibold transition-all duration-200 border-2 ${
-                  isActive
-                    ? "bg-primary border-primary text-primary-foreground shadow-button scale-105"
-                    : "bg-background border-border text-muted-foreground hover:border-primary/40 hover:text-primary hover:bg-primary/5"
-                }`}
-              >
-                <span className="text-base leading-none">{cat.icon}</span>
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Category info banner */}
-        <div className={`mb-8 flex items-center gap-4 p-4 rounded-2xl border-2 ${current.color}`}>
-          <div className="w-12 h-12 bg-background/80 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 shadow-sm">
-            {current.icon}
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-heading font-bold text-base text-foreground">{current.label}</h3>
-            <p className="font-body text-sm text-muted-foreground">{current.brand} · {current.desc}</p>
-          </div>
-          <div className="flex-shrink-0 bg-background border border-border rounded-xl px-4 py-2 text-center hidden md:block shadow-sm">
-            <p className="font-heading font-black text-2xl text-primary leading-none">{current.products.length}</p>
-            <p className="font-body text-xs text-muted-foreground mt-0.5">Products</p>
-          </div>
-        </div>
-
-        {/* Product grid — premium cards */}
-        <div
-          key={activeCategory}
-          className={`grid gap-6 md:gap-7 ${
-            current.products.length === 1
-              ? "grid-cols-1 max-w-md mx-auto"
-              : current.products.length === 2
-              ? "md:grid-cols-2 max-w-3xl mx-auto"
-              : "md:grid-cols-2 lg:grid-cols-3"
-          }`}
-        >
-          {current.products.map(({ image, name, badge, badgeColor, desc, specs }, i) => (
+        {/* Product grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+          {products.map(({ image, name, desc }, i) => (
             <div
-              key={`${activeCategory}-${i}`}
+              key={i}
               className="group bg-background rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-2 border border-border hover:border-primary/30 transition-all duration-300 flex flex-col animate-fade-in"
-              style={{ animationDelay: `${i * 100}ms` }}
+              style={{ animationDelay: `${i * 60}ms` }}
             >
-              {/* Image area — clean white background, full contain */}
-              <div className="relative overflow-hidden bg-muted/50 flex items-center justify-center" style={{ height: "260px" }}>
+              {/* Image */}
+              <div className="relative overflow-hidden bg-muted/50 flex items-center justify-center" style={{ height: "240px" }}>
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                {/* Top hover bar */}
+                {/* Top accent bar on hover */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                {/* Badge */}
-                <span className={`absolute top-3 right-3 ${badgeColor} text-xs font-body font-bold px-3 py-1.5 rounded-full shadow-sm`}>
-                  {badge}
-                </span>
               </div>
 
               {/* Content */}
               <div className="p-5 flex flex-col flex-1">
-                {/* Title */}
                 <h3 className="font-heading font-bold text-base text-foreground group-hover:text-primary transition-colors duration-200 leading-snug mb-2">
                   {name}
                 </h3>
-
-                {/* Divider */}
                 <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3 group-hover:w-14 transition-all duration-300" />
+                <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
 
-                {/* Description */}
-                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{desc}</p>
-
-                {/* Spec chips */}
-                <div className="grid grid-cols-2 gap-1.5 mb-4">
-                  {specs.map((s, j) => (
-                    <div key={j} className="flex items-center gap-1.5 bg-section-alt border border-border/50 rounded-lg px-2.5 py-1.5">
-                      <Star size={9} className="text-primary flex-shrink-0" fill="currentColor" />
-                      <span className="font-body text-xs text-muted-foreground leading-tight">{s}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
                 <button
                   onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group/btn flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-button"
+                  className="group/btn mt-4 flex items-center gap-2 bg-primary/8 hover:bg-primary text-primary hover:text-primary-foreground font-body font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 w-full justify-center border border-primary/20 hover:border-transparent hover:shadow-button"
                 >
                   Request Quote
                   <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
