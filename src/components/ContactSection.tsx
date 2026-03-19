@@ -191,15 +191,15 @@ export default function ContactSection() {
             <div
               className="rounded-2xl overflow-hidden"
               style={{
-                height: "190px",
+                height: "400px",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                 border: "1px solid rgba(255,255,255,0.5)",
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.6819856695624!2d73.83823097382667!3d18.498058682591132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf86d2d956c1%3A0xf4a6d002049fc11e!2sIshan%20Pure%20Veg%20Restaurant!5e0!3m2!1sen!2sin!4v1773946054138!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.6819856695624!2d73.83823097382667!3d18.498058682591132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf86d2d956c1%3A0xf4a6d002049fc11e!2sIshan%20Pure%20Veg%20Restaurant!5e0!3m2!1sen!2sin!4v1773946575852!5m2!1sen!2sin"
                 width="100%"
-                height="100%"
+                height="400"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
