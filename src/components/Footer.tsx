@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from "lucide-react";
+import eletechLogo from "@/assets/eletech-logo.jpg";
 
 const footerLinks = {
   "Quick Links": [

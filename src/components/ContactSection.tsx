@@ -156,20 +156,14 @@ export default function ContactSection() {
             </div>
 
             {/* Quick action buttons */}
-            <div className="grid grid-cols-2 gap-3">
-              <a
-                href="tel:+917722091584"
-                className="flex items-center justify-center gap-2 bg-background border-2 border-border hover:border-primary hover:text-primary rounded-xl py-3 px-4 font-heading font-bold text-sm text-foreground transition-all duration-200 hover:shadow-card"
-              >
-                <Phone size={14} /> Call Now
-              </a>
+            <div className="grid grid-cols-1 gap-3">
               <a
                 href="https://wa.me/917722091584?text=Hi%2C%20I%20need%20elevator%20services%20from%20Eletech"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 rounded-xl py-3 px-4 font-heading font-bold text-sm text-white transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <MessageCircle size={14} /> WhatsApp
+                <MessageCircle size={14} /> WhatsApp Us
               </a>
             </div>
           </div>
