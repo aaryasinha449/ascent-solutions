@@ -2,19 +2,24 @@ import { useState } from "react";
 import { MapPin, Clock, PhoneCall, Users, CheckCircle, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
+import cityPune from "@/assets/city-pune.jpg";
+import cityNashik from "@/assets/city-nashik.jpg";
+import cityAhmedabad from "@/assets/city-ahmedabad.jpg";
+import cityJaipur from "@/assets/city-jaipur.jpg";
+import cityNewDelhi from "@/assets/city-new-delhi.jpg";
+import cityNoida from "@/assets/city-noida.jpg";
+import cityGurgaon from "@/assets/city-gurgaon.jpg";
+import cityAyodhya from "@/assets/city-ayodhya.jpg";
+import cityGuwahati from "@/assets/city-guwahati.jpg";
+import cityBhubaneswar from "@/assets/city-bhubaneswar.jpg";
+
 const statesData = [
   {
     name: "Maharashtra",
     region: "West",
     cities: [
-      {
-        name: "Pune",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Shaniwar_Wada_gate.jpg/1200px-Shaniwar_Wada_gate.jpg",
-      },
-      {
-        name: "Nashik",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Trimbakeshwar_Shiva_Temple.jpg/1200px-Trimbakeshwar_Shiva_Temple.jpg",
-      },
+      { name: "Pune",   img: cityPune   },
+      { name: "Nashik", img: cityNashik },
     ],
   },
   {
@@ -23,7 +28,7 @@ const statesData = [
     cities: [
       {
         name: "Ahmedabad",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Sabarmati_Ashram.jpg/1200px-Sabarmati_Ashram.jpg",
+        img: cityAhmedabad,
       },
       {
         name: "Surat",
@@ -35,38 +40,23 @@ const statesData = [
     name: "Rajasthan",
     region: "North",
     cities: [
-      {
-        name: "Jaipur",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hawa_Mahal_Jaipur_2.jpg/1200px-Hawa_Mahal_Jaipur_2.jpg",
-      },
+      { name: "Jaipur", img: cityJaipur },
     ],
   },
   {
     name: "Delhi NCR",
     region: "North",
     cities: [
-      {
-        name: "New Delhi",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/India_Gate_in_New_Delhi_03-2016.jpg/1200px-India_Gate_in_New_Delhi_03-2016.jpg",
-      },
-      {
-        name: "Noida",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/DND_flyway.jpg/1200px-DND_flyway.jpg",
-      },
-      {
-        name: "Gurgaon",
-        img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=85",
-      },
+      { name: "New Delhi", img: cityNewDelhi },
+      { name: "Noida",     img: cityNoida    },
+      { name: "Gurgaon",   img: cityGurgaon  },
     ],
   },
   {
     name: "Uttar Pradesh",
     region: "North",
     cities: [
-      {
-        name: "Ayodhya",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Ram_Mandir_Ayodhya.jpg/1200px-Ram_Mandir_Ayodhya.jpg",
-      },
+      { name: "Ayodhya", img: cityAyodhya },
     ],
   },
   {
@@ -83,10 +73,7 @@ const statesData = [
     name: "Assam",
     region: "East",
     cities: [
-      {
-        name: "Guwahati",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Kamakhya_Temple.jpg/1200px-Kamakhya_Temple.jpg",
-      },
+      { name: "Guwahati", img: cityGuwahati },
     ],
   },
   {
@@ -107,10 +94,7 @@ const statesData = [
     name: "Odisha",
     region: "East",
     cities: [
-      {
-        name: "Bhubaneswar",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Lingaraj_temple_Bhubaneswar.jpg/1200px-Lingaraj_temple_Bhubaneswar.jpg",
-      },
+      { name: "Bhubaneswar", img: cityBhubaneswar },
     ],
   },
 ];
