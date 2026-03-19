@@ -144,7 +144,7 @@ export default function ContactSection() {
             {/* Map — Pune office */}
             <div className="rounded-2xl overflow-hidden border-2 border-border shadow-card" style={{ height: "200px" }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.7388765745!2d73.82!3d18.4857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955b13451a4b%3A0x9ffd4f96e5ba1e2d!2sDattawadi%2C%20Pune%2C%20Maharashtra%20411030!5e0!3m2!1sen!2sin!4v1710000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.9!2d73.8319!3d18.4760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955b13451a4b%3A0x9ffd4f96e5ba1e2d!2sVishnupriya+Apartment%2C+Sinhagad+Rd%2C+Dattawadi%2C+Pune%2C+Maharashtra+411030!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

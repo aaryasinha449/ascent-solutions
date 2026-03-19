@@ -9,13 +9,13 @@ const footerLinks = {
     { label: "Gallery",    href: "#gallery" },
     { label: "Contact Us", href: "#contact" },
   ],
-  "Our Services": [
-    { label: "Elevator Installation",    href: "#services" },
-    { label: "Elevator Modernization",   href: "#services" },
-    { label: "AMC Maintenance",          href: "#services" },
-    { label: "Spare Parts Supply",       href: "#services" },
+  "What We Do": [
+    { label: "Components Supply",        href: "#services" },
+    { label: "Customized Solutions",     href: "#services" },
     { label: "Technical Consultation",   href: "#services" },
-    { label: "Emergency Repair",         href: "#contact" },
+    { label: "Authorized Distribution",  href: "#services" },
+    { label: "Safety & Compliance",      href: "#services" },
+    { label: "After-Sales Commitment",   href: "#services" },
   ],
   "Products": [
     { label: "Hydraulic Systems",      href: "#products" },
