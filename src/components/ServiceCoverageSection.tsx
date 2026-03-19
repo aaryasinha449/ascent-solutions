@@ -12,6 +12,10 @@ import cityGurgaon from "@/assets/city-gurgaon.jpg";
 import cityAyodhya from "@/assets/city-ayodhya.jpg";
 import cityGuwahati from "@/assets/city-guwahati.jpg";
 import cityBhubaneswar from "@/assets/city-bhubaneswar.jpg";
+import citySurat from "@/assets/city-surat.jpg";
+import cityKolkata from "@/assets/city-kolkata.jpg";
+import cityRanchi from "@/assets/city-ranchi.jpg";
+import cityJamshedpur from "@/assets/city-jamshedpur.jpg";
 
 const statesData = [
   {
@@ -30,10 +34,7 @@ const statesData = [
         name: "Ahmedabad",
         img: cityAhmedabad,
       },
-      {
-        name: "Surat",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Surat_Castle_-_India.jpg/1200px-Surat_Castle_-_India.jpg",
-      },
+      { name: "Surat", img: citySurat },
     ],
   },
   {
@@ -63,10 +64,7 @@ const statesData = [
     name: "West Bengal",
     region: "East",
     cities: [
-      {
-        name: "Kolkata",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg/1200px-Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg",
-      },
+      { name: "Kolkata", img: cityKolkata },
     ],
   },
   {
@@ -80,14 +78,8 @@ const statesData = [
     name: "Jharkhand",
     region: "East",
     cities: [
-      {
-        name: "Ranchi",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Hundru_Falls.jpg/1200px-Hundru_Falls.jpg",
-      },
-      {
-        name: "Jamshedpur",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Jubilee_Park_Jamshedpur.jpg/1200px-Jubilee_Park_Jamshedpur.jpg",
-      },
+      { name: "Ranchi",      img: cityRanchi      },
+      { name: "Jamshedpur", img: cityJamshedpur  },
     ],
   },
   {
@@ -359,9 +351,6 @@ export default function ServiceCoverageSection() {
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl pointer-events-none" />
               <div className="relative z-10 text-center md:text-left">
                 <p className="font-heading font-bold text-lg text-white">🇮🇳 Don't see your city?</p>
-                <p className="font-body text-white/65 text-sm mt-1">
-                  We likely serve your area — contact us to confirm coverage.
-                </p>
               </div>
               <button
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
