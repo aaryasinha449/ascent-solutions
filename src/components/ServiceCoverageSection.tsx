@@ -64,10 +64,7 @@ const statesData = [
     name: "West Bengal",
     region: "East",
     cities: [
-      {
-        name: "Kolkata",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg/1200px-Howrah_Bridge_-_Kolkata_2011-10-13_0097.jpg",
-      },
+      { name: "Kolkata", img: cityKolkata },
     ],
   },
   {
@@ -81,14 +78,8 @@ const statesData = [
     name: "Jharkhand",
     region: "East",
     cities: [
-      {
-        name: "Ranchi",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Hundru_Falls.jpg/1200px-Hundru_Falls.jpg",
-      },
-      {
-        name: "Jamshedpur",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Jubilee_Park_Jamshedpur.jpg/1200px-Jubilee_Park_Jamshedpur.jpg",
-      },
+      { name: "Ranchi",      img: cityRanchi      },
+      { name: "Jamshedpur", img: cityJamshedpur  },
     ],
   },
   {
