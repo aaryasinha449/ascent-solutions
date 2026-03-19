@@ -7,7 +7,7 @@ import teamExhibitionImg from "@/assets/gallery-team-exhibition.jpg";
 import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
 
 const highlights = [
-  "Authorized distributor — GMV, ARKEL, Tectronics, Marazzi, Shiv Shakti",
+  "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
   "Safe, Reliable & Energy Efficient components",
   "Emerging components supplier in West & North India",
   "Strong technical support team across regions",
