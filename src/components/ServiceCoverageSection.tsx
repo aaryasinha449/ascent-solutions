@@ -351,9 +351,6 @@ export default function ServiceCoverageSection() {
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl pointer-events-none" />
               <div className="relative z-10 text-center md:text-left">
                 <p className="font-heading font-bold text-lg text-white">🇮🇳 Don't see your city?</p>
-                <p className="font-body text-white/65 text-sm mt-1">
-                  We likely serve your area — contact us to confirm coverage.
-                </p>
               </div>
               <button
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
