@@ -1,8 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
 import { CheckCircle2, Award, Shield, Zap, ArrowRight, Target, Eye } from "lucide-react";
-import { useState, useEffect } from "react";
-import ribbonImg         from "@/assets/about-ribbon-cutting.jpg";
-import officeEntranceImg from "@/assets/gallery-office-entrance.jpg";
+import { useState } from "react";
+import exhibitionTeamImg from "@/assets/about-exhibition-team.jpg";
 
 const highlights = [
   "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
@@ -35,19 +34,13 @@ const visionMission = [
 ];
 
 // Only 2 required images — teamExhibitionImg removed
-const photos = [
-  { src: officeEntranceImg,  alt: "Corporate Office — Pune" },
-  { src: ribbonImg,          alt: "GMV Elevator Inauguration Ceremony" },
-];
-
 function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className="relative w-full h-full">
-      {/* Shimmer skeleton shown until image loads */}
       {!loaded && (
         <div
-          className="absolute inset-0 rounded-none overflow-hidden"
+          className="absolute inset-0 overflow-hidden"
           style={{ background: "hsl(var(--muted)/0.5)" }}
         >
           <div
@@ -66,7 +59,7 @@ function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
         loading="lazy"
         decoding="async"
         onLoad={() => setLoaded(true)}
-        className="w-full h-full object-contain p-5"
+        className="w-full h-full object-contain p-4"
         style={{
           transition: "opacity 0.55s cubic-bezier(0.4,0,0.2,1)",
           opacity: loaded ? 1 : 0,
@@ -79,29 +72,6 @@ function ImgWithSkeleton({ src, alt }: { src: string; alt: string }) {
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.1);
-  const [activeImg, setActiveImg] = useState(0);
-  const [fading, setFading] = useState(false);
-
-  // Smooth cross-fade auto-slider — 5 s interval, 600 ms fade
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setActiveImg((prev) => (prev + 1) % photos.length);
-        setFading(false);
-      }, 600);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goTo = (i: number) => {
-    if (i === activeImg) return;
-    setFading(true);
-    setTimeout(() => {
-      setActiveImg(i);
-      setFading(false);
-    }, 400);
-  };
 
   return (
     <section
@@ -126,7 +96,7 @@ export default function AboutSection() {
       >
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* ════ LEFT: Premium Image Slider ════ */}
+          {/* ════ LEFT: Image ════ */}
           <div
             className={`relative transition-all duration-900 ${
               inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
@@ -146,22 +116,13 @@ export default function AboutSection() {
             >
               {/* Fixed-height container — prevents layout shift */}
               <div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden rounded-3xl"
                 style={{ height: "520px", background: "hsl(var(--muted)/0.25)" }}
               >
-                {/* Cross-fade image — no caption label */}
-                <div
-                  className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fading ? 0 : 1 }}
-                >
-                  <ImgWithSkeleton
-                    src={photos[activeImg].src}
-                    alt={photos[activeImg].alt}
-                  />
-                </div>
-
-                {/* Overlay gradient for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
+                <ImgWithSkeleton
+                  src={exhibitionTeamImg}
+                  alt="Eletech Trading Corporation Team"
+                />
 
                 {/* Experience badge — glassmorphism */}
                 <div
@@ -181,26 +142,6 @@ export default function AboutSection() {
                     <p className="font-heading font-black text-2xl text-foreground leading-tight">10+</p>
                     <p className="font-body text-xs text-muted-foreground">Years of Excellence</p>
                   </div>
-                </div>
-
-                {/* Dot indicators */}
-                <div className="absolute bottom-5 right-5 flex gap-2 items-center">
-                  {photos.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => goTo(i)}
-                      aria-label={`Go to slide ${i + 1}`}
-                      className="rounded-full transition-all duration-500"
-                      style={{
-                        width: i === activeImg ? "24px" : "10px",
-                        height: "10px",
-                        background: i === activeImg
-                          ? "hsl(var(--primary))"
-                          : "rgba(255,255,255,0.55)",
-                        boxShadow: i === activeImg ? "0 0 8px hsl(var(--primary)/0.5)" : "none",
-                      }}
-                    />
-                  ))}
                 </div>
               </div>
             </div>
