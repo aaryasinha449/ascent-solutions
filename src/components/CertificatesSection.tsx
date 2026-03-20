@@ -102,6 +102,7 @@ const awards = [
     org: "GMV Lift Systems India",
     highlight: "Holding the prestigious 'Distributor of the Year' award for two consecutive years — 2023–2024 and 2024–2025.",
   },
+  { year: "2025",    title: "GMV Brisk MRL Launch Recognition", org: "GMV & Briskva — South India", highlight: "Recognised for presence and contribution at the GMV Brisk MRL Launch — South India 2025." },
   { year: "2024–25", title: "Certificate of Appreciation", org: "Shiv Shakti Elevator Components Pvt. Ltd." },
   { year: "2022",    title: "Authorised Distributor Certificate", org: "GMV India Pvt. Ltd." },
   { year: "2019",    title: "10 Years of Partnership Award", org: "GMV Lift Systems — For Constant Support & Leadership" },
