@@ -16,9 +16,7 @@ import certShivShakti       from "@/assets/cert-shivshakti-appreciation.jpg";
 // Authorized distributor logos
 import logoGmv        from "@/assets/logo-gmv.png";
 import logoShivShakti from "@/assets/logo-shivshakti.png";
-import logoTectronics from "@/assets/logo-tectronics.png";
 import logoMarazzi    from "@/assets/logo-marazzi.png";
-import logoArkel      from "@/assets/logo-arkel.png";
 
 const slides = [
   {
