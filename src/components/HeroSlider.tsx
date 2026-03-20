@@ -96,18 +96,21 @@ export default function HeroSlider() {
               </div>
 
               {/* PRIMARY heading — Company name */}
-              <h1 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-2">
+              <h1
+                className="font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-2"
+                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+              >
                 ELETECH TRADING
                 <br />
                 CORPORATION
               </h1>
 
-              {/* TAGLINE — "Together we win" — italic, elegant, subtle */}
+              {/* TAGLINE — "Together we win" */}
               <p
-                className={`font-body italic text-white/70 text-xl md:text-2xl mb-4 leading-snug tracking-wide transition-all duration-700 delay-150 ${
+                className={`text-white/80 text-2xl md:text-3xl mb-4 leading-snug transition-all duration-700 delay-150 ${
                   isTransitioning ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
                 }`}
-                style={{ fontStyle: "italic", letterSpacing: "0.03em" }}
+                style={{ fontFamily: "'Brush Script MT', cursive" }}
               >
                 — Together we win
               </p>
