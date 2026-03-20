@@ -26,6 +26,7 @@ import cityNavsari from "@/assets/city-navsari.jpg";
 import cityVapi from "@/assets/city-vapi.jpg";
 import cityGurugram from "@/assets/city-gurugram.jpg";
 import cityGhaziabad from "@/assets/city-ghaziabad.jpg";
+import cityFaridabad from "@/assets/city-faridabad.jpg";
 
 const statesData = [
   {
@@ -67,6 +68,7 @@ const statesData = [
       { name: "Noida",      img: cityNoida     },
       { name: "Gurugram",   img: cityGurugram  },
       { name: "Ghaziabad",  img: cityGhaziabad },
+      { name: "Faridabad",  img: cityFaridabad },
     ],
   },
   {
