@@ -68,6 +68,7 @@ const statesData = [
       { name: "Noida",      img: cityNoida     },
       { name: "Gurugram",   img: cityGurugram  },
       { name: "Ghaziabad",  img: cityGhaziabad },
+      { name: "Faridabad",  img: cityFaridabad },
     ],
   },
   {
