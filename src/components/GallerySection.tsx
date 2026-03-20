@@ -31,6 +31,61 @@ const galleryItems = [
 
 const filters = ["All", "Events", "Awards", "Team", "Office", "Certificates"];
 
+const videoItems = [
+  {
+    src: galleryVideo1,
+    title: "Eletech — Corporate Highlights",
+    description: "A showcase of Eletech Trading Corporation's office, team and milestones.",
+  },
+  {
+    src: galleryVideo2,
+    title: "Eletech — Events & Recognitions",
+    description: "Industry events, exhibitions and award ceremonies featuring Eletech.",
+  },
+];
+
+function VideoCard({ src, title, description }: { src: string; title: string; description: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setPlaying(true);
+    }
+  };
+
+  return (
+    <div className="rounded-2xl overflow-hidden border border-border bg-background shadow-card group">
+      <div className="relative bg-muted">
+        <video
+          ref={videoRef}
+          src={src}
+          controls
+          preload="metadata"
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          className="w-full aspect-video object-cover block"
+        />
+        {!playing && (
+          <button
+            onClick={handlePlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors duration-200 group/play"
+          >
+            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/60 group-hover/play:scale-110 transition-transform duration-200">
+              <Play className="text-white fill-white" size={26} />
+            </div>
+          </button>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="font-heading font-bold text-sm text-foreground leading-snug mb-1">{title}</h3>
+        <p className="font-body text-xs text-muted-foreground leading-relaxed">{description}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function GallerySection() {
   const [selected, setSelected] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -131,6 +186,20 @@ export default function GallerySection() {
         <p className="text-center font-body text-sm text-muted-foreground mt-6">
           Showing <span className="text-primary font-semibold">{filtered.length}</span> photos
         </p>
+
+        {/* ── Videos ── */}
+        <div className="mt-14">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="red-line" />
+            <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Videos</span>
+            <span className="red-line" />
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {videoItems.map((v, i) => (
+              <VideoCard key={i} src={v.src} title={v.title} description={v.description} />
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Lightbox */}
@@ -176,3 +245,4 @@ export default function GallerySection() {
     </section>
   );
 }
+
