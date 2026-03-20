@@ -27,7 +27,7 @@ const stats: StatItem[] = [
   },
   {
     icon: Users,
-    numericValue: 300,
+    numericValue: 2000,
     suffix: "+",
     label: "Satisfied Clients",
     sublabel: "Across West & North India",
@@ -38,7 +38,7 @@ const stats: StatItem[] = [
   },
   {
     icon: Building2,
-    numericValue: 5000,
+    numericValue: 60000,
     suffix: "+",
     label: "Components Supplied",
     sublabel: "Yearly across India",
@@ -49,9 +49,9 @@ const stats: StatItem[] = [
   },
   {
     icon: Award,
-    numericValue: 5,
-    suffix: "",
-    label: "Authorized Brands",
+    numericValue: 3,
+    suffix: "+",
+    label: "Authorized Distributors",
     sublabel: "GMV, ARKEL, Tectronics & more",
     iconColor: "text-amber-600",
     bgColor: "bg-amber-50",
@@ -98,7 +98,7 @@ function AnimatedCounter({ target, suffix, active }: { target: number; suffix: s
     }, duration / steps);
     return () => clearInterval(timer);
   }, [active, target, suffix]);
-  return <span>{count}{suffix}</span>;
+  return <span>{count.toLocaleString("en-IN")}{suffix}</span>;
 }
 
 export default function StatsSection() {
@@ -193,7 +193,7 @@ export default function StatsSection() {
             {
               icon: TrendingUp,
               title: "Decade of Growth",
-              desc: "From a startup in 2015 to serving 500+ clients across 7+ states — Eletech has grown into a nationally recognized brand",
+              desc: "Over a decade of consistent growth, serving 2000+ satisfied clients with reliable solutions and strong industry partnerships.",
               iconColor: "text-blue-600",
               bg: "bg-blue-50",
               border: "border-blue-100",
