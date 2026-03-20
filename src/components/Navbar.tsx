@@ -42,23 +42,23 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => scrollTo("#home")}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2.5 group"
           >
             <img
               src={eletechLogo}
               alt="Eletech Trading Corporation"
-              className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button flex-shrink-0"
+              className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button flex-shrink-0"
             />
             <div className="flex flex-col leading-tight">
               <span
-                className="font-bold text-sm md:text-base text-primary"
-                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+                className="font-bold text-primary whitespace-nowrap"
+                style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(0.8rem, 1.5vw, 1rem)" }}
               >
                 Eletech Trading Corporation
               </span>
               <span
-                className="text-foreground text-xs md:text-sm"
-                style={{ fontFamily: "'Brush Script MT', cursive", fontSize: "clamp(0.85rem, 2vw, 1.05rem)" }}
+                className="text-foreground"
+                style={{ fontFamily: "'Brush Script MT', cursive", fontSize: "clamp(0.9rem, 1.8vw, 1.1rem)" }}
               >
                 Together we win
               </span>
