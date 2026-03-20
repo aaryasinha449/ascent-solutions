@@ -49,9 +49,20 @@ export default function Navbar() {
               alt="Eletech Trading Corporation"
               className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-contain group-hover:scale-105 transition-transform duration-200 shadow-button flex-shrink-0"
             />
-            <span className="font-heading font-semibold text-sm md:text-base text-primary leading-none whitespace-nowrap">
-              Eletech Trading Corporation
-            </span>
+            <div className="flex flex-col leading-tight">
+              <span
+                className="font-bold text-sm md:text-base text-primary"
+                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+              >
+                Eletech Trading Corporation
+              </span>
+              <span
+                className="text-foreground text-xs md:text-sm"
+                style={{ fontFamily: "'Brush Script MT', cursive", fontSize: "clamp(0.85rem, 2vw, 1.05rem)" }}
+              >
+                Together we win
+              </span>
+            </div>
           </button>
 
           {/* Desktop Nav */}
