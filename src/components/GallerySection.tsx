@@ -56,8 +56,9 @@ function VideoCard({ src, title, description }: { src: string; title: string; de
   };
 
   return (
-    <div className="rounded-2xl overflow-hidden border border-border bg-background shadow-card group">
-      <div className="relative bg-muted">
+    <div className="group relative rounded-3xl overflow-hidden border border-border/60 bg-card shadow-[0_8px_32px_-8px_hsl(220_20%_12%/0.18)] hover:shadow-[0_20px_50px_-10px_hsl(0_75%_42%/0.22)] transition-all duration-500 hover:-translate-y-1">
+      {/* Video wrapper — preserves native aspect ratio, no cropping */}
+      <div className="relative bg-black w-full overflow-hidden">
         <video
           ref={videoRef}
           src={src}
@@ -65,22 +66,44 @@ function VideoCard({ src, title, description }: { src: string; title: string; de
           preload="metadata"
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
-          className="w-full aspect-video object-cover block"
+          className="w-full h-auto block"
+          style={{ aspectRatio: "16/9", objectFit: "contain", background: "#000" }}
+          playsInline
         />
+
+        {/* Custom play overlay — hidden once playing */}
         {!playing && (
           <button
             onClick={handlePlay}
-            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors duration-200 group/play"
+            aria-label={`Play ${title}`}
+            className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-opacity duration-300 group-hover:bg-black/40"
           >
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/60 group-hover/play:scale-110 transition-transform duration-200">
-              <Play className="text-white fill-white" size={26} />
-            </div>
+            {/* Outer glow ring */}
+            <span className="absolute w-20 h-20 rounded-full bg-primary/20 animate-ping opacity-60 pointer-events-none" />
+            {/* Play button */}
+            <span className="relative z-10 w-16 h-16 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-[0_4px_20px_hsl(0_75%_42%/0.4)] group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
+              <Play className="text-white fill-white ml-1" size={24} />
+            </span>
           </button>
         )}
+
+        {/* Hover shimmer overlay when not playing */}
+        {!playing && (
+          <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 via-transparent to-primary/10" />
+        )}
       </div>
-      <div className="p-4">
-        <h3 className="font-heading font-bold text-sm text-foreground leading-snug mb-1">{title}</h3>
-        <p className="font-body text-xs text-muted-foreground leading-relaxed">{description}</p>
+
+      {/* Card footer */}
+      <div className="px-5 py-4 bg-card border-t border-border/40">
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+            <Play className="text-primary fill-primary" size={12} />
+          </span>
+          <div>
+            <h3 className="font-heading font-bold text-sm text-foreground leading-snug mb-0.5">{title}</h3>
+            <p className="font-body text-xs text-muted-foreground leading-relaxed">{description}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
