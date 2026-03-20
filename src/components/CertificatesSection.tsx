@@ -242,7 +242,7 @@ export default function CertificatesSection() {
               </div>
               Authorized Distributor For
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {distributorLogos.map(({ logo, name, country }, i) => (
                 <div
                   key={i}
