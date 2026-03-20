@@ -110,7 +110,7 @@ const awards = [
 const distributorLogos = [
   { logo: logoGmv,        name: "GMV Lift Systems",  country: "Italy 🇮🇹" },
   { logo: logoShivShakti, name: "Shiv Shakti",       country: "India 🇮🇳" },
-  { logo: logoMarazzi,    name: "Marazzi (China)",   country: "China 🇨🇳" },
+  { logo: logoMarazzi,    name: "Marazzi",            country: "China 🇨🇳" },
 ];
 
 export default function CertificatesSection() {
