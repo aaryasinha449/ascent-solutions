@@ -177,7 +177,7 @@ export default function StatsSection() {
             {
               icon: ShieldCheck,
               title: "Authorized Distributor",
-              desc: "Officially certified by GMV Italy, ARKEL, Tectronics, Marazzi & Shiv Shakti for Western & Northern India",
+              desc: "Officially certified by GMV India, Shiv Shakti and Marazzi, along with other leading industry partners, for Western & Northern India",
               iconColor: "text-emerald-600",
               bg: "bg-emerald-50",
               border: "border-emerald-100",
