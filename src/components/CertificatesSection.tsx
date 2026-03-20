@@ -251,6 +251,11 @@ export default function CertificatesSection() {
                   <div>
                     <p className="font-heading font-bold text-sm text-foreground mb-0.5">{title}</p>
                     <p className="font-body text-xs text-muted-foreground">{org}</p>
+                    {highlight && (
+                      <p className="font-body text-xs text-primary font-medium mt-1.5 leading-snug italic">
+                        {highlight}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
