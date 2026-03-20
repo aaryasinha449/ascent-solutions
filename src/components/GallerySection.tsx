@@ -211,13 +211,21 @@ export default function GallerySection() {
         </p>
 
         {/* ── Videos ── */}
-        <div className="mt-14">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="red-line" />
-            <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Videos</span>
-            <span className="red-line" />
+        <div className="mt-16">
+          {/* Sub-header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="red-line" />
+              <span className="font-body font-semibold text-primary text-sm uppercase tracking-wider">Videos</span>
+              <span className="red-line" />
+            </div>
+            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto">
+              Watch our corporate highlights and event reels showcasing Eletech's milestones.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+
+          {/* Responsive 2-col video grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {videoItems.map((v, i) => (
               <VideoCard key={i} src={v.src} title={v.title} description={v.description} />
             ))}
