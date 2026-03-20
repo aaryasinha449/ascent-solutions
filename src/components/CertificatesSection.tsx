@@ -12,6 +12,8 @@ import certGmvDistributor   from "@/assets/cert-gmv-authorised-distributor.jpg";
 import awardExhibition      from "@/assets/award-eletech-exhibition.jpg";
 import awardOfficeCeremony  from "@/assets/award-gmv-office-ceremony.jpg";
 import certShivShakti       from "@/assets/cert-shivshakti-appreciation.jpg";
+import awardShelfDisplay    from "@/assets/award-shelf-display.jpg";
+import awardGmvBriskMrl     from "@/assets/award-gmv-brisk-mrl-launch.jpg";
 
 // Authorized distributor logos
 import logoGmv        from "@/assets/logo-gmv.png";

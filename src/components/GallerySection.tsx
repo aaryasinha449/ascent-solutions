@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef } from "react";
+import { X, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import exhibitionTeam    from "@/assets/about-exhibition-team.jpg";
 import ribbonCutting     from "@/assets/about-ribbon-cutting.jpg";
@@ -12,6 +12,8 @@ import certShivshakti    from "@/assets/cert-shivshakti-appreciation.jpg";
 import gmvAward10        from "@/assets/award-gmv-10years.jpg";
 import teamExhibition    from "@/assets/gallery-team-exhibition.jpg";
 import officeEntrance    from "@/assets/gallery-office-entrance.jpg";
+import galleryVideo1     from "@/assets/gallery-video-1.mp4";
+import galleryVideo2     from "@/assets/gallery-video-2.mp4";
 
 const galleryItems = [
   { src: teamExhibition,  title: "Eletech Team at National Exhibition", category: "Team", large: true },
