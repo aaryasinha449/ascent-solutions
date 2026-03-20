@@ -77,6 +77,22 @@ const slides = [
     tag: "Recognition",
     tagColor: "bg-green-600",
   },
+  {
+    image: awardGmvBriskMrl,
+    title: "GMV Brisk MRL Launch — South India 2025",
+    subtitle: "GMV & Briskva",
+    desc: "Presented to Mr. Manoj Sinha, CEO of Eletech Trading Corporation, for his gracious presence and wishes on the auspicious launch event of GMV Brisk MRL in South India on 14th November 2025.",
+    tag: "Recognition",
+    tagColor: "bg-amber-500",
+  },
+  {
+    image: awardShelfDisplay,
+    title: "Eletech Award & Certificate Collection",
+    subtitle: "Corporate Office — Pune",
+    desc: "A proud display of Eletech Trading Corporation's awards, trophies and certificates — including GMV, Shiv Shakti and industry recognitions — showcased at the corporate office.",
+    tag: "Milestone",
+    tagColor: "bg-green-600",
+  },
 ];
 
 const awards = [
