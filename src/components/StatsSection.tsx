@@ -27,7 +27,7 @@ const stats: StatItem[] = [
   },
   {
     icon: Users,
-    numericValue: 300,
+    numericValue: 2000,
     suffix: "+",
     label: "Satisfied Clients",
     sublabel: "Across West & North India",
@@ -38,7 +38,7 @@ const stats: StatItem[] = [
   },
   {
     icon: Building2,
-    numericValue: 5000,
+    numericValue: 60000,
     suffix: "+",
     label: "Components Supplied",
     sublabel: "Yearly across India",
@@ -49,9 +49,9 @@ const stats: StatItem[] = [
   },
   {
     icon: Award,
-    numericValue: 5,
-    suffix: "",
-    label: "Authorized Brands",
+    numericValue: 3,
+    suffix: "+",
+    label: "Authorized Distributors",
     sublabel: "GMV, ARKEL, Tectronics & more",
     iconColor: "text-amber-600",
     bgColor: "bg-amber-50",
