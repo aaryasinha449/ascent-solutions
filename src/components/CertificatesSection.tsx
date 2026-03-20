@@ -239,7 +239,7 @@ export default function CertificatesSection() {
               Industry Awards & Recognition
             </h3>
             <div className="space-y-3">
-              {awards.map(({ year, title, org }, i) => (
+              {awards.map(({ year, title, org, highlight }, i) => (
                 <div
                   key={i}
                   className="flex gap-4 p-4 rounded-2xl bg-background border border-border shadow-card"
