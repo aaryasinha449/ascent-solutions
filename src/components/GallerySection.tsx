@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import exhibitionTeam    from "@/assets/about-exhibition-team.jpg";
