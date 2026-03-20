@@ -89,8 +89,6 @@ const awards = [
 const distributorLogos = [
   { logo: logoGmv,        name: "GMV Lift Systems",  country: "Italy 🇮🇹" },
   { logo: logoShivShakti, name: "Shiv Shakti",       country: "India 🇮🇳" },
-  { logo: logoTectronics, name: "Tectronics",        country: "India 🇮🇳" },
-  { logo: logoArkel,      name: "ARKEL",             country: "Turkey 🇹🇷" },
   { logo: logoMarazzi,    name: "Marazzi",           country: "Italy 🇮🇹" },
 ];
 
