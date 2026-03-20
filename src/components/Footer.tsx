@@ -61,9 +61,19 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-white/10">
                 <img src={eletechLogo} alt="Eletech Trading Corporation" className="w-full h-full object-contain bg-white p-0.5" />
               </div>
-              <div>
-                <p className="font-heading font-bold text-white text-base leading-tight">Eletech</p>
-                <p className="font-body text-white/55 text-xs leading-tight">Trading Corporation</p>
+              <div className="flex flex-col leading-tight">
+                <p
+                  className="font-bold text-primary text-base leading-tight whitespace-nowrap"
+                  style={{ fontFamily: "'Times New Roman', Times, serif" }}
+                >
+                  Eletech Trading Corporation
+                </p>
+                <p
+                  className="text-white/80 text-sm leading-snug mt-0.5"
+                  style={{ fontFamily: "'Brush Script MT', cursive" }}
+                >
+                  Together we win
+                </p>
               </div>
             </div>
 
