@@ -6,7 +6,7 @@ import gmvStrategyMeetImg from "@/assets/about-gmv-strategy-meet.jpg";
 import ribbonCuttingImg from "@/assets/about-ribbon-cutting.jpg";
 
 const highlights = [
-  "Authorized distributor — GMV, Shiv Shakti, Techtronics, Arkel, Marazzi",
+  "Authorized distributor — GMV India, Shiv Shakti, Marazzi & other leading partners",
   "Safe, Reliable & Energy Efficient components",
   "Emerging components supplier in West & North India",
   "Strong technical support team across regions",

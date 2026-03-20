@@ -16,9 +16,7 @@ import certShivShakti       from "@/assets/cert-shivshakti-appreciation.jpg";
 // Authorized distributor logos
 import logoGmv        from "@/assets/logo-gmv.png";
 import logoShivShakti from "@/assets/logo-shivshakti.png";
-import logoTectronics from "@/assets/logo-tectronics.png";
 import logoMarazzi    from "@/assets/logo-marazzi.png";
-import logoArkel      from "@/assets/logo-arkel.png";
 
 const slides = [
   {
@@ -89,8 +87,6 @@ const awards = [
 const distributorLogos = [
   { logo: logoGmv,        name: "GMV Lift Systems",  country: "Italy 🇮🇹" },
   { logo: logoShivShakti, name: "Shiv Shakti",       country: "India 🇮🇳" },
-  { logo: logoTectronics, name: "Tectronics",        country: "India 🇮🇳" },
-  { logo: logoArkel,      name: "ARKEL",             country: "Turkey 🇹🇷" },
   { logo: logoMarazzi,    name: "Marazzi",           country: "Italy 🇮🇹" },
 ];
 
@@ -143,8 +139,8 @@ export default function CertificatesSection() {
             Certifications & <span className="text-primary">Awards</span>
           </h2>
           <p className="section-subheading">
-            Recognised by GMV India, Shiv Shakti, and leading industry bodies for our consistent
-            excellence, partnership, and service delivery.
+            Recognised by GMV India, Shiv Shakti, and Marazzi, along with other leading industry partners,
+            for our consistent excellence, strong partnerships, and reliable service delivery.
           </p>
         </div>
 
@@ -246,7 +242,7 @@ export default function CertificatesSection() {
               </div>
               Authorized Distributor For
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {distributorLogos.map(({ logo, name, country }, i) => (
                 <div
                   key={i}
