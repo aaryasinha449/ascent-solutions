@@ -126,7 +126,7 @@ export default function ProductsSection() {
             <span className="gradient-text">Component Range</span>
           </h2>
           <p className="section-subheading">
-            As authorised distributors of GMV, Shiv Shakti, Techtronics, Arkel and Marazzi —
+            As authorised distributors of GMV India, Shiv Shakti and Marazzi, along with other leading industry partners —
             we supply globally certified elevator components for every application.
           </p>
         </div>

@@ -87,7 +87,7 @@ const awards = [
 const distributorLogos = [
   { logo: logoGmv,        name: "GMV Lift Systems",  country: "Italy 🇮🇹" },
   { logo: logoShivShakti, name: "Shiv Shakti",       country: "India 🇮🇳" },
-  { logo: logoMarazzi,    name: "Marazzi",           country: "Italy 🇮🇹" },
+  { logo: logoMarazzi,    name: "Marazzi (China)",   country: "China 🇨🇳" },
 ];
 
 export default function CertificatesSection() {
@@ -139,7 +139,7 @@ export default function CertificatesSection() {
             Certifications & <span className="text-primary">Awards</span>
           </h2>
           <p className="section-subheading">
-            Recognised by GMV India, Shiv Shakti, and Marazzi, along with other leading industry partners,
+            Recognised by GMV India, Shiv Shakti and Marazzi, along with other leading industry partners,
             for our consistent excellence, strong partnerships, and reliable service delivery.
           </p>
         </div>
