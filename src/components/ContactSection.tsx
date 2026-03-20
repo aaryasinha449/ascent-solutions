@@ -197,7 +197,7 @@ export default function ContactSection() {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.6819856695624!2d73.83823097382667!3d18.498058682591132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf86d2d956c1%3A0xf4a6d002049fc11e!2sIshan%20Pure%20Veg%20Restaurant!5e0!3m2!1sen!2sin!4v1773946575852!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.686066304609!2d73.83797677382663!3d18.497873982591265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bff63f30ada1%3A0x537c4f4f8927ccd0!2sVishnupriya%20Apartment!5e0!3m2!1sen!2sin!4v1773992720265!5m2!1sen!2sin"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
