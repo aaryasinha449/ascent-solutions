@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import exhibitionTeam    from "@/assets/about-exhibition-team.jpg";
@@ -45,52 +45,18 @@ const videoItems = [
 ];
 
 function VideoCard({ src, title, description }: { src: string; title: string; description: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setPlaying(true);
-    }
-  };
-
   return (
-    <div className="group relative rounded-3xl overflow-hidden border border-border/60 bg-card shadow-[0_8px_32px_-8px_hsl(220_20%_12%/0.18)] hover:shadow-[0_20px_50px_-10px_hsl(0_75%_42%/0.22)] transition-all duration-500 hover:-translate-y-1">
-      {/* Video wrapper — preserves native aspect ratio, no cropping */}
-      <div className="relative bg-black w-full overflow-hidden">
+    <div className="group rounded-3xl overflow-hidden border border-border/60 bg-card shadow-[0_8px_32px_-8px_hsl(220_20%_12%/0.18)] hover:shadow-[0_20px_50px_-10px_hsl(0_75%_42%/0.22)] transition-all duration-500 hover:-translate-y-1">
+      {/* Video — no overlapping elements so controls are fully accessible */}
+      <div className="bg-black w-full">
         <video
-          ref={videoRef}
           src={src}
           controls
           preload="metadata"
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          className="w-full h-auto block"
-          style={{ aspectRatio: "16/9", objectFit: "contain", background: "#000" }}
           playsInline
+          className="w-full block"
+          style={{ aspectRatio: "16/9", objectFit: "contain", background: "#000" }}
         />
-
-        {/* Custom play overlay — hidden once playing */}
-        {!playing && (
-          <button
-            onClick={handlePlay}
-            aria-label={`Play ${title}`}
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-opacity duration-300 group-hover:bg-black/40"
-          >
-            {/* Outer glow ring */}
-            <span className="absolute w-20 h-20 rounded-full bg-primary/20 animate-ping opacity-60 pointer-events-none" />
-            {/* Play button */}
-            <span className="relative z-10 w-16 h-16 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-[0_4px_20px_hsl(0_75%_42%/0.4)] group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
-              <Play className="text-white fill-white ml-1" size={24} />
-            </span>
-          </button>
-        )}
-
-        {/* Hover shimmer overlay when not playing */}
-        {!playing && (
-          <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 via-transparent to-primary/10" />
-        )}
       </div>
 
       {/* Card footer */}
