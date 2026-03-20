@@ -193,7 +193,7 @@ export default function StatsSection() {
             {
               icon: TrendingUp,
               title: "Decade of Growth",
-              desc: "From a startup in 2015 to serving 500+ clients across 7+ states — Eletech has grown into a nationally recognized brand",
+              desc: "Over a decade of consistent growth, serving 2000+ satisfied clients with reliable solutions and strong industry partnerships.",
               iconColor: "text-blue-600",
               bg: "bg-blue-50",
               border: "border-blue-100",
