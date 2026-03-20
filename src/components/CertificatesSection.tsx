@@ -96,7 +96,12 @@ const slides = [
 ];
 
 const awards = [
-  { year: "2024–25", title: "Distributor of the Year — GMV India", org: "GMV Lift Systems India" },
+  {
+    year: "2024–25",
+    title: "Distributor of the Year — GMV India",
+    org: "GMV Lift Systems India",
+    highlight: "Holding the prestigious 'Distributor of the Year' award for two consecutive years — 2023–2024 and 2024–2025.",
+  },
   { year: "2024–25", title: "Certificate of Appreciation", org: "Shiv Shakti Elevator Components Pvt. Ltd." },
   { year: "2022",    title: "Authorised Distributor Certificate", org: "GMV India Pvt. Ltd." },
   { year: "2019",    title: "10 Years of Partnership Award", org: "GMV Lift Systems — For Constant Support & Leadership" },
@@ -234,7 +239,7 @@ export default function CertificatesSection() {
               Industry Awards & Recognition
             </h3>
             <div className="space-y-3">
-              {awards.map(({ year, title, org }, i) => (
+              {awards.map(({ year, title, org, highlight }, i) => (
                 <div
                   key={i}
                   className="flex gap-4 p-4 rounded-2xl bg-background border border-border shadow-card"
@@ -246,6 +251,11 @@ export default function CertificatesSection() {
                   <div>
                     <p className="font-heading font-bold text-sm text-foreground mb-0.5">{title}</p>
                     <p className="font-body text-xs text-muted-foreground">{org}</p>
+                    {highlight && (
+                      <p className="font-body text-xs text-primary font-medium mt-1.5 leading-snug italic">
+                        {highlight}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
