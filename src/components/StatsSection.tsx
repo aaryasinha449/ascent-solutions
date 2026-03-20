@@ -98,7 +98,7 @@ function AnimatedCounter({ target, suffix, active }: { target: number; suffix: s
     }, duration / steps);
     return () => clearInterval(timer);
   }, [active, target, suffix]);
-  return <span>{count}{suffix}</span>;
+  return <span>{count.toLocaleString("en-IN")}{suffix}</span>;
 }
 
 export default function StatsSection() {
