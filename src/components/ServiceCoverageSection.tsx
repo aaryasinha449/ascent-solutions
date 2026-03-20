@@ -26,6 +26,7 @@ import cityNavsari from "@/assets/city-navsari.jpg";
 import cityVapi from "@/assets/city-vapi.jpg";
 import cityGurugram from "@/assets/city-gurugram.jpg";
 import cityGhaziabad from "@/assets/city-ghaziabad.jpg";
+import cityFaridabad from "@/assets/city-faridabad.jpg";
 
 const statesData = [
   {
