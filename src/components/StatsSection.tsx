@@ -51,8 +51,8 @@ const stats: StatItem[] = [
     icon: Award,
     numericValue: 3,
     suffix: "+",
-    label: "Authorized Distributors",
-    sublabel: "GMV, ARKEL, Tectronics & more",
+    label: "Authorized Brands",
+    sublabel: "Trusted industry partnerships",
     iconColor: "text-amber-600",
     bgColor: "bg-amber-50",
     borderColor: "border-amber-100",
@@ -140,33 +140,33 @@ export default function StatsSection() {
           </p>
         </div>
 
-        {/* Stats grid — light cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 mb-12">
+        {/* Stats grid — premium cards */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12">
           {stats.map(({ icon: Icon, numericValue, suffix, label, sublabel, iconColor, bgColor, borderColor, valueColor }, i) => (
             <div
               key={i}
-              className={`group relative text-center p-5 md:p-6 rounded-2xl border ${borderColor} bg-background shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 cursor-default ${
-                visible ? "animate-fade-in" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${i * 100}ms` }}
+              className={`group relative text-center px-4 py-6 md:px-5 md:py-7 rounded-2xl border ${borderColor} bg-background cursor-default
+                shadow-[0_2px_12px_-2px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.05)]
+                hover:shadow-[0_8px_28px_-4px_rgba(0,0,0,0.13),0_2px_8px_-2px_rgba(0,0,0,0.07)]
+                hover:-translate-y-2.5 transition-all duration-300 ease-out
+                ${visible ? "animate-fade-in" : "opacity-0"}`}
+              style={{ animationDelay: `${i * 90}ms` }}
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-gradient-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-12 h-[3px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/60 via-primary to-primary/60`} />
 
               {/* Icon */}
-              <div
-                className={`w-12 h-12 rounded-xl ${bgColor} border ${borderColor} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <Icon className={iconColor} size={22} />
+              <div className={`w-11 h-11 rounded-xl ${bgColor} border ${borderColor} flex items-center justify-center mx-auto mb-3.5 group-hover:scale-110 transition-transform duration-300`}>
+                <Icon className={iconColor} size={20} />
               </div>
 
               {/* Value */}
-              <p className={`font-heading font-black text-3xl md:text-4xl ${valueColor} leading-none mb-1 tabular-nums tracking-tight`}>
+              <p className={`font-heading font-black text-[2rem] md:text-[2.25rem] leading-none mb-1.5 tabular-nums tracking-tight ${valueColor}`}>
                 <AnimatedCounter target={numericValue} suffix={suffix} active={visible} />
               </p>
 
-              <p className="font-heading font-bold text-foreground text-sm mb-0.5 leading-tight">{label}</p>
-              <p className="font-body text-muted-foreground text-xs leading-tight">{sublabel}</p>
+              <p className="font-heading font-semibold text-foreground text-[0.78rem] mb-1 leading-tight">{label}</p>
+              <p className="font-body text-muted-foreground text-[0.7rem] leading-snug">{sublabel}</p>
             </div>
           ))}
         </div>
