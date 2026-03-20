@@ -8,7 +8,6 @@ import cityAhmedabad from "@/assets/city-ahmedabad.jpg";
 import cityJaipur from "@/assets/city-jaipur.jpg";
 import cityNewDelhi from "@/assets/city-new-delhi.jpg";
 import cityNoida from "@/assets/city-noida.jpg";
-import cityGurgaon from "@/assets/city-gurgaon.jpg";
 import cityAyodhya from "@/assets/city-ayodhya.jpg";
 import cityGuwahati from "@/assets/city-guwahati.jpg";
 import cityBhubaneswar from "@/assets/city-bhubaneswar.jpg";
@@ -16,6 +15,17 @@ import citySurat from "@/assets/city-surat.jpg";
 import cityKolkata from "@/assets/city-kolkata.jpg";
 import cityRanchi from "@/assets/city-ranchi.jpg";
 import cityJamshedpur from "@/assets/city-jamshedpur.jpg";
+// New city images
+import cityKota from "@/assets/city-kota.jpg";
+import cityJodhpur from "@/assets/city-jodhpur.jpg";
+import cityUdaipur from "@/assets/city-udaipur.jpg";
+import cityJaisalmer from "@/assets/city-jaisalmer.jpg";
+import cityRajkot from "@/assets/city-rajkot.jpg";
+import cityVadodara from "@/assets/city-vadodara.jpg";
+import cityNavsari from "@/assets/city-navsari.jpg";
+import cityVapi from "@/assets/city-vapi.jpg";
+import cityGurugram from "@/assets/city-gurugram.jpg";
+import cityGhaziabad from "@/assets/city-ghaziabad.jpg";
 
 const statesData = [
   {
@@ -30,27 +40,33 @@ const statesData = [
     name: "Gujarat",
     region: "West",
     cities: [
-      {
-        name: "Ahmedabad",
-        img: cityAhmedabad,
-      },
-      { name: "Surat", img: citySurat },
+      { name: "Ahmedabad", img: cityAhmedabad },
+      { name: "Surat",     img: citySurat     },
+      { name: "Rajkot",    img: cityRajkot    },
+      { name: "Vadodara",  img: cityVadodara  },
+      { name: "Navsari",   img: cityNavsari   },
+      { name: "Vapi",      img: cityVapi      },
     ],
   },
   {
     name: "Rajasthan",
     region: "North",
     cities: [
-      { name: "Jaipur", img: cityJaipur },
+      { name: "Jaipur",    img: cityJaipur    },
+      { name: "Jodhpur",   img: cityJodhpur   },
+      { name: "Udaipur",   img: cityUdaipur   },
+      { name: "Jaisalmer", img: cityJaisalmer },
+      { name: "Kota",      img: cityKota      },
     ],
   },
   {
-    name: "Delhi NCR",
-    region: "North",
+    name: "Delhi",
+    region: "NCR",
     cities: [
-      { name: "New Delhi", img: cityNewDelhi },
-      { name: "Noida",     img: cityNoida    },
-      { name: "Gurgaon",   img: cityGurgaon  },
+      { name: "Delhi",      img: cityNewDelhi  },
+      { name: "Noida",      img: cityNoida     },
+      { name: "Gurugram",   img: cityGurugram  },
+      { name: "Ghaziabad",  img: cityGhaziabad },
     ],
   },
   {
@@ -78,7 +94,7 @@ const statesData = [
     name: "Jharkhand",
     region: "East",
     cities: [
-      { name: "Ranchi",      img: cityRanchi      },
+      { name: "Ranchi",      img: cityRanchi     },
       { name: "Jamshedpur", img: cityJamshedpur  },
     ],
   },
@@ -93,16 +109,17 @@ const statesData = [
 
 const coverageStats = [
   { icon: MapPin,    value: "9",     label: "States Covered" },
-  { icon: Users,     value: "15+",   label: "Cities Served" },
+  { icon: Users,     value: "23+",   label: "Cities Served" },
   { icon: Clock,     value: "4 hrs", label: "Avg Response Time" },
   { icon: PhoneCall, value: "24/7",  label: "Emergency Support" },
 ];
 
 const regionMeta: Record<string, { pill: string; dot: string; label: string }> = {
-  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",    dot: "bg-blue-500",  label: "North India" },
-  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary",  label: "West India"  },
-  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500", label: "East India"  },
-  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600", label: "South India" },
+  North: { pill: "bg-blue-50 border-blue-200 text-blue-700",    dot: "bg-blue-500",   label: "North India" },
+  West:  { pill: "bg-primary/10 border-primary/30 text-primary", dot: "bg-primary",   label: "West India"  },
+  East:  { pill: "bg-amber-50 border-amber-200 text-amber-700", dot: "bg-amber-500",  label: "East India"  },
+  South: { pill: "bg-green-50 border-green-200 text-green-700", dot: "bg-green-600",  label: "South India" },
+  NCR:   { pill: "bg-purple-50 border-purple-200 text-purple-700", dot: "bg-purple-500", label: "Delhi-NCR"  },
 };
 
 /** City card image with shimmer skeleton */
