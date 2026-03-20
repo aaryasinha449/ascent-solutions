@@ -139,7 +139,7 @@ export default function CertificatesSection() {
             Certifications & <span className="text-primary">Awards</span>
           </h2>
           <p className="section-subheading">
-            Recognised by GMV India, Shiv Shakti, and Marazzi, along with other leading industry partners,
+            Recognised by GMV India, Shiv Shakti and Marazzi, along with other leading industry partners,
             for our consistent excellence, strong partnerships, and reliable service delivery.
           </p>
         </div>

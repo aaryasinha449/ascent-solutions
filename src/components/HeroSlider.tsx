@@ -10,7 +10,7 @@ const slides = [
   {
     image: hero1,
     subtitle: "Excellence in Vertical Transportation",
-    body: "Supplying precision elevator components, technical consultation, authorized distribution, safety-compliant solutions, and dedicated after-sales support — proudly partnered with GMV, Shiv Shakti, Techtronics, Arkel & Marazzi.",
+    body: "Supplying precision elevator components, technical consultation, authorized distribution, safety-compliant solutions, and dedicated after-sales support — proudly partnered with GMV India, Shiv Shakti and Marazzi, along with other leading industry partners.",
   },
   {
     image: hero2,
